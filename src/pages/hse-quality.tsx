@@ -24,9 +24,9 @@ export function HseQualityPage() {
   return (
     <>
       {/* Page Header */}
-      <section className="relative overflow-hidden bg-foreground py-24 text-background">
+      <section className="brand-section py-24">
         <div
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
               'repeating-linear-gradient(-45deg, transparent, transparent 20px, currentColor 20px, currentColor 21px)',
@@ -41,7 +41,7 @@ export function HseQualityPage() {
             <h1 className="text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
               Safety & Quality First
             </h1>
-            <p className="mt-6 text-lg text-white/80">
+            <p className="mt-6 text-lg text-foreground/80">
               Our operations are built on professionalism, safety, integrity, efficiency and
               customer satisfaction.
             </p>
@@ -77,9 +77,9 @@ export function HseQualityPage() {
               </CardContent>
             </Card>
 
-            <div className="relative overflow-hidden rounded-2xl bg-foreground p-8 text-background">
+            <div className="brand-section relative overflow-hidden rounded-2xl p-8 lg:p-12">
               <div
-                className="absolute inset-0 opacity-5"
+                className="absolute inset-0 opacity-[0.04]"
                 style={{
                   backgroundImage:
                     'repeating-linear-gradient(-45deg, transparent, transparent 20px, currentColor 20px, currentColor 21px)',
@@ -88,21 +88,21 @@ export function HseQualityPage() {
               />
               <div className="relative">
                 <h3 className="text-2xl font-black">Safety Culture</h3>
-                <p className="mt-4 leading-relaxed text-white/80">
+                <p className="mt-4 leading-relaxed text-foreground/80">
                   Every employee, contractor and partner is expected to take responsibility for
                   safety. We embed hazard awareness into daily briefings, equipment checks and
                   operational planning so that everyone returns home safely.
                 </p>
                 <div className="mt-6 grid grid-cols-2 gap-4">
-                  <div className="rounded-lg bg-white/5 p-4 text-center">
+                  <div className="rounded-lg bg-foreground/5 p-4 text-center dark:bg-white/5">
                     <div className="text-2xl font-black text-brand">Zero</div>
-                    <div className="text-xs uppercase tracking-widest text-white/60">
+                    <div className="text-xs uppercase tracking-widest text-foreground/60 dark:text-white/60">
                       Compromise on Safety
                     </div>
                   </div>
-                  <div className="rounded-lg bg-white/5 p-4 text-center">
+                  <div className="rounded-lg bg-foreground/5 p-4 text-center dark:bg-white/5">
                     <div className="text-2xl font-black text-brand">24/7</div>
-                    <div className="text-xs uppercase tracking-widest text-white/60">
+                    <div className="text-xs uppercase tracking-widest text-foreground/60 dark:text-white/60">
                       HSE Awareness
                     </div>
                   </div>

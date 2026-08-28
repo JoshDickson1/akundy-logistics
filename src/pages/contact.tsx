@@ -20,9 +20,9 @@ export function ContactPage() {
   return (
     <>
       {/* Page Header */}
-      <section className="relative overflow-hidden bg-foreground py-24 text-background">
+      <section className="brand-section py-24">
         <div
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
               'repeating-linear-gradient(-45deg, transparent, transparent 20px, currentColor 20px, currentColor 21px)',
@@ -37,7 +37,7 @@ export function ContactPage() {
             <h1 className="text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
               Let's Talk About Your Project
             </h1>
-            <p className="mt-6 text-lg text-white/80">
+            <p className="mt-6 text-lg text-foreground/80">
               Request a quote, ask about equipment availability, or arrange a meeting with our
               team in Port Harcourt.
             </p>
@@ -243,12 +243,12 @@ export function ContactPage() {
                   <p>Port Harcourt, Rivers State, Nigeria</p>
                 </div>
               </div>
-              <div className="relative min-h-[300px] bg-foreground lg:col-span-2">
-                <div className="absolute inset-0 flex items-center justify-center text-background">
-                  <div className="text-center">
+              <div className="brand-section relative min-h-[300px] lg:col-span-2">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative text-center">
                     <MapPin className="mx-auto size-10 text-brand" />
                     <p className="mt-4 font-bold">Map Integration Placeholder</p>
-                    <p className="text-sm text-white/60">
+                    <p className="text-sm text-foreground/60">
                       Embed Google Maps or Mapbox here for exact location.
                     </p>
                   </div>

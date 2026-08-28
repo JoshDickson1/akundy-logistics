@@ -7,9 +7,9 @@ export function IndustriesClientsPage() {
   return (
     <>
       {/* Page Header */}
-      <section className="relative overflow-hidden bg-foreground py-24 text-background">
+      <section className="brand-section py-24">
         <div
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
               'repeating-linear-gradient(-45deg, transparent, transparent 20px, currentColor 20px, currentColor 21px)',
@@ -24,7 +24,7 @@ export function IndustriesClientsPage() {
             <h1 className="text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
               Who We Serve
             </h1>
-            <p className="mt-6 text-lg text-white/80">
+            <p className="mt-6 text-lg text-foreground/80">
               Trusted by operators, contractors and agencies across Nigeria's most demanding
               industrial sectors.
             </p>
@@ -82,10 +82,10 @@ export function IndustriesClientsPage() {
             ))}
           </div>
 
-          <div className="mt-16 rounded-2xl bg-foreground p-8 text-background lg:p-12">
-            <div className="mx-auto max-w-3xl text-center">
+          <div className="brand-section mt-16 rounded-2xl p-8 lg:p-12">
+            <div className="relative mx-auto max-w-3xl text-center">
               <h3 className="text-2xl font-black">Become a Partner</h3>
-              <p className="mt-4 text-white/80">
+              <p className="mt-4 text-foreground/80">
                 We are always open to building long-term relationships with operators,
                 contractors and suppliers who share our commitment to safety, quality and
                 reliability.

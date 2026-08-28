@@ -7,9 +7,9 @@ export function ServicesPage() {
   return (
     <>
       {/* Page Header */}
-      <section className="relative overflow-hidden bg-foreground py-24 text-background">
+      <section className="brand-section py-24">
         <div
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
               'repeating-linear-gradient(-45deg, transparent, transparent 20px, currentColor 20px, currentColor 21px)',
@@ -24,7 +24,7 @@ export function ServicesPage() {
             <h1 className="text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
               One Company. Total Solutions.
             </h1>
-            <p className="mt-6 text-lg text-white/80">
+            <p className="mt-6 text-lg text-foreground/80">
               Integrated marine, offshore, engineering and industrial services delivered with
               safety, precision and reliability.
             </p>

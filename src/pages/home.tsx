@@ -1,6 +1,6 @@
 import { ArrowRight, ChevronRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { DiagonalDivider } from '../components/diagonal-divider'
+
 import { SectionHeader } from '../components/section-header'
 import { Button } from '../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
@@ -10,36 +10,27 @@ export function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-foreground text-background">
+      <section className="brand-section flex min-h-[90vh] items-center">
         <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 20% 30%, #f97316 0%, transparent 40%), radial-gradient(circle at 80% 70%, #ef4444 0%, transparent 35%)',
-          }}
-          aria-hidden="true"
-        />
-        <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
               'repeating-linear-gradient(-45deg, transparent, transparent 20px, currentColor 20px, currentColor 21px)',
           }}
           aria-hidden="true"
         />
-        <DiagonalDivider fill="#0a0a0a" className="dark:fill-[#0a0a0a]" />
 
         <div className="container relative mx-auto px-4 py-24 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div className="space-y-8">
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand">
+              <div className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand">
                 <span className="size-2 rounded-full bg-brand" />
                 Incorporated {COMPANY.incorporated} · RC {COMPANY.rcNumber}
               </div>
               <h1 className="text-4xl font-black leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
                 {COMPANY.tagline}
               </h1>
-              <p className="max-w-xl text-lg leading-relaxed text-white/80">
+              <p className="max-w-xl text-lg leading-relaxed text-foreground/80">
                 {COMPANY.name} delivers dependable marine logistics, offshore support,
                 equipment leasing, fabrication and procurement services across Nigeria
                 and West Africa.
@@ -58,7 +49,7 @@ export function HomePage() {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-white/20 bg-transparent text-white hover:bg-white/10 hover:text-white"
+                  className="border-foreground/20 bg-transparent text-foreground hover:bg-foreground/10 hover:text-foreground"
                 >
                   <Link to="/contact">Request a Quote</Link>
                 </Button>
@@ -69,13 +60,13 @@ export function HomePage() {
             </div>
 
             <div className="relative hidden lg:block">
-              <div className="relative aspect-square overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-8">
+              <div className="relative aspect-square overflow-hidden rounded-2xl border border-foreground/10 bg-white/40 p-8 shadow-xl dark:bg-white/5">
                 <div className="absolute inset-0 bg-gradient-to-br from-brand/20 via-transparent to-red-500/10" />
                 <div className="relative grid h-full grid-cols-2 gap-4">
                   {SERVICES.slice(0, 4).map((service) => (
                     <div
                       key={service.id}
-                      className="flex flex-col justify-between rounded-xl bg-foreground/80 p-5 backdrop-blur"
+                      className="flex flex-col justify-between rounded-xl bg-white/80 p-5 shadow-sm backdrop-blur dark:bg-foreground/80"
                     >
                       <service.icon className="size-8 text-brand" />
                       <span className="text-sm font-bold">{service.title}</span>
@@ -146,9 +137,9 @@ export function HomePage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="relative overflow-hidden bg-foreground py-24 text-background">
+      <section className="brand-section py-24">
         <div
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
               'repeating-linear-gradient(-45deg, transparent, transparent 20px, currentColor 20px, currentColor 21px)',
@@ -160,17 +151,16 @@ export function HomePage() {
             eyebrow="Why Akundy"
             title="Built for Demanding Projects"
             description="We combine technical know-how, safety discipline and responsive service to become a reliable extension of your operations team."
-            light
           />
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {WHY_CHOOSE_US.map((item) => (
               <div
                 key={item.title}
-                className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur transition-colors hover:border-brand/50"
+                className="rounded-xl border border-foreground/10 bg-white/60 p-6 shadow-sm backdrop-blur transition-colors hover:border-brand/50 dark:bg-white/5"
               >
                 <item.icon className="size-8 text-brand" />
                 <h3 className="mt-4 text-lg font-bold">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/70">{item.text}</p>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/70">{item.text}</p>
               </div>
             ))}
           </div>

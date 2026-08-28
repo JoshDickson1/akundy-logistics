@@ -6,9 +6,9 @@ export function CertificationsPage() {
   return (
     <>
       {/* Page Header */}
-      <section className="relative overflow-hidden bg-foreground py-24 text-background">
+      <section className="brand-section py-24">
         <div
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
               'repeating-linear-gradient(-45deg, transparent, transparent 20px, currentColor 20px, currentColor 21px)',
@@ -23,7 +23,7 @@ export function CertificationsPage() {
             <h1 className="text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
               Registered. Licensed. Trusted.
             </h1>
-            <p className="mt-6 text-lg text-white/80">
+            <p className="mt-6 text-lg text-foreground/80">
               We maintain the registrations, licences and compliance records that give our
               clients confidence in every contract.
             </p>
@@ -92,16 +92,16 @@ export function CertificationsPage() {
                   </div>
                 </dl>
               </div>
-              <div className="flex items-center justify-center bg-foreground p-8 text-background lg:p-12">
-                <div className="text-center">
+              <div className="brand-section flex items-center justify-center p-8 lg:p-12">
+                <div className="relative text-center">
                   <div className="mx-auto inline-flex size-20 items-center justify-center rounded-full bg-brand/10">
                     <span className="text-3xl font-black text-brand">CAC</span>
                   </div>
                   <p className="mt-6 text-lg font-bold">Corporate Affairs Commission</p>
-                  <p className="mt-2 text-sm text-white/70">
+                  <p className="mt-2 text-sm text-foreground/70">
                     Certificate issued under the hand of the Registrar-General at Abuja.
                   </p>
-                  <p className="mt-6 text-xs uppercase tracking-widest text-white/50">
+                  <p className="mt-6 text-xs uppercase tracking-widest text-foreground/50">
                     Original documents available on request
                   </p>
                 </div>
