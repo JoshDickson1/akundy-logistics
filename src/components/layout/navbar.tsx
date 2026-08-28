@@ -25,8 +25,8 @@ export function Navbar() {
               to={link.href}
               className={({ isActive }) =>
                 cn(
-                  'relative px-3 py-2 text-sm font-medium transition-colors hover:text-brand',
-                  isActive ? 'text-brand' : 'text-muted-foreground'
+                  'relative rounded-xl px-4 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-brand',
+                  isActive ? 'bg-brand/10 text-brand' : 'text-muted-foreground'
                 )
               }
             >
@@ -53,13 +53,13 @@ export function Navbar() {
               </div>
               <nav className="mt-8 flex flex-col gap-2">
                 {NAV_LINKS.map((link) => (
-                  <NavLink
+                    <NavLink
                     key={link.href}
                     to={link.href}
                     onClick={() => setOpen(false)}
                     className={({ isActive }) =>
                       cn(
-                        'rounded-lg px-4 py-3 text-base font-medium transition-colors',
+                        'rounded-2xl px-5 py-3.5 text-base font-medium transition-colors',
                         isActive
                           ? 'bg-brand/10 text-brand'
                           : 'text-foreground hover:bg-muted'

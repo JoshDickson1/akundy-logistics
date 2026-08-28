@@ -1,16 +1,18 @@
 import { ArrowRight, ChevronRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-
 import { SectionHeader } from '../components/section-header'
 import { Button } from '../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { COMPANY, SERVICES, STATS, WHY_CHOOSE_US } from '../lib/data'
 
 export function HomePage() {
+  const featuredServices = SERVICES.slice(0, 6)
+  const highlights = WHY_CHOOSE_US.slice(0, 4)
+
   return (
     <>
       {/* Hero */}
-      <section className="brand-section flex min-h-[90vh] items-center">
+      <section className="brand-section flex min-h-[85vh] items-center">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
@@ -20,78 +22,57 @@ export function HomePage() {
           aria-hidden="true"
         />
 
-        <div className="container relative mx-auto px-4 py-24 lg:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div className="space-y-8">
-              <div className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand">
-                <span className="size-2 rounded-full bg-brand" />
-                Incorporated {COMPANY.incorporated} · RC {COMPANY.rcNumber}
-              </div>
-              <h1 className="text-4xl font-black leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
-                {COMPANY.tagline}
-              </h1>
-              <p className="max-w-xl text-lg leading-relaxed text-foreground/80">
-                {COMPANY.name} delivers dependable marine logistics, offshore support,
-                equipment leasing, fabrication and procurement services across Nigeria
-                and West Africa.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-brand text-brand-foreground hover:bg-brand/90"
-                >
-                  <Link to="/services">
-                    Explore Services <ArrowRight className="ml-2 size-4" />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="border-foreground/20 bg-transparent text-foreground hover:bg-foreground/10 hover:text-foreground"
-                >
-                  <Link to="/contact">Request a Quote</Link>
-                </Button>
-              </div>
-              <p className="text-sm font-semibold uppercase tracking-widest text-brand">
-                {COMPANY.motto}
-              </p>
+        <div className="container relative mx-auto px-4 py-20 lg:px-8">
+          <div className="mx-auto max-w-4xl text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand">
+              <span className="size-2 rounded-full bg-brand" />
+              Incorporated {COMPANY.incorporated} · RC {COMPANY.rcNumber}
             </div>
-
-            <div className="relative hidden lg:block">
-              <div className="relative aspect-square overflow-hidden rounded-2xl border border-foreground/10 bg-white/40 p-8 shadow-xl dark:bg-white/5">
-                <div className="absolute inset-0 bg-gradient-to-br from-brand/20 via-transparent to-red-500/10" />
-                <div className="relative grid h-full grid-cols-2 gap-4">
-                  {SERVICES.slice(0, 4).map((service) => (
-                    <div
-                      key={service.id}
-                      className="flex flex-col justify-between rounded-xl bg-white/80 p-5 shadow-sm backdrop-blur dark:bg-foreground/80"
-                    >
-                      <service.icon className="size-8 text-brand" />
-                      <span className="text-sm font-bold">{service.title}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="absolute -bottom-6 -left-6 h-32 w-32 rounded-full border-8 border-brand/20" />
-              <div className="absolute -right-4 -top-4 h-24 w-24 rounded-lg bg-brand/10" />
+            <h1 className="mt-8 text-5xl font-black leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl">
+              {COMPANY.tagline}
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-foreground/80">
+              {COMPANY.name} delivers dependable marine logistics, offshore support,
+              equipment leasing, fabrication and procurement services across Nigeria
+              and West Africa.
+            </p>
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <Button
+                asChild
+                size="lg"
+                className="bg-brand text-brand-foreground hover:bg-brand/90"
+              >
+                <Link to="/services">
+                  Explore Services <ArrowRight className="ml-2 size-4" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-foreground/20 bg-transparent text-foreground hover:bg-foreground/10 hover:text-foreground"
+              >
+                <Link to="/contact">Request a Quote</Link>
+              </Button>
             </div>
+            <p className="mt-10 text-sm font-semibold uppercase tracking-widest text-brand">
+              {COMPANY.motto}
+            </p>
           </div>
         </div>
       </section>
 
       {/* Stats */}
-      <section className="relative z-10 -mt-12">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="relative z-10 -mt-10">
+        <div className="mx-auto max-w-5xl px-4 lg:px-8">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {STATS.map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-xl border border-border bg-card p-6 text-center shadow-sm"
+                className="rounded-3xl border border-border bg-card p-7 text-center shadow-sm"
               >
                 <div className="text-3xl font-black text-brand">{stat.value}</div>
-                <div className="mt-1 text-sm font-medium text-muted-foreground">
+                <div className="mt-2 text-sm font-medium text-muted-foreground">
                   {stat.label}
                 </div>
               </div>
@@ -102,25 +83,25 @@ export function HomePage() {
 
       {/* Services Overview */}
       <section className="py-24">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <SectionHeader
             eyebrow="What We Do"
             title="Integrated Marine & Industrial Solutions"
             description="Nine service lines designed to keep your projects moving — from offshore platforms to fabrication yards and port operations."
           />
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((service) => (
+            {featuredServices.map((service) => (
               <Card
                 key={service.id}
-                className="group relative overflow-hidden border-border/50 bg-card transition-all hover:-translate-y-1 hover:shadow-lg"
+                className="group relative overflow-hidden border-border/50 bg-card transition-all hover:-translate-y-1 hover:shadow-xl"
               >
                 <div className="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y-[-50%] rounded-full bg-brand/10 transition-transform group-hover:scale-150" />
                 <CardHeader>
-                  <div className="mb-4 inline-flex size-12 items-center justify-center rounded-lg bg-brand/10 text-brand">
-                    <service.icon className="size-6" />
+                  <div className="mb-5 inline-flex size-14 items-center justify-center rounded-2xl bg-brand/10 text-brand">
+                    <service.icon className="size-7" />
                   </div>
                   <CardTitle className="text-lg">{service.title}</CardTitle>
-                  <CardDescription>{service.description}</CardDescription>
+                  <CardDescription className="line-clamp-3">{service.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Link
@@ -132,6 +113,11 @@ export function HomePage() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+          <div className="mt-14 text-center">
+            <Button asChild variant="outline" className="border-2">
+              <Link to="/services">View All Services</Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -146,20 +132,20 @@ export function HomePage() {
           }}
           aria-hidden="true"
         />
-        <div className="container relative mx-auto px-4 lg:px-8">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <SectionHeader
             eyebrow="Why Akundy"
             title="Built for Demanding Projects"
             description="We combine technical know-how, safety discipline and responsive service to become a reliable extension of your operations team."
           />
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {WHY_CHOOSE_US.map((item) => (
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {highlights.map((item) => (
               <div
                 key={item.title}
-                className="rounded-xl border border-foreground/10 bg-white/60 p-6 shadow-sm backdrop-blur transition-colors hover:border-brand/50 dark:bg-white/5"
+                className="rounded-3xl border border-foreground/10 bg-white/60 p-7 shadow-sm backdrop-blur transition-colors hover:border-brand/50 dark:bg-white/5"
               >
                 <item.icon className="size-8 text-brand" />
-                <h3 className="mt-4 text-lg font-bold">{item.title}</h3>
+                <h3 className="mt-5 text-lg font-bold">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-foreground/70">{item.text}</p>
               </div>
             ))}
@@ -169,8 +155,8 @@ export function HomePage() {
 
       {/* CTA */}
       <section className="py-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="relative overflow-hidden rounded-2xl bg-brand px-6 py-16 text-center text-white sm:px-12 lg:py-20">
+        <div className="mx-auto max-w-5xl px-4 lg:px-8">
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-brand px-8 py-20 text-center text-white sm:px-12">
             <div
               className="absolute inset-0 opacity-10"
               style={{

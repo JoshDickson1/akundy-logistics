@@ -3,6 +3,8 @@ import { SectionHeader } from '../components/section-header'
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 
 export function CertificationsPage() {
+  const topCerts = CERTIFICATIONS.slice(0, 4)
+
   return (
     <>
       {/* Page Header */}
@@ -33,37 +35,37 @@ export function CertificationsPage() {
 
       {/* Certificates */}
       <section className="py-24">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <SectionHeader
             eyebrow="Credentials"
             title="Regulatory & Compliance Standing"
             description={`Key registrations and certifications held by ${COMPANY.shortName}.`}
           />
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {CERTIFICATIONS.map((cert) => (
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {topCerts.map((cert) => (
               <Card
                 key={cert.title}
-                className="group relative overflow-hidden border-border/50 transition-all hover:-translate-y-1 hover:shadow-lg"
+                className="group relative overflow-hidden rounded-3xl border-border/50 transition-all hover:-translate-y-1 hover:shadow-xl"
               >
                 <div className="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y-[-50%] rounded-full bg-brand/10 transition-transform group-hover:scale-150" />
                 <CardHeader>
-                  <div className="mb-4 inline-flex size-12 items-center justify-center rounded-lg bg-brand/10 text-brand">
-                    <cert.icon className="size-6" />
+                  <div className="mb-5 inline-flex size-14 items-center justify-center rounded-2xl bg-brand/10 text-brand">
+                    <cert.icon className="size-7" />
                   </div>
-                  <CardTitle className="text-lg">{cert.title}</CardTitle>
+                  <CardTitle className="text-base leading-tight">{cert.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-xs font-bold uppercase tracking-widest text-brand">
                     {cert.issuer}
                   </p>
-                  <p className="mt-2 text-sm text-muted-foreground">{cert.description}</p>
+                  <p className="mt-3 text-sm text-muted-foreground">{cert.description}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
 
-          <div className="mt-16 overflow-hidden rounded-2xl border border-border bg-card">
+          <div className="mt-16 overflow-hidden rounded-[2.5rem] border border-border bg-card">
             <div className="grid lg:grid-cols-2">
               <div className="bg-muted/30 p-8 lg:p-12">
                 <h3 className="text-2xl font-black">Certificate of Incorporation</h3>
@@ -71,31 +73,25 @@ export function CertificationsPage() {
                   {COMPANY.name} is a private company limited by shares, incorporated in Nigeria
                   under the Companies and Allied Matters Act 2020.
                 </p>
-                <dl className="mt-8 space-y-4">
-                  <div>
-                    <dt className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                      Company Registration Number
-                    </dt>
-                    <dd className="text-xl font-bold text-foreground">{COMPANY.rcNumber}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                      Date of Incorporation
-                    </dt>
-                    <dd className="text-xl font-bold text-foreground">28 February 2023</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                      Tax Identification Number
-                    </dt>
-                    <dd className="text-xl font-bold text-foreground">{COMPANY.tin}</dd>
-                  </div>
+                <dl className="mt-8 space-y-5">
+                  {[
+                    ['Company Registration Number', COMPANY.rcNumber],
+                    ['Date of Incorporation', '28 February 2023'],
+                    ['Tax Identification Number', COMPANY.tin],
+                  ].map(([dt, dd]) => (
+                    <div key={dt}>
+                      <dt className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                        {dt}
+                      </dt>
+                      <dd className="mt-1 text-xl font-bold text-foreground">{dd}</dd>
+                    </div>
+                  ))}
                 </dl>
               </div>
               <div className="brand-section flex items-center justify-center p-8 lg:p-12">
                 <div className="relative text-center">
-                  <div className="mx-auto inline-flex size-20 items-center justify-center rounded-full bg-brand/10">
-                    <span className="text-3xl font-black text-brand">CAC</span>
+                  <div className="mx-auto inline-flex size-24 items-center justify-center rounded-full bg-brand/10">
+                    <span className="text-4xl font-black text-brand">CAC</span>
                   </div>
                   <p className="mt-6 text-lg font-bold">Corporate Affairs Commission</p>
                   <p className="mt-2 text-sm text-foreground/70">

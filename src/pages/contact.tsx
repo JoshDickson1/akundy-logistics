@@ -14,7 +14,6 @@ export function ContactPage() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setSubmitted(true)
-    // Form handler integration point (e.g. Formspree, Netlify, email service)
   }
 
   return (
@@ -47,10 +46,10 @@ export function ContactPage() {
 
       {/* Contact Content */}
       <section className="py-24">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-2">
             {/* Contact Details */}
-            <div className="space-y-8">
+            <div className="space-y-10">
               <SectionHeader
                 align="left"
                 eyebrow="Get in Touch"
@@ -58,11 +57,11 @@ export function ContactPage() {
                 description="Reach us directly or visit our base location."
               />
 
-              <div className="space-y-4">
-                <Card>
-                  <CardContent className="flex items-start gap-4 p-6">
-                    <div className="inline-flex size-10 shrink-0 items-center justify-center rounded-lg bg-brand/10 text-brand">
-                      <MapPin className="size-5" />
+              <div className="space-y-5">
+                <Card className="rounded-3xl">
+                  <CardContent className="flex items-start gap-5 p-7">
+                    <div className="inline-flex size-12 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand">
+                      <MapPin className="size-6" />
                     </div>
                     <div>
                       <h3 className="font-bold">Base Location</h3>
@@ -77,15 +76,15 @@ export function ContactPage() {
                   </CardContent>
                 </Card>
 
-                <Card>
-                  <CardContent className="flex items-start gap-4 p-6">
-                    <div className="inline-flex size-10 shrink-0 items-center justify-center rounded-lg bg-brand/10 text-brand">
-                      <Phone className="size-5" />
+                <Card className="rounded-3xl">
+                  <CardContent className="flex items-start gap-5 p-7">
+                    <div className="inline-flex size-12 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand">
+                      <Phone className="size-6" />
                     </div>
                     <div>
                       <h3 className="font-bold">Phone Numbers</h3>
                       <ul className="mt-1 space-y-1 text-sm text-muted-foreground">
-                        {COMPANY.phones.map((phone) => (
+                        {COMPANY.phones.slice(0, 2).map((phone) => (
                           <li key={phone}>
                             <a
                               href={`tel:${phone.replace(/\s/g, '')}`}
@@ -100,10 +99,10 @@ export function ContactPage() {
                   </CardContent>
                 </Card>
 
-                <Card>
-                  <CardContent className="flex items-start gap-4 p-6">
-                    <div className="inline-flex size-10 shrink-0 items-center justify-center rounded-lg bg-brand/10 text-brand">
-                      <Mail className="size-5" />
+                <Card className="rounded-3xl">
+                  <CardContent className="flex items-start gap-5 p-7">
+                    <div className="inline-flex size-12 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand">
+                      <Mail className="size-6" />
                     </div>
                     <div>
                       <h3 className="font-bold">Email</h3>
@@ -121,15 +120,15 @@ export function ContactPage() {
               </div>
 
               <div>
-                <h3 className="mb-4 text-lg font-bold">Company Representatives</h3>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {TEAM.map((member) => (
-                    <Card key={member.name}>
-                      <CardHeader className="p-4">
-                        <CardTitle className="text-sm font-bold">{member.name}</CardTitle>
-                        <CardContent className="p-0 pt-1">
+                <h3 className="mb-5 text-lg font-bold">Company Representatives</h3>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {TEAM.slice(0, 2).map((member) => (
+                    <Card key={member.name} className="rounded-3xl">
+                      <CardHeader className="p-6">
+                        <CardTitle className="text-base font-bold">{member.name}</CardTitle>
+                        <CardContent className="p-0 pt-2">
                           <p className="text-xs text-muted-foreground">{member.role}</p>
-                          <p className="mt-1 text-xs font-medium text-brand">{member.phone}</p>
+                          <p className="mt-1 text-sm font-medium text-brand">{member.phone}</p>
                         </CardContent>
                       </CardHeader>
                     </Card>
@@ -140,13 +139,13 @@ export function ContactPage() {
 
             {/* Contact Form */}
             <div>
-              <Card className="border-border/50">
-                <CardHeader>
+              <Card className="rounded-3xl border-border/50">
+                <CardHeader className="p-8">
                   <CardTitle className="text-2xl">Request a Quote</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="p-8 pt-0">
                   {submitted ? (
-                    <div className="rounded-xl bg-brand/10 p-8 text-center">
+                    <div className="rounded-3xl bg-brand/10 p-10 text-center">
                       <h3 className="text-xl font-bold text-brand">Message Received</h3>
                       <p className="mt-2 text-muted-foreground">
                         Thank you for contacting Akundy Logistics. A member of our team will
@@ -154,15 +153,15 @@ export function ContactPage() {
                       </p>
                       <Button
                         variant="outline"
-                        className="mt-4"
+                        className="mt-6"
                         onClick={() => setSubmitted(false)}
                       >
                         Send Another Message
                       </Button>
                     </div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="space-y-5">
-                      <div className="grid gap-5 sm:grid-cols-2">
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      <div className="grid gap-6 sm:grid-cols-2">
                         <div className="space-y-2">
                           <Label htmlFor="name">Full Name</Label>
                           <Input id="name" name="name" required placeholder="Your name" />
@@ -172,7 +171,7 @@ export function ContactPage() {
                           <Input id="company" name="company" placeholder="Your organisation" />
                         </div>
                       </div>
-                      <div className="grid gap-5 sm:grid-cols-2">
+                      <div className="grid gap-6 sm:grid-cols-2">
                         <div className="space-y-2">
                           <Label htmlFor="email">Email</Label>
                           <Input
@@ -201,7 +200,6 @@ export function ContactPage() {
                         <Textarea
                           id="message"
                           name="message"
-                          rows={5}
                           required
                           placeholder="Tell us about your project or requirements..."
                         />
@@ -215,7 +213,7 @@ export function ContactPage() {
                       </Button>
                       <p className="text-xs text-muted-foreground">
                         This form is a demo. Connect it to your preferred form-to-email service
-                        (Formspree, Netlify Forms, Resend, etc.) before going live.
+                        before going live.
                       </p>
                     </form>
                   )}
@@ -228,10 +226,10 @@ export function ContactPage() {
 
       {/* Map Placeholder */}
       <section className="bg-muted/30 py-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="overflow-hidden rounded-2xl border border-border bg-card">
+        <div className="mx-auto max-w-5xl px-4 lg:px-8">
+          <div className="overflow-hidden rounded-[2.5rem] border border-border bg-card">
             <div className="grid lg:grid-cols-3">
-              <div className="p-8 lg:p-12">
+              <div className="p-10 lg:p-12">
                 <h3 className="text-2xl font-black">Find Our Base</h3>
                 <p className="mt-4 text-muted-foreground">
                   We are located opposite Pamo University Hospital on the Port Harcourt/Aba
@@ -243,7 +241,7 @@ export function ContactPage() {
                   <p>Port Harcourt, Rivers State, Nigeria</p>
                 </div>
               </div>
-              <div className="brand-section relative min-h-[300px] lg:col-span-2">
+              <div className="brand-section relative min-h-[320px] lg:col-span-2">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="relative text-center">
                     <MapPin className="mx-auto size-10 text-brand" />

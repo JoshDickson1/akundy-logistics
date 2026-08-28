@@ -47,14 +47,14 @@ export function EquipmentCataloguePage() {
 
       {/* Catalogue */}
       <section className="py-24">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <SectionHeader
             eyebrow="Inventory"
             title="Leasing Assets Available Now"
             description="Quality equipment, flexible leasing periods, prompt delivery and technical support."
           />
 
-          <div className="mt-10 flex flex-wrap justify-center gap-2">
+          <div className="mt-12 flex flex-wrap justify-center gap-3">
             {categories.map((category) => (
               <Button
                 key={category}
@@ -63,8 +63,8 @@ export function EquipmentCataloguePage() {
                 onClick={() => setActive(category)}
                 className={
                   active === category
-                    ? 'bg-brand text-brand-foreground hover:bg-brand/90'
-                    : ''
+                    ? 'rounded-xl bg-brand text-brand-foreground hover:bg-brand/90'
+                    : 'rounded-xl'
                 }
               >
                 {category}
@@ -72,40 +72,40 @@ export function EquipmentCataloguePage() {
             ))}
           </div>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((item) => (
               <Card
                 key={item.id}
-                className="flex flex-col overflow-hidden border-border/50 bg-card transition-all hover:-translate-y-1 hover:shadow-lg"
+                className="flex flex-col overflow-hidden rounded-3xl border-border/50 bg-card transition-all hover:-translate-y-1 hover:shadow-xl"
               >
-                <div className="flex h-40 items-center justify-center bg-gradient-to-br from-muted to-muted/50">
+                <div className="flex h-44 items-center justify-center bg-gradient-to-br from-muted to-muted/50">
                   <div className="text-center">
                     <span className="text-5xl font-black text-brand/20">
                       {item.title.split(' ')[0]}
                     </span>
-                    <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                    <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                       {item.category}
                     </p>
                   </div>
                 </div>
                 <CardHeader className="flex-1">
-                  <Badge variant="secondary" className="mb-3 w-fit">
+                  <Badge variant="secondary" className="mb-4 w-fit">
                     {item.category}
                   </Badge>
                   <CardTitle className="text-lg">{item.title}</CardTitle>
                   <CardDescription>{item.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="pt-0">
-                  <div className="space-y-4">
+                  <div className="space-y-5">
                     <div>
-                      <h4 className="mb-2 text-xs font-bold uppercase tracking-widest text-foreground">
+                      <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-foreground">
                         Applications
                       </h4>
-                      <div className="flex flex-wrap gap-1.5">
+                      <div className="flex flex-wrap gap-2">
                         {item.applications.slice(0, 3).map((app) => (
                           <span
                             key={app}
-                            className="rounded-full bg-muted px-2.5 py-1 text-xs text-muted-foreground"
+                            className="rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground"
                           >
                             {app}
                           </span>
@@ -113,16 +113,16 @@ export function EquipmentCataloguePage() {
                       </div>
                     </div>
                     <div>
-                      <h4 className="mb-2 text-xs font-bold uppercase tracking-widest text-foreground">
+                      <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-foreground">
                         Features
                       </h4>
-                      <ul className="space-y-1">
+                      <ul className="space-y-2">
                         {item.features.slice(0, 3).map((feature) => (
                           <li
                             key={feature}
                             className="flex items-center gap-2 text-xs text-muted-foreground"
                           >
-                            <span className="size-1 rounded-full bg-brand" />
+                            <span className="size-1.5 rounded-full bg-brand" />
                             {feature}
                           </li>
                         ))}

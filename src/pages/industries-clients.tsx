@@ -4,6 +4,8 @@ import { SectionHeader } from '../components/section-header'
 import { Card, CardContent, CardTitle } from '../components/ui/card'
 
 export function IndustriesClientsPage() {
+  const featuredIndustries = INDUSTRIES.slice(0, 6)
+
   return (
     <>
       {/* Page Header */}
@@ -34,21 +36,21 @@ export function IndustriesClientsPage() {
 
       {/* Industries */}
       <section className="py-24">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="mx-auto max-w-5xl px-4 lg:px-8">
           <SectionHeader
             eyebrow="Industries"
             title="Sectors We Support"
             description="Our capabilities are built around the needs of Nigeria's oil & gas, marine, construction and industrial ecosystem."
           />
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {INDUSTRIES.map((industry) => (
+          <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredIndustries.map((industry) => (
               <Card
                 key={industry}
-                className="flex items-center gap-4 border-border/50 p-6 transition-all hover:-translate-y-0.5 hover:border-brand/50"
+                className="flex items-center gap-5 rounded-3xl border-border/50 p-7 transition-all hover:-translate-y-0.5 hover:border-brand/50"
               >
-                <div className="inline-flex size-10 shrink-0 items-center justify-center rounded-lg bg-brand/10 text-brand">
-                  <Building2 className="size-5" />
+                <div className="inline-flex size-12 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand">
+                  <Building2 className="size-6" />
                 </div>
                 <CardTitle className="text-base font-bold">{industry}</CardTitle>
               </Card>
@@ -59,31 +61,31 @@ export function IndustriesClientsPage() {
 
       {/* Clients */}
       <section className="bg-muted/30 py-24">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="mx-auto max-w-4xl px-4 lg:px-8">
           <SectionHeader
             eyebrow="Clients"
             title="Organisations We Have Worked With"
             description="A selection of clients with whom we have secured contracts and delivered services."
           />
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid gap-5 md:grid-cols-3">
             {CLIENTS.map((client) => (
               <Card
                 key={client}
-                className="flex items-center gap-4 border-l-4 border-l-brand p-6"
+                className="flex items-center gap-5 rounded-3xl border-l-4 border-l-brand p-7"
               >
-                <div className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand">
-                  <Users className="size-5" />
+                <div className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand">
+                  <Users className="size-6" />
                 </div>
                 <CardContent className="p-0">
-                  <p className="font-bold text-foreground">{client}</p>
+                  <p className="text-sm font-bold leading-snug text-foreground">{client}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
 
-          <div className="brand-section mt-16 rounded-2xl p-8 lg:p-12">
-            <div className="relative mx-auto max-w-3xl text-center">
+          <div className="brand-section mt-16 rounded-[2.5rem] p-10 text-center lg:p-14">
+            <div className="relative mx-auto max-w-2xl">
               <h3 className="text-2xl font-black">Become a Partner</h3>
               <p className="mt-4 text-foreground/80">
                 We are always open to building long-term relationships with operators,
