@@ -7,15 +7,7 @@ export function ServicesPage() {
     <>
       {/* Page Header */}
       <section className="brand-section py-24">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              'repeating-linear-gradient(-45deg, transparent, transparent 20px, currentColor 20px, currentColor 21px)',
-          }}
-          aria-hidden="true"
-        />
-        <div className="container relative mx-auto px-4 lg:px-8">
+        <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <span className="mb-3 inline-block text-sm font-bold uppercase tracking-widest text-brand">
               Our Services

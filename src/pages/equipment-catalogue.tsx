@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { EQUIPMENT } from '../lib/data'
 import { SectionHeader } from '../components/section-header'
 import { Badge } from '../components/ui/badge'
 import { Button } from '../components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 
 export function EquipmentCataloguePage() {
   const categories = useMemo(
@@ -21,15 +22,7 @@ export function EquipmentCataloguePage() {
     <>
       {/* Page Header */}
       <section className="brand-section py-24">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              'repeating-linear-gradient(-45deg, transparent, transparent 20px, currentColor 20px, currentColor 21px)',
-          }}
-          aria-hidden="true"
-        />
-        <div className="container relative mx-auto px-4 lg:px-8">
+        <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <span className="mb-3 inline-block text-sm font-bold uppercase tracking-widest text-brand">
               Equipment Leasing
@@ -76,9 +69,9 @@ export function EquipmentCataloguePage() {
             {filtered.map((item) => (
               <Card
                 key={item.id}
-                className="flex flex-col overflow-hidden rounded-3xl border-border/50 bg-card transition-all hover:-translate-y-1 hover:shadow-xl"
+                className="group flex flex-col overflow-hidden rounded-3xl border-border/50 bg-card transition-all hover:-translate-y-1 hover:shadow-soft-xl"
               >
-                <div className="flex h-44 items-center justify-center bg-gradient-to-br from-muted to-muted/50">
+                <div className="flex h-48 items-center justify-center bg-gradient-to-br from-muted to-muted/50">
                   <div className="text-center">
                     <span className="text-5xl font-black text-brand/20">
                       {item.title.split(' ')[0]}
@@ -89,46 +82,22 @@ export function EquipmentCataloguePage() {
                   </div>
                 </div>
                 <CardHeader className="flex-1">
-                  <Badge variant="secondary" className="mb-4 w-fit">
+                  <Badge variant="secondary" className="mb-3 w-fit">
                     {item.category}
                   </Badge>
                   <CardTitle className="text-lg">{item.title}</CardTitle>
-                  <CardDescription>{item.description}</CardDescription>
+                  <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
+                    {item.shortDescription}
+                  </p>
                 </CardHeader>
                 <CardContent className="pt-0">
-                  <div className="space-y-5">
-                    <div>
-                      <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-foreground">
-                        Applications
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {item.applications.slice(0, 3).map((app) => (
-                          <span
-                            key={app}
-                            className="rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground"
-                          >
-                            {app}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-foreground">
-                        Features
-                      </h4>
-                      <ul className="space-y-2">
-                        {item.features.slice(0, 3).map((feature) => (
-                          <li
-                            key={feature}
-                            className="flex items-center gap-2 text-xs text-muted-foreground"
-                          >
-                            <span className="size-1.5 rounded-full bg-brand" />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+                  <Button
+                    asChild
+                    variant="link"
+                    className="h-auto p-0 text-brand"
+                  >
+                    <Link to={`/equipment/${item.id}`}>View details & specs</Link>
+                  </Button>
                 </CardContent>
               </Card>
             ))}

@@ -21,15 +21,7 @@ export function HseQualityPage() {
     <>
       {/* Page Header */}
       <section className="brand-section py-24">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              'repeating-linear-gradient(-45deg, transparent, transparent 20px, currentColor 20px, currentColor 21px)',
-          }}
-          aria-hidden="true"
-        />
-        <div className="container relative mx-auto px-4 lg:px-8">
+        <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <span className="mb-3 inline-block text-sm font-bold uppercase tracking-widest text-brand">
               HSE & Quality
@@ -73,16 +65,8 @@ export function HseQualityPage() {
               </CardContent>
             </Card>
 
-            <div className="brand-section relative overflow-hidden rounded-3xl p-8 lg:p-12">
-              <div
-                className="absolute inset-0 opacity-[0.04]"
-                style={{
-                  backgroundImage:
-                    'repeating-linear-gradient(-45deg, transparent, transparent 20px, currentColor 20px, currentColor 21px)',
-                }}
-                aria-hidden="true"
-              />
-              <div className="relative">
+            <div className="brand-section overflow-hidden rounded-3xl p-8 lg:p-12">
+              <div>
                 <h3 className="text-2xl font-black">Safety Culture</h3>
                 <p className="mt-4 leading-relaxed text-foreground/80">
                   Every employee, contractor and partner is expected to take responsibility for
@@ -122,7 +106,7 @@ export function HseQualityPage() {
             {QUALITY_POINTS.map((point) => (
               <div
                 key={point}
-                className="flex items-start gap-4 rounded-3xl border border-border bg-card p-7"
+                className="flex items-start gap-4 rounded-3xl border border-border bg-card p-7 shadow-soft"
               >
                 <span className="mt-0.5 inline-flex size-7 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand">
                   <Check className="size-4" />

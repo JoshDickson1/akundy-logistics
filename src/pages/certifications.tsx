@@ -9,15 +9,7 @@ export function CertificationsPage() {
     <>
       {/* Page Header */}
       <section className="brand-section py-24">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              'repeating-linear-gradient(-45deg, transparent, transparent 20px, currentColor 20px, currentColor 21px)',
-          }}
-          aria-hidden="true"
-        />
-        <div className="container relative mx-auto px-4 lg:px-8">
+        <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <span className="mb-3 inline-block text-sm font-bold uppercase tracking-widest text-brand">
               Certifications
@@ -46,7 +38,7 @@ export function CertificationsPage() {
             {topCerts.map((cert) => (
               <Card
                 key={cert.title}
-                className="group relative overflow-hidden rounded-3xl border-border/50 transition-all hover:-translate-y-1 hover:shadow-xl"
+                className="group relative overflow-hidden rounded-3xl border-border/50 transition-all hover:-translate-y-1 hover:shadow-soft-xl"
               >
                 <div className="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y-[-50%] rounded-full bg-brand/10 transition-transform group-hover:scale-150" />
                 <CardHeader>

@@ -10,15 +10,7 @@ export function IndustriesClientsPage() {
     <>
       {/* Page Header */}
       <section className="brand-section py-24">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              'repeating-linear-gradient(-45deg, transparent, transparent 20px, currentColor 20px, currentColor 21px)',
-          }}
-          aria-hidden="true"
-        />
-        <div className="container relative mx-auto px-4 lg:px-8">
+        <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <span className="mb-3 inline-block text-sm font-bold uppercase tracking-widest text-brand">
               Industries & Clients
@@ -47,7 +39,7 @@ export function IndustriesClientsPage() {
             {featuredIndustries.map((industry) => (
               <Card
                 key={industry}
-                className="flex items-center gap-5 rounded-3xl border-border/50 p-7 transition-all hover:-translate-y-0.5 hover:border-brand/50"
+                className="flex items-center gap-5 rounded-3xl border-border/50 p-7 shadow-soft transition-all hover:-translate-y-0.5 hover:border-brand/50"
               >
                 <div className="inline-flex size-12 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand">
                   <Building2 className="size-6" />
@@ -72,7 +64,7 @@ export function IndustriesClientsPage() {
             {CLIENTS.map((client) => (
               <Card
                 key={client}
-                className="flex items-center gap-5 rounded-3xl border-l-4 border-l-brand p-7"
+                className="flex items-center gap-5 rounded-3xl border-l-4 border-l-brand p-7 shadow-soft"
               >
                 <div className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand">
                   <Users className="size-6" />
@@ -84,10 +76,10 @@ export function IndustriesClientsPage() {
             ))}
           </div>
 
-          <div className="brand-section mt-16 rounded-[2.5rem] p-10 text-center lg:p-14">
-            <div className="relative mx-auto max-w-2xl">
+          <div className="mt-16 rounded-[2.5rem] bg-akundy-orange p-10 text-center text-white shadow-soft-lg lg:p-14">
+            <div className="mx-auto max-w-2xl">
               <h3 className="text-2xl font-black">Become a Partner</h3>
-              <p className="mt-4 text-foreground/80">
+              <p className="mt-4 text-white/90">
                 We are always open to building long-term relationships with operators,
                 contractors and suppliers who share our commitment to safety, quality and
                 reliability.

@@ -199,82 +199,127 @@ export const EQUIPMENT = [
     id: '10ft-container',
     title: '10ft Shipping Container',
     category: 'Containers',
+    shortDescription:
+      'A compact and secure solution for storage, transportation and offshore support operations.',
     description:
-      'A compact and secure solution for storage, transportation and offshore support operations. Built from high-grade steel to withstand harsh environmental conditions.',
+      'Our 10ft shipping containers provide a compact and secure solution for storage, transportation, and offshore support operations. Built from high-grade steel, they are designed to withstand harsh environmental conditions including salt air, heavy rain and extreme temperatures.',
     applications: ['Offshore storage', 'Site offices', 'Tool storage', 'Warehouse extension', 'Marine logistics'],
     features: ['Weatherproof', 'Secure locking system', 'Forklift pockets', 'Heavy-duty steel construction', 'Easy transportation'],
+    specs: { dimensions: '10ft L x 8ft W x 8.5ft H', material: 'Corten steel', capacity: 'Compact', finish: 'Marine-grade paint' },
+    images: ['container-10ft-1', 'container-10ft-2', 'container-10ft-3'],
+    related: ['20ft-container', '10ft-reefer'],
   },
   {
     id: '20ft-container',
     title: '20ft Shipping Container',
     category: 'Containers',
+    shortDescription:
+      'Ideal for large-volume storage and transportation of materials, equipment and supplies.',
     description:
-      'Ideal for large-volume storage and transportation of materials, equipment and supplies for industrial and offshore operations.',
+      'The 20ft shipping container is ideal for large-volume storage and transportation of materials, equipment and supplies for industrial and offshore operations. Its ISO standard design ensures compatibility with global shipping and logistics networks.',
     applications: ['Cargo transportation', 'Equipment storage', 'Construction projects', 'Marine operations', 'Industrial warehousing'],
     features: ['High capacity', 'Durable construction', 'Secure locking', 'Weather resistant', 'ISO standard design'],
+    specs: { dimensions: '20ft L x 8ft W x 8.5ft H', material: 'Corten steel', capacity: 'High', finish: 'Marine-grade paint' },
+    images: ['container-20ft-1', 'container-20ft-2', 'container-20ft-3'],
+    related: ['10ft-container', '10ft-reefer'],
   },
   {
     id: '10ft-reefer',
     title: '10ft Reefer Container',
     category: 'Refrigeration',
+    shortDescription:
+      'Refrigerated containers for transporting and storing temperature-sensitive goods.',
     description:
-      'Refrigerated containers that maintain controlled temperatures for transporting and storing temperature-sensitive goods.',
+      'Our refrigerated containers maintain controlled temperatures for transporting and storing temperature-sensitive goods in offshore, marine, industrial, and commercial environments. Energy-efficient cooling ensures reliable performance in remote locations.',
     applications: ['Food storage', 'Medical supplies', 'Pharmaceuticals', 'Offshore catering', 'Cold chain logistics'],
     features: ['Temperature controlled', 'Energy efficient', 'Stainless steel interior', 'Heavy-duty construction', 'Reliable refrigeration'],
+    specs: { dimensions: '10ft L x 8ft W x 8.5ft H', material: 'Stainless steel interior', capacity: 'Compact', temperature: '-25°C to +25°C' },
+    images: ['reefer-10ft-1', 'reefer-10ft-2', 'reefer-10ft-3'],
+    related: ['10ft-container', '20ft-container'],
   },
   {
     id: '4m3-waste-skip',
     title: '4m³ Basket Waste Skip',
     category: 'Waste Management',
+    shortDescription:
+      'Safe collection and transportation of industrial waste during offshore and construction activities.',
     description:
-      'Designed for safe collection and transportation of industrial waste generated during offshore and construction activities.',
+      'Designed for safe collection and transportation of industrial waste generated during offshore and construction activities. Certified lifting points and corrosion-resistant steel ensure safe handling in marine environments.',
     applications: ['Offshore installations', 'Construction sites', 'Industrial facilities', 'Environmental waste management'],
     features: ['Heavy-duty steel', 'Certified lifting points', 'Corrosion resistant', 'Safe waste handling'],
+    specs: { volume: '4 cubic metres', material: 'Heavy-duty steel', lifting: 'Certified points', finish: 'Corrosion resistant' },
+    images: ['waste-skip-4m3-1', 'waste-skip-4m3-2', 'waste-skip-4m3-3'],
+    related: ['6m3-waste-skip', '8-drum-lube-rack'],
   },
   {
     id: '6m3-waste-skip',
     title: '6m³ Basket Waste Skip',
     category: 'Waste Management',
-    description:
+    shortDescription:
       'Larger capacity waste skip for offshore installations, construction sites and industrial facilities.',
+    description:
+      'A larger capacity waste skip designed for offshore installations, construction sites and industrial facilities. The basket design allows efficient crane lifting and secure containment of industrial and environmental waste.',
     applications: ['Offshore installations', 'Construction sites', 'Industrial facilities', 'Environmental waste management'],
     features: ['Heavy-duty steel', 'Certified lifting points', 'Corrosion resistant', 'Safe waste handling'],
+    specs: { volume: '6 cubic metres', material: 'Heavy-duty steel', lifting: 'Certified points', finish: 'Corrosion resistant' },
+    images: ['waste-skip-6m3-1', 'waste-skip-6m3-2', 'waste-skip-6m3-3'],
+    related: ['4m3-waste-skip', '8-drum-lube-rack'],
   },
   {
     id: '8-drum-lube-rack',
     title: '8-Drum Lube Rack',
     category: 'Storage',
+    shortDescription:
+      'Safe storage and transportation of lubricant drums while preventing spills.',
     description:
-      'Designed for safe storage and transportation of lubricant drums while preventing spills and improving workplace safety.',
+      'Designed for safe storage and transportation of lubricant drums while preventing spills and improving workplace safety. The rack holds up to 8 standard 200-litre drums and is suitable for workshops, offshore platforms and industrial facilities.',
     applications: ['Workshops', 'Offshore platforms', 'Industrial facilities', 'Marine operations'],
     features: ['Holds 8 standard 200-litre drums', 'Spill containment', 'Heavy-duty frame', 'Safe handling'],
+    specs: { capacity: '8 x 200-litre drums', material: 'Heavy-duty steel', finish: 'Powder coated', mobility: 'Forklift compatible' },
+    images: ['lube-rack-8-1', 'lube-rack-8-2', 'lube-rack-8-3'],
+    related: ['8-cylinder-gas-rack', '12-cylinder-gas-rack'],
   },
   {
     id: '8-cylinder-gas-rack',
     title: '8-Cylinder Gas Rack',
     category: 'Gas Cylinder Racks',
+    shortDescription:
+      'Transporting and storing oxygen, acetylene, nitrogen, argon and other industrial gas cylinders.',
     description:
-      'Suitable for transporting and storing oxygen, acetylene, nitrogen, argon and other industrial gas cylinders.',
+      'Suitable for transporting and storing oxygen, acetylene, nitrogen, argon and other industrial gas cylinders. The compact 8-cylinder design is ideal for fabrication yards, offshore projects and industrial sites.',
     applications: ['Fabrication yards', 'Offshore projects', 'Industrial sites'],
     features: ['Secure cylinder retention', 'Heavy-duty steel', 'Corrosion resistant', 'Certified design'],
+    specs: { capacity: '8 cylinders', material: 'Heavy-duty steel', gases: 'Oxygen, acetylene, nitrogen, argon', finish: 'Corrosion resistant' },
+    images: ['gas-rack-8-1', 'gas-rack-8-2', 'gas-rack-8-3'],
+    related: ['12-cylinder-gas-rack', '16-cylinder-gas-rack'],
   },
   {
     id: '12-cylinder-gas-rack',
     title: '12-Cylinder Gas Rack',
     category: 'Gas Cylinder Racks',
+    shortDescription:
+      'Medium-sized fabrication yards, offshore projects and industrial sites requiring multiple gas cylinders.',
     description:
-      'Ideal for medium-sized fabrication yards, offshore projects and industrial sites requiring multiple gas cylinders.',
+      'Ideal for medium-sized fabrication yards, offshore projects and industrial sites requiring multiple gas cylinders. The modular configuration allows flexible placement and safe handling in demanding environments.',
     applications: ['Medium fabrication yards', 'Offshore projects', 'Industrial sites'],
     features: ['Higher capacity', 'Modular configuration', 'Safety compliant', 'Durable finish'],
+    specs: { capacity: '12 cylinders', material: 'Heavy-duty steel', gases: 'Oxygen, acetylene, nitrogen, argon', finish: 'Corrosion resistant' },
+    images: ['gas-rack-12-1', 'gas-rack-12-2', 'gas-rack-12-3'],
+    related: ['8-cylinder-gas-rack', '16-cylinder-gas-rack'],
   },
   {
     id: '16-cylinder-gas-rack',
     title: '16-Cylinder Gas Rack',
     category: 'Gas Cylinder Racks',
+    shortDescription:
+      'Large industrial and offshore operations requiring safe handling of multiple gas cylinders.',
     description:
-      'Designed for large industrial and offshore operations requiring safe handling of multiple gas cylinders.',
+      'Designed for large industrial and offshore operations requiring safe handling of multiple gas cylinders. The robust construction and integrated safety features make it suitable for high-volume gas storage and transport.',
     applications: ['Large fabrication yards', 'Major offshore operations', 'Industrial plants'],
     features: ['Large capacity', 'Robust construction', 'Integrated safety features', 'Customisable layout'],
+    specs: { capacity: '16 cylinders', material: 'Heavy-duty steel', gases: 'Oxygen, acetylene, nitrogen, argon', finish: 'Corrosion resistant' },
+    images: ['gas-rack-16-1', 'gas-rack-16-2', 'gas-rack-16-3'],
+    related: ['8-cylinder-gas-rack', '12-cylinder-gas-rack'],
   },
 ]
 

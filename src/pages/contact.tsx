@@ -20,15 +20,7 @@ export function ContactPage() {
     <>
       {/* Page Header */}
       <section className="brand-section py-24">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              'repeating-linear-gradient(-45deg, transparent, transparent 20px, currentColor 20px, currentColor 21px)',
-          }}
-          aria-hidden="true"
-        />
-        <div className="container relative mx-auto px-4 lg:px-8">
+        <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <span className="mb-3 inline-block text-sm font-bold uppercase tracking-widest text-brand">
               Contact
@@ -227,7 +219,7 @@ export function ContactPage() {
       {/* Map Placeholder */}
       <section className="bg-muted/30 py-24">
         <div className="mx-auto max-w-5xl px-4 lg:px-8">
-          <div className="overflow-hidden rounded-[2.5rem] border border-border bg-card">
+          <div className="overflow-hidden rounded-[2.5rem] border border-border bg-card shadow-soft-lg">
             <div className="grid lg:grid-cols-3">
               <div className="p-10 lg:p-12">
                 <h3 className="text-2xl font-black">Find Our Base</h3>
@@ -241,12 +233,12 @@ export function ContactPage() {
                   <p>Port Harcourt, Rivers State, Nigeria</p>
                 </div>
               </div>
-              <div className="brand-section relative min-h-[320px] lg:col-span-2">
+              <div className="relative min-h-[320px] bg-akundy-orange lg:col-span-2">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative text-center">
-                    <MapPin className="mx-auto size-10 text-brand" />
+                  <div className="text-center text-white">
+                    <MapPin className="mx-auto size-10 text-white" />
                     <p className="mt-4 font-bold">Map Integration Placeholder</p>
-                    <p className="text-sm text-foreground/60">
+                    <p className="text-sm text-white/70">
                       Embed Google Maps or Mapbox here for exact location.
                     </p>
                   </div>
