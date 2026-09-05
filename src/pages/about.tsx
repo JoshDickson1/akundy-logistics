@@ -1,5 +1,6 @@
-import { CORE_VALUES, COMPANY } from '../lib/data'
+import { COMPANY, TEAM } from '../lib/data'
 import { CtaSection } from '../components/sections/cta-section'
+import { MissionSection } from '../components/sections/mission-section'
 import { DiagonalAccent } from '../components/diagonal-divider'
 import { PageHeader } from '../components/page-header'
 import { SectionHeader } from '../components/section-header'
@@ -8,11 +9,11 @@ import { ImageExpansionSlider, type ExpansionImage } from '../components/ui/imag
 import { Timeline, type TimelineEntry } from '../components/ui/timeline'
 
 const ABOUT_IMAGES: ExpansionImage[] = [
-  { src: 'https://picsum.photos/seed/about-offshore/900/600', label: 'Offshore Operations', tag: 'Marine' },
-  { src: 'https://picsum.photos/seed/about-terminal/900/600', label: 'Port Terminal Logistics', tag: 'Logistics' },
-  { src: 'https://picsum.photos/seed/about-fabrication/900/600', label: 'Metal Fabrication', tag: 'Engineering' },
-  { src: 'https://picsum.photos/seed/about-team/900/600', label: 'Our People', tag: 'Team' },
-  { src: 'https://picsum.photos/seed/about-safety/900/600', label: 'Safety Culture', tag: 'HSE' },
+  { src: '/images/marine-port.jpg', label: 'Offshore Operations', tag: 'Marine' },
+  { src: '/images/container-ship.jpg', label: 'Port Terminal Logistics', tag: 'Logistics' },
+  { src: '/images/NKgog.jpg', label: 'Metal Fabrication', tag: 'Engineering' },
+  { src: '/images/9HKlQ.jpg', label: 'Our People', tag: 'Team' },
+  { src: '/images/why-safety.jpg', label: 'Safety Culture', tag: 'HSE' },
 ]
 
 function Pill({ children }: { children: React.ReactNode }) {
@@ -50,8 +51,8 @@ const JOURNEY: TimelineEntry[] = [
           <Pill>Port Harcourt, Nigeria</Pill>
         </div>
         <div className="grid grid-cols-2 gap-3 pt-2">
-          <TimelineImage src="https://picsum.photos/seed/tl-phc/480/360" alt="Port Harcourt" />
-          <TimelineImage src="https://picsum.photos/seed/tl-office/480/360" alt="Company offices" />
+          <TimelineImage src="/images/marine-port.jpg" alt="Port Harcourt" />
+          <TimelineImage src="/images/why-customer.jpg" alt="Company offices" />
         </div>
       </div>
     ),
@@ -80,8 +81,8 @@ const JOURNEY: TimelineEntry[] = [
           ))}
         </ul>
         <div className="grid grid-cols-2 gap-3 pt-2">
-          <TimelineImage src="https://picsum.photos/seed/tl-npa/480/360" alt="Port authority" />
-          <TimelineImage src="https://picsum.photos/seed/tl-docs/480/360" alt="Certifications" />
+          <TimelineImage src="/images/SP5u1.jpg" alt="Port authority" />
+          <TimelineImage src="/images/AmSNA.jpg" alt="Certifications" />
         </div>
       </div>
     ),
@@ -110,8 +111,8 @@ const JOURNEY: TimelineEntry[] = [
           ))}
         </div>
         <div className="grid grid-cols-2 gap-3 pt-1">
-          <TimelineImage src="https://picsum.photos/seed/tl-vessel/480/360" alt="Marine vessel" />
-          <TimelineImage src="https://picsum.photos/seed/tl-container/480/360" alt="Containers" />
+          <TimelineImage src="/images/container-ship.jpg" alt="Marine vessel" />
+          <TimelineImage src="/images/crane-containers.jpg" alt="Containers" />
         </div>
       </div>
     ),
@@ -134,8 +135,8 @@ const JOURNEY: TimelineEntry[] = [
           <Pill>General Contracts</Pill>
         </div>
         <div className="grid grid-cols-2 gap-3 pt-2">
-          <TimelineImage src="https://picsum.photos/seed/tl-fab/480/360" alt="Fabrication works" />
-          <TimelineImage src="https://picsum.photos/seed/tl-team/480/360" alt="Management team" />
+          <TimelineImage src="/images/NKgog.jpg" alt="Fabrication works" />
+          <TimelineImage src="/images/why-quality.jpg" alt="Management team" />
         </div>
       </div>
     ),
@@ -164,8 +165,8 @@ const JOURNEY: TimelineEntry[] = [
           ))}
         </div>
         <div className="grid grid-cols-2 gap-3 pt-2">
-          <TimelineImage src="https://picsum.photos/seed/tl-offshore/480/360" alt="Offshore operations" />
-          <TimelineImage src="https://picsum.photos/seed/tl-westaf/480/360" alt="West Africa" />
+          <TimelineImage src="/images/why-delivery.jpg" alt="Offshore operations" />
+          <TimelineImage src="/images/why-safety.jpg" alt="West Africa" />
         </div>
       </div>
     ),
@@ -173,7 +174,7 @@ const JOURNEY: TimelineEntry[] = [
 ]
 
 export function AboutPage() {
-  const topValues = CORE_VALUES.slice(0, 4)
+  const founder = TEAM[0]
 
   return (
     <>
@@ -181,7 +182,7 @@ export function AboutPage() {
         eyebrow="About Us"
         title="Delivering Solutions. Building Value."
         description="An indigenous Nigerian company built on trust, professionalism and a relentless commitment to excellence across marine, offshore and industrial sectors."
-        image="https://picsum.photos/seed/about-hero-offshore/1400/600"
+        image="/images/marine-port.jpg"
         badges={[
           { value: 'Est. 2023', label: 'Incorporated' },
           { value: 'RC 6891533', label: 'CAC Registered' },
@@ -262,36 +263,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Vision / Mission / Quality */}
-      <section className="bg-muted/30 py-24">
-        <div className="mx-auto max-w-6xl px-4 lg:px-8">
-          <div className="grid gap-8 md:grid-cols-3">
-            {[
-              {
-                title: 'Our Vision',
-                text: 'To become a leading indigenous service provider in logistics, offshore support, engineering, and procurement services across Nigeria and Africa.',
-              },
-              {
-                title: 'Our Mission',
-                text: 'To deliver dependable, cost-effective, and world-class solutions through innovation, professionalism, safety compliance, and excellent service delivery.',
-              },
-              {
-                title: 'Quality Focus',
-                text: 'Provide excellent services in accordance with agreed requirements, on time and within budget, without compromising acceptable industry standards and regulations.',
-              },
-            ].map((item) => (
-              <Card key={item.title} className="rounded-3xl border-t-4 border-t-brand">
-                <CardHeader>
-                  <CardTitle>{item.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{item.text}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      <MissionSection />
 
       {/* Our Journey timeline */}
       <section className="py-24">
@@ -307,29 +279,59 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Core Values */}
-      <section className="bg-muted/30 py-24">
-        <div className="mx-auto max-w-5xl px-4 lg:px-8">
-          <SectionHeader
-            eyebrow="Culture"
-            title="Our Core Values"
-            description="The principles that guide every decision we make and every relationship we build."
-          />
-          <div className="mt-16 grid gap-6 sm:grid-cols-2">
-            {topValues.map((value) => (
-              <div
-                key={value.title}
-                className="flex items-start gap-5 rounded-3xl border border-border bg-card p-8 transition-shadow hover:shadow-soft"
-              >
-                <div className="inline-flex size-12 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand">
-                  <value.icon className="size-6" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold">{value.title}</h3>
-                  <p className="mt-1 text-muted-foreground">{value.text}</p>
-                </div>
+      {/* About Our Founder */}
+      <section className="py-24">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            {/* Image */}
+            <div className="relative">
+              <div className="overflow-hidden rounded-3xl bg-muted shadow-soft-xl">
+                <img
+                  src="/images/mission-worker.jpg"
+                  alt={founder.name}
+                  className="h-[480px] w-full object-cover object-center"
+                />
               </div>
-            ))}
+              {/* Floating name card */}
+              <div className="absolute -bottom-6 left-6 right-6 rounded-2xl border border-border/50 bg-card px-6 py-4 shadow-soft-lg">
+                <p className="text-lg font-black tracking-tight">{founder.name}</p>
+                <p className="text-sm text-muted-foreground">{founder.role}</p>
+              </div>
+            </div>
+
+            {/* Text */}
+            <div className="lg:pt-4">
+              <span className="inline-flex items-center rounded-full bg-foreground px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-background">
+                About Our Founder
+              </span>
+              <h2 className="mt-6 text-4xl font-black leading-tight tracking-tight lg:text-5xl">
+                Vision. Drive.<br />Execution.
+              </h2>
+              <div className="mt-2 h-1 w-12 rounded-full bg-brand" />
+              <p className="mt-8 text-base leading-relaxed text-muted-foreground">
+                {founder.name} founded Akundy Logistics and Development Company Limited in 2023 with a clear mandate: to build a world-class indigenous marine and industrial services company rooted in Nigeria, capable of competing at the highest levels across West Africa.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                Drawing on decades of hands-on experience in offshore operations, port logistics and industrial services, he assembled a seasoned leadership team and secured all major regulatory licences within the company's first year. His leadership philosophy centres on integrity, operational discipline and a relentless focus on client outcomes.
+              </p>
+              <div className="mt-10 flex flex-wrap gap-3">
+                {['Managing Director', 'Chief Executive Officer', 'Port Harcourt, Nigeria'].map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand/5 px-4 py-1.5 text-xs font-semibold text-brand"
+                  >
+                    <span className="size-1.5 rounded-full bg-brand" />
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-10 border-t border-border pt-8">
+                <p className="text-sm italic leading-relaxed text-muted-foreground">
+                  "We built Akundy to solve real problems — to give Nigerian industry a reliable, professional partner that delivers on its word, every single time."
+                </p>
+                <p className="mt-3 text-sm font-black">{founder.name}</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

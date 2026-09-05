@@ -11,7 +11,7 @@ export function ServicesPage() {
         eyebrow="Our Services"
         title="One Company. Total Solutions."
         description="Integrated marine, offshore, engineering and industrial services delivered with safety, precision and reliability."
-        image="https://picsum.photos/seed/services-hero-marine/1400/600"
+        image="/images/crane-containers.jpg"
         badges={[
           { value: '9', label: 'Service Lines' },
           { value: 'Marine & Offshore', label: 'Core Sectors' },
