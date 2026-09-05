@@ -1,6 +1,7 @@
 import { Mail, MapPin, Phone } from 'lucide-react'
 import { useState } from 'react'
 import { COMPANY, TEAM } from '../lib/data'
+import { PageHeader } from '../components/page-header'
 import { SectionHeader } from '../components/section-header'
 import { Button } from '../components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
@@ -18,23 +19,11 @@ export function ContactPage() {
 
   return (
     <>
-      {/* Page Header */}
-      <section className="brand-section py-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="mb-3 inline-block text-sm font-bold uppercase tracking-widest text-brand">
-              Contact
-            </span>
-            <h1 className="text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
-              Let's Talk About Your Project
-            </h1>
-            <p className="mt-6 text-lg text-foreground/80">
-              Request a quote, ask about equipment availability, or arrange a meeting with our
-              team in Port Harcourt.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Contact"
+        title="Let's Talk About Your Project"
+        description="Request a quote, ask about equipment availability, or arrange a meeting with our team in Port Harcourt."
+      />
 
       {/* Contact Content */}
       <section className="py-24">

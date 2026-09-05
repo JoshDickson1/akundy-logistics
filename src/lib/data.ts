@@ -13,14 +13,19 @@ import {
   Fuel,
   Globe,
   HardHat,
+  Heart,
   MapPin,
   Phone,
+  RefreshCw,
   Settings,
   ShieldCheck,
   Ship,
   ShoppingCart,
   Smile,
+  Trophy,
   Users,
+  Wrench,
+  Zap,
 } from 'lucide-react'
 
 export const COMPANY = {
@@ -30,7 +35,7 @@ export const COMPANY = {
   tin: '31315323-0001',
   incorporated: '2023',
   headquarters: 'Rivers State, Nigeria',
-  coverage: 'Nigeria and West Africa',
+  coverage: 'Nigeria (nationwide) and West Africa',
   motto: 'Delivering Solutions. Building Value.',
   tagline: 'One Company. Total Solutions.',
   colors: 'Orange, Black & White',
@@ -62,7 +67,7 @@ export const SERVICES = [
     title: 'Equipment Leasing',
     icon: Container,
     description:
-      'Flexible, well-maintained leasing solutions for marine, offshore, construction and industrial projects — from containers and waste skips to gas racks and power equipment.',
+      'Flexible, well-maintained leasing solutions for marine, offshore, construction and industrial projects: containers, waste skips, gas racks and power equipment.',
     items: [
       '10ft & 20ft dry containers',
       '10ft reefer containers',
@@ -122,7 +127,7 @@ export const SERVICES = [
     title: 'Ship Chandler Services',
     icon: ShoppingCart,
     description:
-      'Prompt marine supply solutions to vessels calling at Nigerian ports — provisions, technical stores, safety equipment and consumables, 24 hours a day.',
+      'Prompt marine supply solutions to vessels calling at Nigerian ports: provisions, technical stores, safety equipment and consumables, 24 hours a day.',
     items: [
       'Food provisions & fresh produce',
       'Deck, engine & cabin stores',
@@ -137,7 +142,7 @@ export const SERVICES = [
     title: 'Metal Fabrication',
     icon: Factory,
     description:
-      'Custom metal fabrication and industrial engineering for marine, commercial and industrial applications — structural steel, tanks, pipes and platforms.',
+      'Custom metal fabrication and industrial engineering for marine, commercial and industrial applications: structural steel, tanks, pipes and platforms.',
     items: [
       'Structural & stainless steel fabrication',
       'Tank & pipe fabrication',
@@ -152,7 +157,7 @@ export const SERVICES = [
     title: 'Facility Maintenance',
     icon: Settings,
     description:
-      'Professional maintenance solutions for industrial, commercial and offshore facilities — reducing downtime and keeping operations running efficiently.',
+      'Professional maintenance solutions for industrial, commercial and offshore facilities, reducing downtime and keeping operations running efficiently.',
     items: [
       'Building & mechanical maintenance',
       'Electrical maintenance',
@@ -324,21 +329,26 @@ export const EQUIPMENT = [
 ]
 
 export const WHY_CHOOSE_US = [
-  { icon: Users, title: 'Experienced Workforce', text: '40+ years combined management experience across marine, offshore and industrial sectors.' },
-  { icon: Clock, title: 'Timely Delivery', text: 'We deliver projects and equipment on schedule, every schedule.' },
-  { icon: BadgeCheck, title: 'Quality Service', text: 'Quality is non-negotiable. We meet requirements on time and within budget.' },
-  { icon: Smile, title: 'Customer Focus', text: 'Long-term partnerships built on trust, responsiveness and practical solutions.' },
-  { icon: ShieldCheck, title: 'Safety Culture', text: 'HSE compliance is embedded in every operation we undertake.' },
-  { icon: Award, title: 'Competitive Pricing', text: 'Premium service at rates that protect your project economics.' },
+  { icon: Users, title: 'Experienced Workforce', text: '40+ years combined management experience across marine, offshore and industrial sectors — seasoned professionals with deep operational knowledge.' },
+  { icon: Clock, title: 'Timely Delivery', text: 'We deliver projects and equipment on schedule, every time. Prompt mobilisation and reliable logistics keep your operations moving.' },
+  { icon: BadgeCheck, title: 'Quality Service', text: 'Quality is non-negotiable. We meet agreed requirements on time and within budget, without compromising industry standards.' },
+  { icon: Smile, title: 'Customer Focus', text: 'Long-term partnerships built on trust, responsiveness and practical, cost-effective solutions tailored to your needs.' },
+  { icon: ShieldCheck, title: 'Safety Culture', text: 'HSE compliance is embedded in every operation. We continually improve our safety records across all sites and vessels.' },
+  { icon: Award, title: 'Competitive Pricing', text: 'Premium service at rates that protect your project economics — quality and value without compromise.' },
 ]
 
 export const CORE_VALUES = [
-  { icon: BadgeCheck, title: 'Integrity', text: 'Honest, ethical dealings in every relationship.' },
-  { icon: HardHat, title: 'Professionalism', text: 'Skilled people, disciplined processes, polished delivery.' },
-  { icon: ShieldCheck, title: 'Safety Compliance', text: 'Safety-first operations on every site and vessel.' },
-  { icon: Cog, title: 'Reliability', text: 'Equipment and people you can count on.' },
-  { icon: ArrowRight, title: 'Innovation', text: 'Practical solutions that improve efficiency and value.' },
-  { icon: Smile, title: 'Customer Satisfaction', text: 'Your success is the measure of ours.' },
+  { icon: Heart, title: 'Honesty', text: 'Transparent, ethical dealings in every relationship and contract.' },
+  { icon: BadgeCheck, title: 'Integrity', text: 'We do what we say, always — with clients, partners and staff.' },
+  { icon: Zap, title: 'Hard Work', text: 'Determined effort on every assignment, from the first call to final delivery.' },
+  { icon: ArrowRight, title: 'Innovation', text: 'Practical solutions that improve efficiency and deliver real value.' },
+  { icon: RefreshCw, title: 'Consistency', text: 'The same high standard delivered across every project, every time.' },
+  { icon: Cog, title: 'Reliability', text: 'Equipment and people you can count on when it matters most.' },
+  { icon: Wrench, title: 'Thoroughness', text: 'Attention to detail at every stage — no shortcuts, no compromises.' },
+  { icon: Trophy, title: 'Excellence', text: 'Committed to quality that meets and exceeds international standards.' },
+  { icon: ShieldCheck, title: 'Safety Compliance', text: 'Safety-first operations on every site, vessel and facility.' },
+  { icon: HardHat, title: 'Professionalism', text: 'Skilled people, disciplined processes and polished service delivery.' },
+  { icon: Smile, title: 'Customer Satisfaction', text: 'Your success is the measure of everything we do.' },
 ]
 
 export const INDUSTRIES = [
@@ -366,33 +376,51 @@ export const TEAM = [
 
 export const CERTIFICATIONS = [
   {
-    title: 'CAC Certificate of Incorporation',
+    title: 'Certificate of Incorporation',
     issuer: 'Corporate Affairs Commission',
-    description: 'Incorporated 28 February 2023 as a private company limited by shares. RC No. 6891533.',
+    ref: 'RC No. 6891533',
+    validity: '28 February 2023',
+    description: 'Incorporated as a private company limited by shares under the Companies and Allied Matters Act 2020.',
     icon: FileCheck,
   },
   {
     title: 'Tax Identification Number',
     issuer: 'Federal Inland Revenue Service',
-    description: 'TIN: 31315323-0001. Fully tax-registered and compliant.',
+    ref: 'TIN: 31315323-0001',
+    validity: 'Current',
+    description: 'Fully tax-registered and compliant with all Federal Inland Revenue Service requirements.',
     icon: FileCheck,
   },
   {
-    title: 'Nigerian Ports Authority Registration',
-    issuer: 'Nigerian Ports Authority',
-    description: 'Registered shipping agent for vessel clearance and port representation services.',
-    icon: Ship,
-  },
-  {
-    title: 'Nigeria Customs Service License',
+    title: 'Ship Chandler Licence',
     issuer: 'Nigeria Customs Service',
-    description: 'Licensed ship chandler clearing and forwarding operations for vessel supplies.',
+    ref: 'Licence No. CD439RC6891533',
+    validity: 'Valid till 31 Dec 2026',
+    description: 'Licensed to carry on business as a ship chandler at Port Harcourt I customs port under the NCS Act 2023.',
     icon: Box,
   },
   {
-    title: 'NUPRC / DPR Oil Industry Permit',
+    title: 'Registration as Shipping Agent',
+    issuer: 'Nigerian Ports Authority',
+    ref: 'Ref. HQ/AGM/OP/T.7',
+    validity: 'Valid till 31 Dec 2026',
+    description: 'Duly registered as a shipping company and agent operating in Nigerian ports. Issued 15 April 2026.',
+    icon: Ship,
+  },
+  {
+    title: 'Registration as Ship Chandler',
+    issuer: 'Nigerian Ports Authority',
+    ref: 'Ref. HQ/AGM/OP/T.7/306',
+    validity: 'Valid till 31 Dec 2026',
+    description: 'Registered as a ship chandler operating in Nigerian ports. Receipt No. R/PORTS/HQS/FO6/28638. Issued 15 June 2026.',
+    icon: Ship,
+  },
+  {
+    title: 'Oil Industry Permit — Major Category',
     issuer: 'Nigerian Upstream Petroleum Regulatory Commission',
-    description: 'Permitted to provide logistics, procurement and support services to Nigeria’s oil & gas sector.',
+    ref: 'Permit No. NUPRC/OGISP/26/5131560/N451240',
+    validity: 'Valid till 27 Mar 2027',
+    description: 'Permitted to render services to the oil industry: Rehabilitation/Upgrade/Fabrication Works, Minor Metal Fabrication, and Overhead Tanks.',
     icon: Fuel,
   },
 ]
@@ -401,7 +429,7 @@ export const STATS = [
   { value: '40+', label: 'Years Combined Experience' },
   { value: '2023', label: 'Year Incorporated' },
   { value: '9', label: 'Core Service Lines' },
-  { value: 'Nigeria', label: '& West Africa Coverage' },
+  { value: 'Nationwide', label: '& West Africa' },
 ]
 
 export { MapPin, Phone }

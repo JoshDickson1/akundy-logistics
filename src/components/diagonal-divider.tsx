@@ -35,7 +35,7 @@ export function DiagonalAccent({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'h-1.5 w-20 bg-gradient-to-r from-brand to-red-500',
+        'h-1.5 w-20 bg-gradient-to-r from-brand to-brand/70',
         className
       )}
       aria-hidden="true"

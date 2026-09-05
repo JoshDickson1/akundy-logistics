@@ -1,30 +1,20 @@
 import { Building2, Users } from 'lucide-react'
 import { CLIENTS, INDUSTRIES } from '../lib/data'
+import { PageHeader } from '../components/page-header'
 import { SectionHeader } from '../components/section-header'
 import { Card, CardContent, CardTitle } from '../components/ui/card'
+import { ScrollReelTestimonials } from '../components/ui/scroll-reel-testimonials'
 
 export function IndustriesClientsPage() {
   const featuredIndustries = INDUSTRIES.slice(0, 6)
 
   return (
     <>
-      {/* Page Header */}
-      <section className="brand-section py-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="mb-3 inline-block text-sm font-bold uppercase tracking-widest text-brand">
-              Industries & Clients
-            </span>
-            <h1 className="text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
-              Who We Serve
-            </h1>
-            <p className="mt-6 text-lg text-foreground/80">
-              Trusted by operators, contractors and agencies across Nigeria's most demanding
-              industrial sectors.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Industries & Clients"
+        title="Who We Serve"
+        description="Trusted by operators, contractors and agencies across Nigeria's most demanding industrial sectors."
+      />
 
       {/* Industries */}
       <section className="py-24">
@@ -76,6 +66,15 @@ export function IndustriesClientsPage() {
             ))}
           </div>
 
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <ScrollReelTestimonials />
+
+      {/* Become a Partner CTA */}
+      <section className="bg-muted/30 py-24">
+        <div className="mx-auto max-w-4xl px-4 lg:px-8">
           <div className="mt-16 rounded-[2.5rem] bg-akundy-orange p-10 text-center text-white shadow-soft-lg lg:p-14">
             <div className="mx-auto max-w-2xl">
               <h3 className="text-2xl font-black">Become a Partner</h3>

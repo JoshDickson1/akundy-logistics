@@ -1,20 +1,219 @@
-import { ArrowRight, ChevronRight } from 'lucide-react'
+import { ArrowRight, ChevronLeft, ChevronRight, ChevronUp, ChevronDown } from 'lucide-react'
+import { motion } from 'motion/react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Marquee } from '../components/marquee'
-import { SectionHeader } from '../components/section-header'
+import { StatsBento } from '../components/sections/stats-bento'
 import { Button } from '../components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
-import { COMPANY, SERVICES, STATS, WHY_CHOOSE_US } from '../lib/data'
+import { StoryScroll } from '../components/ui/story-scroll'
+import { CtaSection } from '../components/sections/cta-section'
+import { FaqSection } from '../components/sections/faq-section'
+import { MissionSection } from '../components/sections/mission-section'
+import { WHY_CHOOSE_US } from '../lib/data'
 
-function MarqueeCard({ title, subtitle }: { title: string; subtitle: string }) {
+
+const easeOut = [0.25, 0.1, 0.25, 1] as const
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08 },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: easeOut } },
+}
+
+const WHY_CARD_IMAGES = [
+  '/images/9HKlQ.jpg',
+  '/images/why-delivery.jpg',
+  '/images/why-quality.jpg',
+  '/images/why-customer.jpg',
+  '/images/why-safety.jpg',
+  '/images/why-pricing.jpg',
+]
+
+const WHY_SHORT_TEXT = [
+  '40+ years combined experience across marine, offshore and industrial sectors.',
+  'Prompt mobilisation and reliable logistics keep your operations moving.',
+  'We meet agreed requirements on time and within budget, every time.',
+  'Long-term partnerships built on trust and practical solutions.',
+  'HSE compliance embedded in every operation we undertake.',
+  'Premium service at rates that protect your project economics.',
+]
+
+const GAP = 16
+const DESKTOP_VISIBLE = 3
+const MOBILE_CARD_H = 340
+
+function WhyChooseCarousel() {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const desktopCardRef = useRef<HTMLDivElement>(null)
+  const [cardW, setCardW] = useState(0)
+  const total = WHY_CHOOSE_US.length
+  const desktopMax = total - DESKTOP_VISIBLE
+
+  useEffect(() => {
+    const measure = () => {
+      if (desktopCardRef.current) setCardW(desktopCardRef.current.offsetWidth)
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [])
+
+  useEffect(() => {
+    if (paused) return
+    const t = setInterval(() => setActiveIndex(i => (i + 1) % total), 3800)
+    return () => clearInterval(t)
+  }, [paused, total])
+
+  const desktopOffset = activeIndex % (desktopMax + 1)
+  const prev = () => setActiveIndex(i => (i - 1 + total) % total)
+  const next = () => setActiveIndex(i => (i + 1) % total)
+
+  const chevronBtn = 'flex size-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/60 transition-colors hover:border-white/30 hover:bg-white/10 hover:text-white'
+
   return (
-    <div className="relative h-72 w-full shrink-0 overflow-hidden rounded-3xl bg-foreground/90 p-6 text-background shadow-soft-lg">
-      <div className="absolute inset-0 bg-gradient-to-br from-brand/30 via-transparent to-red-500/10" />
-      <div className="relative flex h-full flex-col justify-between">
-        <div className="text-5xl font-black text-brand/30">{title.split(' ')[0]}</div>
-        <div>
-          <p className="text-lg font-bold">{title}</p>
-          <p className="text-sm text-white/60">{subtitle}</p>
+    <div
+      className="relative mx-auto max-w-6xl overflow-hidden bg-[#111]"
+      style={{
+        borderRadius: '28px',
+        clipPath: 'polygon(0 0, calc(100% - 0px) 0, 100% 0, 100% 100%, 72px 100%, 0 calc(100% - 72px))',
+      }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Grid texture */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage: 'linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)',
+          backgroundSize: '80px 80px',
+        }}
+      />
+
+      <div className="relative z-10 px-8 pb-10 pt-12 lg:px-14 lg:pt-16">
+        {/* Header */}
+        <div className="mb-10 text-center">
+          {/* Badge */}
+          <div className="mb-5 flex justify-center">
+            <span className="inline-flex items-center rounded-full bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-black">
+              Why Choose Us
+            </span>
+          </div>
+          <h2 className="text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
+            Why Choose <span className="text-brand">Akundy?</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-white/45">
+            Six reasons operators across Nigeria and West Africa trust us to deliver, every time.
+          </p>
+        </div>
+
+        {/* Desktop carousel — horizontal, 3 visible */}
+        <div className="hidden overflow-hidden lg:block">
+          <motion.div
+            className="flex"
+            style={{ gap: GAP }}
+            animate={{ x: cardW > 0 ? -(desktopOffset * (cardW + GAP)) : 0 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 28 }}
+          >
+            {WHY_CHOOSE_US.map((item, i) => (
+              <div
+                key={item.title}
+                ref={i === 0 ? desktopCardRef : undefined}
+                className="group relative shrink-0 overflow-hidden rounded-2xl"
+                style={{
+                  width: `calc((100% - ${(DESKTOP_VISIBLE - 1) * GAP}px) / ${DESKTOP_VISIBLE})`,
+                  aspectRatio: '3/4',
+                }}
+              >
+                <img
+                  src={WHY_CARD_IMAGES[i]}
+                  alt={item.title}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <div className="mb-2 inline-flex size-8 items-center justify-center rounded-lg bg-brand/20 backdrop-blur-sm">
+                    <item.icon className="size-4 text-brand" />
+                  </div>
+                  <h3 className="text-base font-black leading-snug text-white">{item.title}</h3>
+                  <p className="mt-1.5 text-xs leading-relaxed text-white/55">{WHY_SHORT_TEXT[i]}</p>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Mobile carousel — vertical, 1 visible */}
+        <div className="overflow-hidden lg:hidden" style={{ height: MOBILE_CARD_H }}>
+          <motion.div
+            className="flex flex-col"
+            style={{ gap: GAP }}
+            animate={{ y: -(activeIndex * (MOBILE_CARD_H + GAP)) }}
+            transition={{ type: 'spring', stiffness: 300, damping: 28 }}
+          >
+            {WHY_CHOOSE_US.map((item, i) => (
+              <div
+                key={item.title}
+                className="group relative shrink-0 overflow-hidden rounded-2xl"
+                style={{ height: MOBILE_CARD_H }}
+              >
+                <img
+                  src={WHY_CARD_IMAGES[i]}
+                  alt={item.title}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <div className="mb-2 inline-flex size-8 items-center justify-center rounded-lg bg-brand/20 backdrop-blur-sm">
+                    <item.icon className="size-4 text-brand" />
+                  </div>
+                  <h3 className="text-base font-black leading-snug text-white">{item.title}</h3>
+                  <p className="mt-1.5 text-xs leading-relaxed text-white/55">{WHY_SHORT_TEXT[i]}</p>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Controls */}
+        <div className="mt-6 flex items-center justify-between">
+          {/* Progress dots */}
+          <div className="flex items-center gap-1.5">
+            {Array.from({ length: total }).map((_, i) => {
+              const active = i === activeIndex
+              return (
+                <button
+                  key={i}
+                  onClick={() => setActiveIndex(i)}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${active ? 'w-8 bg-brand' : 'w-1.5 bg-white/20 hover:bg-white/35'}`}
+                />
+              )
+            })}
+          </div>
+
+          {/* Chevron buttons */}
+          <div className="flex gap-2">
+            {/* Desktop left/right */}
+            <button onClick={prev} className={`${chevronBtn} hidden lg:flex`} aria-label="Previous">
+              <ChevronLeft className="size-4" />
+            </button>
+            <button onClick={next} className={`${chevronBtn} hidden lg:flex`} aria-label="Next">
+              <ChevronRight className="size-4" />
+            </button>
+            {/* Mobile up/down */}
+            <button onClick={prev} className={`${chevronBtn} lg:hidden`} aria-label="Previous">
+              <ChevronUp className="size-4" />
+            </button>
+            <button onClick={next} className={`${chevronBtn} lg:hidden`} aria-label="Next">
+              <ChevronDown className="size-4" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -22,198 +221,443 @@ function MarqueeCard({ title, subtitle }: { title: string; subtitle: string }) {
 }
 
 export function HomePage() {
-  const featuredServices = SERVICES.slice(0, 6)
-  const highlights = WHY_CHOOSE_US.slice(0, 4)
-
-  const leftColumn = [
-    { title: '10ft Container', subtitle: 'Compact offshore storage' },
-    { title: '20ft Container', subtitle: 'High-volume logistics' },
-    { title: 'Reefer Unit', subtitle: 'Temperature-controlled' },
-  ]
-
-  const rightColumn = [
-    { title: 'Waste Skip', subtitle: 'Industrial waste handling' },
-    { title: 'Gas Rack', subtitle: 'Cylinder transport' },
-    { title: 'Lube Rack', subtitle: 'Drum storage' },
-  ]
-
   return (
     <>
       {/* Hero */}
-      <section className="brand-section min-h-[90vh] py-16 lg:py-24">
-        <div className="mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-12">
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            <div className="order-1 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand">
-                <span className="size-2 rounded-full bg-brand" />
-                Incorporated {COMPANY.incorporated} · RC {COMPANY.rcNumber}
-              </div>
-              <h1 className="mt-8 text-4xl font-black leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-                {COMPANY.tagline}
-              </h1>
-              <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-foreground/80 lg:mx-0">
-                {COMPANY.name} delivers dependable marine logistics, offshore support,
-                equipment leasing, fabrication and procurement services across Nigeria
-                and West Africa.
-              </p>
-              <div className="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start">
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-brand text-brand-foreground hover:bg-brand/90"
-                >
-                  <Link to="/services">
-                    Explore Services <ArrowRight className="ml-2 size-4" />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="border-foreground/20 bg-transparent text-foreground hover:bg-foreground/10 hover:text-foreground"
-                >
-                  <Link to="/contact">Request a Quote</Link>
-                </Button>
-              </div>
-              <p className="mt-8 text-sm font-semibold uppercase tracking-widest text-brand">
-                {COMPANY.motto}
-              </p>
-            </div>
+      <section className="relative overflow-hidden bg-background pb-16 pt-8 lg:pb-24 lg:pt-10">
+        {/* Grid */}
+        <div
+          className="pointer-events-none absolute inset-0 dark:hidden"
+          style={{
+            backgroundImage: 'linear-gradient(to right, rgba(0,0,0,0.055) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.055) 1px, transparent 1px)',
+            backgroundSize: '96px 96px',
+            maskImage: 'radial-gradient(ellipse 100% 70% at 50% 0%, black 30%, transparent 100%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 100% 70% at 50% 0%, black 30%, transparent 100%)',
+          }}
+        />
+        <div
+          className="pointer-events-none absolute inset-0 hidden dark:block"
+          style={{
+            backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)',
+            backgroundSize: '96px 96px',
+            maskImage: 'radial-gradient(ellipse 100% 70% at 50% 0%, black 30%, transparent 100%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 100% 70% at 50% 0%, black 30%, transparent 100%)',
+          }}
+        />
 
-            <div className="order-2 h-[420px] lg:h-[620px]">
-              <div className="grid h-full grid-cols-2 gap-4">
-                <Marquee direction="up" speed="slow" className="h-full">
-                  {leftColumn.map((item) => (
-                    <MarqueeCard key={item.title} title={item.title} subtitle={item.subtitle} />
-                  ))}
-                </Marquee>
-                <Marquee direction="down" speed="slow" className="h-full">
-                  {rightColumn.map((item) => (
-                    <MarqueeCard key={item.title} title={item.title} subtitle={item.subtitle} />
-                  ))}
-                </Marquee>
-              </div>
+        {/* Hidden SVG defs for hero clip-path */}
+        <svg width="0" height="0" className="absolute">
+          <defs>
+            <clipPath id="hero-butterfly" clipPathUnits="objectBoundingBox">
+              {/*
+                Rounded trapezoid corners using Q beziers at each turn.
+                Bottom-left trap: (0,0.82)→(0.44,0.82)→(0.62,1), all corners softened.
+                Top notch trap: symmetric, all 4 corners softened.
+              */}
+              <path d="
+                M 0.029,0
+                C 0.013,0 0,0.044 0,0.08
+                L 0,0.87
+                C 0,0.906 0.013,0.95 0.029,0.95
+                L 0.415,0.95
+                C 0.48,0.95 0.57,1 0.636,1
+                L 0.971,1
+                C 0.987,1 1,0.956 1,0.92
+                L 1,0.08
+                C 1,0.044 0.987,0 0.971,0
+                L 0.722,0
+                Q 0.70,0 0.684,0.013
+                L 0.585,0.087
+                Q 0.57,0.10 0.548,0.10
+                L 0.452,0.10
+                Q 0.43,0.10 0.415,0.087
+                L 0.316,0.013
+                Q 0.30,0 0.278,0
+                Z
+              " />
+            </clipPath>
+          </defs>
+        </svg>
+
+        <div className="relative z-10 mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10">
+
+          {/* Headline — row 1 */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: easeOut }}
+            className="flex items-baseline gap-6"
+          >
+            {/* Inline label */}
+            <p className="hidden shrink-0 pb-3 text-sm leading-snug text-muted-foreground lg:block lg:w-44">
+              <span className="font-black text-foreground">Marine &amp; Offshore</span><br />
+              Services Company,<br />
+              Nigeria
+            </p>
+            <h1 className="text-[clamp(3.2rem,8.5vw,9rem)] font-black uppercase leading-[0.88] tracking-tighter">
+              <span className="text-brand">One</span> Company,
+            </h1>
+          </motion.div>
+
+          {/* Headline — row 2 */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: easeOut, delay: 0.08 }}
+            className="flex items-baseline justify-between gap-8"
+          >
+            <h2 className="text-[clamp(3.2rem,8.5vw,9rem)] font-black uppercase leading-[0.88] tracking-tighter">
+              Total <span className="text-brand">Solutions.</span>
+            </h2>
+            <p className="hidden max-w-[260px] shrink-0 pb-3 text-sm leading-relaxed text-muted-foreground lg:block">
+              Marine logistics, offshore support, equipment leasing, fabrication and
+              procurement across Nigeria and West Africa.
+            </p>
+          </motion.div>
+
+          {/* Mobile description */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-5 text-sm leading-relaxed text-muted-foreground lg:hidden"
+          >
+            Marine logistics, offshore support, equipment leasing, fabrication and procurement across Nigeria and West Africa.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: easeOut, delay: 0.18 }}
+            className="mt-8 flex flex-wrap justify-center gap-4"
+          >
+            <Button asChild size="lg" className="rounded-full bg-brand px-8 text-white hover:bg-brand/90">
+              <Link to="/services">
+                Explore Services <ArrowRight className="ml-2 size-4" />
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="rounded-full border-2 px-8">
+              <Link to="/contact">Request a Quote</Link>
+            </Button>
+          </motion.div>
+
+          {/* Butterfly image */}
+          <motion.div
+            initial={{ opacity: 0, y: 48 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: easeOut, delay: 0.3 }}
+            className="relative mt-10 h-[60vh] min-h-[380px] lg:h-[74vh]"
+            style={{ clipPath: 'url(#hero-butterfly)' }}
+          >
+            <img
+              src="/images/marine-port.jpg"
+              alt="Akundy Logistics operations"
+              className="h-full w-full object-cover"
+            />
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+            {/* Ghost watermark */}
+            <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+              <span className="select-none whitespace-nowrap text-[18vw] font-black uppercase leading-none tracking-tighter text-white/[0.06]">
+                AKUNDY
+              </span>
             </div>
-          </div>
+          </motion.div>
+
+          {/* Stat badges — outside, below image, left-aligned */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: easeOut, delay: 0.5 }}
+            className="relative z-10 mt-4 flex flex-wrap gap-3"
+          >
+            {[
+              ['40+', 'Yrs Combined Exp.'],
+              ['9', 'Service Lines'],
+              ['W. Africa', 'Coverage'],
+            ].map(([value, label]) => (
+              <div key={label} className="rounded-full border border-border bg-foreground px-6 py-3">
+                <span className="text-base font-black text-background">{value}</span>
+                <span className="ml-2 text-sm text-background/50">{label}</span>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </section>
+
+      {/* Story Scroll: brand narrative */}
+      <StoryScroll />
 
       {/* Stats */}
-      <section className="relative z-10 -mt-10">
-        <div className="mx-auto max-w-5xl px-4 lg:px-8">
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {STATS.map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-3xl bg-akundy-orange p-7 text-center shadow-soft-lg"
-              >
-                <div className="text-3xl font-black text-white">{stat.value}</div>
-                <div className="mt-2 text-sm font-medium text-white/90">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <StatsBento />
 
-      {/* Services Overview */}
+      {/* Mission / Vision */}
+      <MissionSection />
+
+      {/* Featured Services */}
       <section className="py-24">
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
-          <SectionHeader
-            eyebrow="What We Do"
-            title="Integrated Marine & Industrial Solutions"
-            description="Nine service lines designed to keep your projects moving — from offshore platforms to fabrication yards and port operations."
-          />
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredServices.map((service) => (
-              <Card
-                key={service.id}
-                className="group relative overflow-hidden rounded-3xl border-border/50 bg-card transition-all hover:-translate-y-1 hover:shadow-soft-xl"
-              >
-                <div className="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y-[-50%] rounded-full bg-brand/10 transition-transform group-hover:scale-150" />
-                <CardHeader>
-                  <div className="mb-5 inline-flex size-14 items-center justify-center rounded-2xl bg-brand/10 text-brand">
-                    <service.icon className="size-7" />
-                  </div>
-                  <CardTitle className="text-lg">{service.title}</CardTitle>
-                  <CardDescription className="line-clamp-3">{service.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Link
-                    to={`/services#${service.id}`}
-                    className="inline-flex items-center text-sm font-semibold text-brand hover:underline"
-                  >
-                    Learn more <ChevronRight className="ml-1 size-4" />
-                  </Link>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <div className="mt-14 text-center">
-            <Button asChild variant="outline" className="border-2">
-              <Link to="/services">View All Services</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="brand-section py-24">
-        <div className="mx-auto max-w-6xl px-4 lg:px-8">
-          <SectionHeader
-            eyebrow="Why Akundy"
-            title="Built for Demanding Projects"
-            description="We combine technical know-how, safety discipline and responsive service to become a reliable extension of your operations team."
-          />
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {highlights.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-3xl border border-foreground/10 bg-white/60 p-7 shadow-soft backdrop-blur transition-colors hover:border-brand/50 dark:bg-white/5"
-              >
-                <item.icon className="size-8 text-brand" />
-                <h3 className="mt-5 text-lg font-bold">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-foreground/70">{item.text}</p>
+          {/* Split header */}
+          <div className="grid items-end gap-8 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <div className="mb-5">
+                <span className="inline-flex items-center rounded-full bg-foreground px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-background">What We Do</span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-24">
-        <div className="mx-auto max-w-5xl px-4 lg:px-8">
-          <div className="relative overflow-hidden rounded-[2.5rem] bg-brand px-8 py-20 text-center text-white sm:px-12">
-            <div className="relative mx-auto max-w-2xl space-y-6">
-              <h2 className="text-3xl font-black tracking-tight sm:text-4xl">
-                Ready to Move Your Project Forward?
+              <h2 className="text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+                Integrated<br />
+                <span className="text-brand">Solutions</span><br />
+                for the Deep.
               </h2>
-              <p className="text-lg text-white/90">
-                Tell us what you need. We will respond with a practical, cost-effective
-                solution backed by real offshore and industrial experience.
+            </div>
+            <div className="lg:pb-4">
+              <p className="text-lg leading-relaxed text-muted-foreground">
+                Nine specialised service lines designed to keep your projects moving across
+                offshore platforms, fabrication yards, port terminals and industrial sites in
+                Nigeria and West Africa.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-background text-foreground hover:bg-background/90"
-                >
-                  <Link to="/contact">Request a Quote</Link>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="border-white bg-transparent text-white hover:bg-white/10"
-                >
-                  <Link to="/about">Meet the Team</Link>
+              <div className="mt-8">
+                <Button asChild variant="outline" className="border-2">
+                  <Link to="/services">View All Services <ArrowRight className="ml-2 size-4" /></Link>
                 </Button>
               </div>
             </div>
           </div>
+
+          {/* 3-card grid — glued, flat inner edges, outer corners only rounded */}
+          <div className="mt-16 flex flex-col overflow-hidden rounded-3xl border border-border/50 shadow-soft lg:flex-row">
+            {/* Card 1 — Marine Logistics */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+              className="group flex flex-1 flex-col overflow-hidden border-b border-border/50 bg-card last:border-b-0 lg:border-b-0 lg:border-r"
+            >
+              <div className="flex flex-1 flex-col p-8">
+                <span className="inline-flex w-fit items-center rounded-full border border-border/50 px-3 py-1 text-xs font-semibold text-muted-foreground">
+                  Marine
+                </span>
+                <h3 className="mt-5 text-2xl font-black leading-tight tracking-tight">
+                  Marine Logistics
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Crew boat operations, supply vessel support, cargo handling and port coordination for offshore and onshore operations.
+                </p>
+                <div className="mt-6 h-px bg-border" />
+                <Link
+                  to="/services#marine-logistics"
+                  className="mt-4 inline-flex items-center text-sm font-bold text-foreground hover:text-brand"
+                >
+                  View Service <ArrowRight className="ml-1.5 size-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+              <div className="relative h-56 overflow-hidden">
+                <img
+                  src="/images/marine-port.jpg"
+                  alt="Marine Logistics"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            </motion.div>
+
+            {/* Card 2 — Offshore Support (featured, brand orange) */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1], delay: 0.1 }}
+              className="group flex flex-1 flex-col overflow-hidden border-b border-white/20 bg-brand last:border-b-0 lg:border-b-0 lg:border-r"
+            >
+              <div className="flex flex-1 flex-col p-8">
+                <span className="inline-flex w-fit items-center rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-semibold text-white">
+                  Offshore
+                </span>
+                <h3 className="mt-5 text-2xl font-black leading-tight tracking-tight text-white">
+                  Offshore Support Services
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-white/75">
+                  Reliable operational support, manpower supply and logistics coordination for oil and gas operators across Nigeria and West Africa.
+                </p>
+                <div className="mt-6 h-px bg-white/20" />
+                <Link
+                  to="/services#offshore-support"
+                  className="mt-4 inline-flex items-center text-sm font-bold text-white hover:text-white/80"
+                >
+                  View Service <ArrowRight className="ml-1.5 size-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+              <div className="relative h-56 overflow-hidden">
+                <img
+                  src="/images/container-ship.jpg"
+                  alt="Offshore Support"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  style={{ objectPosition: 'center 65%' }}
+                />
+              </div>
+            </motion.div>
+
+            {/* Card 3 — Equipment Leasing */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
+              className="group flex flex-1 flex-col overflow-hidden bg-card"
+            >
+              <div className="flex flex-1 flex-col p-8">
+                <span className="inline-flex w-fit items-center rounded-full border border-border/50 px-3 py-1 text-xs font-semibold text-muted-foreground">
+                  Equipment
+                </span>
+                <h3 className="mt-5 text-2xl font-black leading-tight tracking-tight">
+                  Equipment Leasing
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Flexible leasing of containers, waste skips, gas racks and industrial equipment for marine and offshore projects.
+                </p>
+                <div className="mt-6 h-px bg-border" />
+                <Link
+                  to="/services#equipment-leasing"
+                  className="mt-4 inline-flex items-center text-sm font-bold text-foreground hover:text-brand"
+                >
+                  View Service <ArrowRight className="ml-1.5 size-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+              <div className="relative h-56 overflow-hidden">
+                <img
+                  src="/images/crane-containers.jpg"
+                  alt="Equipment Leasing"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
+
+      {/* Why Choose Akundy — carousel */}
+      <section className="px-4 pb-20 pt-6 lg:px-8">
+        <WhyChooseCarousel />
+      </section>
+
+      {/* Why Akundy */}
+      <section className="relative overflow-hidden py-28">
+        {/* Grid — same style as hero */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage: 'linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px)',
+            backgroundSize: '96px 96px',
+            maskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%, black 40%, transparent 100%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%, black 40%, transparent 100%)',
+          }}
+        />
+        <div
+          className="pointer-events-none absolute inset-0 hidden dark:block"
+          style={{
+            backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.055) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.055) 1px, transparent 1px)',
+            backgroundSize: '96px 96px',
+            maskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%, black 40%, transparent 100%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%, black 40%, transparent 100%)',
+          }}
+        />
+
+        <div className="relative z-10 mx-auto max-w-6xl px-4 lg:px-8">
+          {/* Header */}
+          <div className="mb-16 flex flex-col items-start gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <div className="mb-4">
+                <span className="inline-flex items-center rounded-full bg-foreground px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-background">Why Akundy</span>
+              </div>
+              <h2 className="text-[clamp(2.4rem,5vw,4rem)] font-black uppercase leading-[0.92] tracking-tighter">
+                Built for<br />Demanding<br />Projects.
+              </h2>
+            </div>
+            <p className="max-w-sm text-base leading-relaxed text-muted-foreground lg:text-right">
+              Technical know-how, safety discipline and responsive service — a reliable extension of your operations team.
+            </p>
+          </div>
+
+          {/* Bento grid */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-60px' }}
+            className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            {WHY_CHOOSE_US.map((item, i) => {
+              const isFeatured = i === 1
+              const isBlack = i === 3 || i === 5
+              const num = String(i + 1).padStart(2, '0')
+              return (
+                <motion.div
+                  key={item.title}
+                  variants={itemVariants}
+                  className={
+                    isFeatured
+                      ? 'group relative flex flex-col overflow-hidden rounded-3xl bg-brand p-8 shadow-soft-xl transition-all duration-300 hover:-translate-y-1'
+                      : isBlack
+                        ? 'group relative flex flex-col overflow-hidden rounded-3xl bg-[#111] p-8 shadow-soft-xl transition-all duration-300 hover:-translate-y-1'
+                        : 'group relative flex flex-col overflow-hidden rounded-3xl border border-border/50 bg-card p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-soft-xl'
+                  }
+                >
+                  {/* Decorative number */}
+                  <span
+                    className={
+                      'pointer-events-none absolute right-6 top-5 select-none text-7xl font-black leading-none ' +
+                      (isFeatured || isBlack ? 'text-white/10' : 'text-foreground/[0.06]')
+                    }
+                  >
+                    {num}
+                  </span>
+
+                  {/* Icon */}
+                  <div
+                    className={
+                      'relative mb-6 inline-flex size-12 items-center justify-center rounded-2xl ' +
+                      (isFeatured ? 'bg-white/15' : isBlack ? 'bg-white/10' : 'bg-brand/10')
+                    }
+                  >
+                    <item.icon className={isFeatured || isBlack ? 'size-6 text-brand' : 'size-6 text-brand'} />
+                  </div>
+
+                  {/* Content */}
+                  <h3 className={
+                    'relative text-xl font-black leading-tight tracking-tight ' +
+                    (isFeatured || isBlack ? 'text-white' : 'text-foreground')
+                  }>
+                    {item.title}
+                  </h3>
+                  <p className={
+                    'relative mt-3 text-sm leading-relaxed ' +
+                    (isFeatured || isBlack ? 'text-white/60' : 'text-muted-foreground')
+                  }>
+                    {item.text}
+                  </p>
+
+                  {/* Bottom accent line */}
+                  <div className={
+                    'mt-auto pt-7 ' +
+                    (isFeatured ? '' : 'group-hover:opacity-100')
+                  }>
+                    <div className={
+                      'h-px w-10 transition-all duration-300 group-hover:w-16 ' +
+                      (isFeatured ? 'bg-white/30' : isBlack ? 'bg-brand/50' : 'bg-brand/40')
+                    } />
+                  </div>
+                </motion.div>
+              )
+            })}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <FaqSection />
+
+      {/* CTA */}
+      <CtaSection />
     </>
   )
 }

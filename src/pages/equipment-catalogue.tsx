@@ -1,44 +1,65 @@
-import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useMemo } from 'react'
 import { EQUIPMENT } from '../lib/data'
+import { PageHeader } from '../components/page-header'
 import { SectionHeader } from '../components/section-header'
-import { Badge } from '../components/ui/badge'
-import { Button } from '../components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
+import { GalleryGrid, type GalleryItem } from '../components/ui/gallery-grid'
+
+/**
+ * Image map: picsum seeds per equipment ID.
+ * Swap these URLs for real product photos when available.
+ *
+ * Good real-photo briefs:
+ *   10ft-container        compact steel container on a yard
+ *   20ft-container        ISO container at a port terminal
+ *   10ft-reefer           refrigerated unit with open door, stainless interior
+ *   4m3-waste-skip        painted basket skip on an offshore deck
+ *   6m3-waste-skip        larger basket skip, crane visible above
+ *   8-drum-lube-rack      drums loaded in rack, workshop background
+ *   8-cylinder-gas-rack   gas cylinders secured in rack, fab yard
+ *   12-cylinder-gas-rack  medium rack, orange cylinders, industrial site
+ *   16-cylinder-gas-rack  full rack of cylinders, wide shot
+ */
+const IMAGES: Record<string, string> = {
+  '10ft-container':       'https://picsum.photos/seed/container-small/800/600',
+  '20ft-container':       'https://picsum.photos/seed/container-large/800/600',
+  '10ft-reefer':          'https://picsum.photos/seed/reefer-cold/800/600',
+  '4m3-waste-skip':       'https://picsum.photos/seed/waste-skip-4/800/600',
+  '6m3-waste-skip':       'https://picsum.photos/seed/waste-skip-6/800/600',
+  '8-drum-lube-rack':     'https://picsum.photos/seed/drum-rack/800/600',
+  '8-cylinder-gas-rack':  'https://picsum.photos/seed/gas-rack-8/800/600',
+  '12-cylinder-gas-rack': 'https://picsum.photos/seed/gas-rack-12/800/600',
+  '16-cylinder-gas-rack': 'https://picsum.photos/seed/gas-rack-16/800/600',
+}
 
 export function EquipmentCataloguePage() {
   const categories = useMemo(
-    () => ['All', ...Array.from(new Set(EQUIPMENT.map((item) => item.category)))],
-    []
+    () => Array.from(new Set(EQUIPMENT.map((item) => item.category))),
+    [],
   )
-  const [active, setActive] = useState('All')
 
-  const filtered = useMemo(
-    () => (active === 'All' ? EQUIPMENT : EQUIPMENT.filter((item) => item.category === active)),
-    [active]
+  const galleryItems: GalleryItem[] = useMemo(
+    () =>
+      EQUIPMENT.map((item) => ({
+        id: item.id,
+        title: item.title,
+        category: item.category,
+        shortDescription: item.shortDescription,
+        description: item.description,
+        features: item.features,
+        specs: item.specs as unknown as Record<string, string>,
+        image: IMAGES[item.id] ?? `https://picsum.photos/seed/${item.id}/800/600`,
+      })),
+    [],
   )
 
   return (
     <>
-      {/* Page Header */}
-      <section className="brand-section py-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="mb-3 inline-block text-sm font-bold uppercase tracking-widest text-brand">
-              Equipment Leasing
-            </span>
-            <h1 className="text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
-              Equipment Catalogue
-            </h1>
-            <p className="mt-6 text-lg text-foreground/80">
-              Modern, dependable and regularly inspected equipment for marine, offshore,
-              construction and industrial projects.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Equipment Leasing"
+        title="Equipment Catalogue"
+        description="Modern, dependable and regularly inspected equipment for marine, offshore, construction and industrial projects."
+      />
 
-      {/* Catalogue */}
       <section className="py-24">
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <SectionHeader
@@ -47,60 +68,8 @@ export function EquipmentCataloguePage() {
             description="Quality equipment, flexible leasing periods, prompt delivery and technical support."
           />
 
-          <div className="mt-12 flex flex-wrap justify-center gap-3">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={active === category ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => setActive(category)}
-                className={
-                  active === category
-                    ? 'rounded-xl bg-brand text-brand-foreground hover:bg-brand/90'
-                    : 'rounded-xl'
-                }
-              >
-                {category}
-              </Button>
-            ))}
-          </div>
-
-          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((item) => (
-              <Card
-                key={item.id}
-                className="group flex flex-col overflow-hidden rounded-3xl border-border/50 bg-card transition-all hover:-translate-y-1 hover:shadow-soft-xl"
-              >
-                <div className="flex h-48 items-center justify-center bg-gradient-to-br from-muted to-muted/50">
-                  <div className="text-center">
-                    <span className="text-5xl font-black text-brand/20">
-                      {item.title.split(' ')[0]}
-                    </span>
-                    <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                      {item.category}
-                    </p>
-                  </div>
-                </div>
-                <CardHeader className="flex-1">
-                  <Badge variant="secondary" className="mb-3 w-fit">
-                    {item.category}
-                  </Badge>
-                  <CardTitle className="text-lg">{item.title}</CardTitle>
-                  <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
-                    {item.shortDescription}
-                  </p>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <Button
-                    asChild
-                    variant="link"
-                    className="h-auto p-0 text-brand"
-                  >
-                    <Link to={`/equipment/${item.id}`}>View details & specs</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="mt-14">
+            <GalleryGrid items={galleryItems} categories={categories} />
           </div>
         </div>
       </section>

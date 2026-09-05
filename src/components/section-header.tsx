@@ -1,3 +1,4 @@
+import { motion } from 'motion/react'
 import { cn } from '../lib/utils'
 
 interface SectionHeaderProps {
@@ -18,7 +19,11 @@ export function SectionHeader({
   light = false,
 }: SectionHeaderProps) {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
       className={cn(
         'max-w-3xl',
         align === 'center' && 'mx-auto text-center',
@@ -26,7 +31,7 @@ export function SectionHeader({
       )}
     >
       {eyebrow && (
-        <span className="mb-3 inline-block text-sm font-bold uppercase tracking-widest text-brand">
+        <span className="mb-4 inline-flex items-center rounded-full bg-foreground px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-background">
           {eyebrow}
         </span>
       )}
@@ -41,13 +46,13 @@ export function SectionHeader({
       {description && (
         <p
           className={cn(
-            'mt-4 text-lg',
+            'mt-4 text-lg leading-relaxed',
             light ? 'text-white/80' : 'text-muted-foreground'
           )}
         >
           {description}
         </p>
       )}
-    </div>
+    </motion.div>
   )
 }
