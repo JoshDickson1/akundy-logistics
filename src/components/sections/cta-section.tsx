@@ -6,7 +6,7 @@ import { COMPANY } from '../../lib/data'
 const STATS = [
   { value: '9+', label: 'Service Lines', icon: Briefcase },
   { value: '5+', label: 'Industry Sectors', icon: Users },
-  { value: 'W. Africa', label: 'Coverage', icon: MapPin },
+  { value: 'W. Africa & Intl.', label: 'Coverage', icon: MapPin },
 ]
 
 const IMAGES = [

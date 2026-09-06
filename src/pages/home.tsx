@@ -109,7 +109,7 @@ function WhyChooseCarousel() {
             Why Choose <span className="text-brand">Akundy?</span>
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-white/45">
-            Six reasons operators across Nigeria and West Africa trust us to deliver, every time.
+            Six reasons operators across Nigeria, West Africa and internationally trust us to deliver, every time.
           </p>
         </div>
 
@@ -309,7 +309,7 @@ export function HomePage() {
             </h2>
             <p className="hidden max-w-[260px] shrink-0 pb-3 text-sm leading-relaxed text-muted-foreground lg:block">
               Marine logistics, offshore support, equipment leasing, fabrication and
-              procurement across Nigeria and West Africa.
+              procurement across Nigeria, West Africa and internationally.
             </p>
           </motion.div>
 
@@ -320,7 +320,7 @@ export function HomePage() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-5 text-sm leading-relaxed text-muted-foreground lg:hidden"
           >
-            Marine logistics, offshore support, equipment leasing, fabrication and procurement across Nigeria and West Africa.
+            Marine logistics, offshore support, equipment leasing, fabrication and procurement across Nigeria, West Africa and internationally.
           </motion.p>
 
           {/* CTAs */}
@@ -373,7 +373,7 @@ export function HomePage() {
             {[
               ['40+', 'Yrs Combined Exp.'],
               ['9', 'Service Lines'],
-              ['W. Africa', 'Coverage'],
+              ['W. Africa & Intl.', 'Coverage'],
             ].map(([value, label]) => (
               <div key={label} className="rounded-full border border-border bg-foreground px-6 py-3">
                 <span className="text-base font-black text-background">{value}</span>
@@ -475,7 +475,7 @@ export function HomePage() {
                   Offshore Support Services
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-white/75">
-                  Reliable operational support, manpower supply and logistics coordination for oil and gas operators across Nigeria and West Africa.
+                  Reliable operational support, manpower supply and logistics coordination for oil and gas operators across Nigeria, West Africa and internationally.
                 </p>
                 <div className="mt-6 h-px bg-white/20" />
                 <Link

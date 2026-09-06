@@ -14,7 +14,7 @@ interface PageHeaderProps {
 const DEFAULT_BADGES = [
   { value: 'RC 6891533', label: 'CAC Registered' },
   { value: 'Est. 2023', label: 'Port Harcourt' },
-  { value: 'W. Africa', label: 'Coverage' },
+  { value: 'W. Africa & Intl.', label: 'Coverage' },
 ]
 
 export function PageHeader({

@@ -297,7 +297,7 @@ export function Navbar() {
                 key={i}
                 className="shrink-0 whitespace-nowrap px-10 text-[10px] font-bold uppercase tracking-[0.22em] text-foreground/35"
               >
-                Delivering Solutions · Building Value · RC 6891533 · Nigeria &amp; West Africa
+                Delivering Solutions · Building Value · RC 6891533 · Nigeria, West Africa &amp; International
               </span>
             ))}
           </div>

@@ -68,7 +68,7 @@ export function IndustriesClientsPage() {
         badges={[
           { value: '7+', label: 'Industries' },
           { value: 'Nigeria', label: 'Primary Market' },
-          { value: 'W. Africa', label: 'Coverage' },
+          { value: 'W. Africa & Intl.', label: 'Coverage' },
         ]}
       />
 

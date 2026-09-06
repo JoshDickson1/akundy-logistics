@@ -145,18 +145,18 @@ const JOURNEY: TimelineEntry[] = [
     title: 'Today',
     content: (
       <div className="space-y-5">
-        <h3 className="text-xl font-black tracking-tight">Growing Across West Africa</h3>
+        <h3 className="text-xl font-black tracking-tight">Growing Across West Africa and Internationally</h3>
         <p className="text-sm leading-relaxed text-muted-foreground">
           Akundy Logistics now serves oil and gas operators, marine companies, construction
-          firms, government agencies and industrial clients across Nigeria and West Africa.
-          The company remains committed to long-term partnerships, safety-first operations
-          and practical solutions that build real value for every client.
+          firms, government agencies and industrial clients across Nigeria, West Africa and
+          internationally. The company remains committed to long-term partnerships, safety-first
+          operations and practical solutions that build real value for every client.
         </p>
         <div className="grid grid-cols-3 gap-3">
           {[
             { value: '9+', label: 'Service Lines' },
             { value: '40+', label: 'Yrs Combined Exp.' },
-            { value: 'W. Africa', label: 'Coverage' },
+            { value: 'W. Africa & Intl.', label: 'Coverage' },
           ].map(({ value, label }) => (
             <div key={label} className="rounded-2xl border border-brand/20 bg-brand/5 p-4 text-center">
               <p className="text-2xl font-black text-brand">{value}</p>
@@ -186,7 +186,7 @@ export function AboutPage() {
         badges={[
           { value: 'Est. 2023', label: 'Incorporated' },
           { value: 'RC 6891533', label: 'CAC Registered' },
-          { value: 'W. Africa', label: 'Coverage' },
+          { value: 'W. Africa & Intl.', label: 'Coverage' },
         ]}
       />
 
@@ -271,7 +271,7 @@ export function AboutPage() {
           <SectionHeader
             eyebrow="Our Journey"
             title="From Incorporation to Impact"
-            description="How Akundy Logistics grew from a registered entity to an active, multi-service partner across Nigeria and West Africa."
+            description="How Akundy Logistics grew from a registered entity to an active, multi-service partner across Nigeria, West Africa and internationally."
           />
           <div className="mt-16">
             <Timeline data={JOURNEY} />
@@ -309,7 +309,7 @@ export function AboutPage() {
               </h2>
               <div className="mt-2 h-1 w-12 rounded-full bg-brand" />
               <p className="mt-8 text-base leading-relaxed text-muted-foreground">
-                {founder.name} founded Akundy Logistics and Development Company Limited in 2023 with a clear mandate: to build a world-class indigenous marine and industrial services company rooted in Nigeria, capable of competing at the highest levels across West Africa.
+                {founder.name} founded Akundy Logistics and Development Company Limited in 2023 with a clear mandate: to build a world-class indigenous marine and industrial services company rooted in Nigeria, capable of competing at the highest levels across West Africa and internationally.
               </p>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
                 Drawing on decades of hands-on experience in offshore operations, port logistics and industrial services, he assembled a seasoned leadership team and secured all major regulatory licences within the company's first year. His leadership philosophy centres on integrity, operational discipline and a relentless focus on client outcomes.

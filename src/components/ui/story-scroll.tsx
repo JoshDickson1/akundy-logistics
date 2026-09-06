@@ -31,7 +31,7 @@ const sections = [
     divider: 'rgba(255,255,255,0.25)',
     accent: 'rgba(255,255,255,0.15)',
     headline: ['Built', 'For The', 'Deep.'],
-    body: 'Akundy Logistics is an integrated marine and industrial services company rooted in Nigeria, delivering offshore support, equipment leasing, fabrication and procurement across West Africa.',
+    body: 'Akundy Logistics is an integrated marine and industrial services company rooted in Nigeria, delivering offshore support, equipment leasing, fabrication and procurement across West Africa and internationally.',
     pills: ['Est. 2023', 'RC 6891533', 'Rivers State, Nigeria'],
     icon: Anchor,
     images: [

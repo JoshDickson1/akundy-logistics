@@ -35,7 +35,7 @@ export const COMPANY = {
   tin: '31315323-0001',
   incorporated: '2023',
   headquarters: 'Rivers State, Nigeria',
-  coverage: 'Nigeria (nationwide) and West Africa',
+  coverage: 'Nigeria (nationwide), West Africa and International',
   motto: 'Delivering Solutions. Building Value.',
   tagline: 'One Company. Total Solutions.',
   colors: 'Orange, Black & White',
@@ -429,7 +429,7 @@ export const STATS = [
   { value: '40+', label: 'Years Combined Experience' },
   { value: '2023', label: 'Year Incorporated' },
   { value: '9', label: 'Core Service Lines' },
-  { value: 'Nationwide', label: '& West Africa' },
+  { value: 'W. Africa', label: '& International' },
 ]
 
 export { MapPin, Phone }
