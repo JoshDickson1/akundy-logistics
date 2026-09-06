@@ -11,6 +11,12 @@ export function CertificationsPage() {
         eyebrow="Certifications"
         title="Registered. Licensed. Trusted."
         description="We maintain the registrations, licences and compliance records that give our clients confidence in every contract."
+        image="/images/SP5u1.jpg"
+        badges={[
+          { value: 'RC 6891533', label: 'CAC Registered' },
+          { value: 'NPA', label: 'Ship Agent' },
+          { value: 'NCS', label: 'Ship Chandler' },
+        ]}
       />
 
       {/* Cert grid */}

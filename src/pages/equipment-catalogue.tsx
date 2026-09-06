@@ -20,15 +20,15 @@ import { GalleryGrid, type GalleryItem } from '../components/ui/gallery-grid'
  *   16-cylinder-gas-rack  full rack of cylinders, wide shot
  */
 const IMAGES: Record<string, string> = {
-  '10ft-container':       'https://picsum.photos/seed/container-small/800/600',
-  '20ft-container':       'https://picsum.photos/seed/container-large/800/600',
-  '10ft-reefer':          'https://picsum.photos/seed/reefer-cold/800/600',
-  '4m3-waste-skip':       'https://picsum.photos/seed/waste-skip-4/800/600',
-  '6m3-waste-skip':       'https://picsum.photos/seed/waste-skip-6/800/600',
-  '8-drum-lube-rack':     'https://picsum.photos/seed/drum-rack/800/600',
-  '8-cylinder-gas-rack':  'https://picsum.photos/seed/gas-rack-8/800/600',
-  '12-cylinder-gas-rack': 'https://picsum.photos/seed/gas-rack-12/800/600',
-  '16-cylinder-gas-rack': 'https://picsum.photos/seed/gas-rack-16/800/600',
+  '10ft-container':       '/images/crane-containers.jpg',
+  '20ft-container':       '/images/container-ship.jpg',
+  '10ft-reefer':          '/images/AmSNA.jpg',
+  '4m3-waste-skip':       '/images/NKgog.jpg',
+  '6m3-waste-skip':       '/images/why-delivery.jpg',
+  '8-drum-lube-rack':     '/images/SP5u1.jpg',
+  '8-cylinder-gas-rack':  '/images/why-safety.jpg',
+  '12-cylinder-gas-rack': '/images/marine-port.jpg',
+  '16-cylinder-gas-rack': '/images/mission-worker.jpg',
 }
 
 export function EquipmentCataloguePage() {

@@ -2,18 +2,18 @@ import { useEffect, useRef } from 'react'
 import { cn } from '../../lib/utils'
 
 const CARDS = [
-  { src: 'https://picsum.photos/seed/dmq-vessel/320/440', label: 'Marine Vessels' },
-  { src: 'https://picsum.photos/seed/dmq-offshore/320/440', label: 'Offshore Support' },
-  { src: 'https://picsum.photos/seed/dmq-port/320/440', label: 'Port Operations' },
-  { src: 'https://picsum.photos/seed/dmq-fabrication/320/440', label: 'Metal Fabrication' },
-  { src: 'https://picsum.photos/seed/dmq-crew/320/440', label: 'Expert Crew' },
-  { src: 'https://picsum.photos/seed/dmq-logistics/320/440', label: 'Industrial Logistics' },
-  { src: 'https://picsum.photos/seed/dmq-equipment/320/440', label: 'Equipment Leasing' },
-  { src: 'https://picsum.photos/seed/dmq-marine/320/440', label: 'Marine Logistics' },
-  { src: 'https://picsum.photos/seed/dmq-welding/320/440', label: 'Fabrication Works' },
-  { src: 'https://picsum.photos/seed/dmq-rig/320/440', label: 'Rig Support' },
-  { src: 'https://picsum.photos/seed/dmq-barge/320/440', label: 'Barge Operations' },
-  { src: 'https://picsum.photos/seed/dmq-supply/320/440', label: 'Supply Chain' },
+  { src: '/images/marine-port.jpg', label: 'Marine Vessels' },
+  { src: '/images/container-ship.jpg', label: 'Offshore Support' },
+  { src: '/images/crane-containers.jpg', label: 'Port Operations' },
+  { src: '/images/NKgog.jpg', label: 'Metal Fabrication' },
+  { src: '/images/AmSNA.jpg', label: 'Expert Crew' },
+  { src: '/images/SP5u1.jpg', label: 'Industrial Logistics' },
+  { src: '/images/9HKlQ.jpg', label: 'Equipment Leasing' },
+  { src: '/images/why-safety.jpg', label: 'Safety Culture' },
+  { src: '/images/why-delivery.jpg', label: 'Fabrication Works' },
+  { src: '/images/mission-worker.jpg', label: 'Rig Support' },
+  { src: '/images/why-quality.jpg', label: 'Barge Operations' },
+  { src: '/images/why-customer.jpg', label: 'Supply Chain' },
 ]
 
 const COLS = [

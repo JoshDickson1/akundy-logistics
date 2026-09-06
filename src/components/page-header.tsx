@@ -23,7 +23,7 @@ export function PageHeader({
   description,
   children,
   className,
-  image = 'https://picsum.photos/seed/akundy-page-hero/1400/600',
+  image = '/images/marine-port.jpg',
   badges = DEFAULT_BADGES,
 }: PageHeaderProps) {
   return (

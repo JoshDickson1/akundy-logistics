@@ -69,6 +69,12 @@ export function HseQualityPage() {
         eyebrow="HSE & Quality"
         title="Safety. Quality. Ethics."
         description="Our operations are built on professionalism, safety, integrity, efficiency and customer satisfaction."
+        image="/images/why-safety.jpg"
+        badges={[
+          { value: 'Zero', label: 'Compromise on Safety' },
+          { value: 'HSE', label: 'Certified Operations' },
+          { value: 'ISO Aligned', label: 'Quality System' },
+        ]}
       />
 
       {/* HSE Policy */}
@@ -129,6 +135,24 @@ export function HseQualityPage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Full-bleed image break */}
+      <section className="relative h-64 overflow-hidden lg:h-80">
+        <img
+          src="/images/9HKlQ.jpg"
+          alt="Safety operations"
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
+        <div className="absolute inset-0 flex items-center">
+          <div className="mx-auto max-w-6xl px-4 lg:px-8">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-brand">Our Commitment</p>
+            <h3 className="mt-3 max-w-lg text-3xl font-black leading-tight text-white lg:text-4xl">
+              Every person returns home safely. No exceptions.
+            </h3>
           </div>
         </div>
       </section>
