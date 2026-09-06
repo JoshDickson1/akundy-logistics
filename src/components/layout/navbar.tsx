@@ -316,7 +316,7 @@ export function Navbar() {
 
           {/* Logo — no background, just the mark */}
           <NavLink to="/" onClick={close} className="flex items-center">
-            <Logo variant="mark" className="h-12" />
+            <Logo variant="mark" className="h-16" />
           </NavLink>
 
           {/* ── Center nav island (desktop) ── */}
@@ -457,7 +457,7 @@ export function Navbar() {
             >
               {/* Sheet header */}
               <div className="flex items-center justify-between border-b border-border/40 px-6 py-4">
-                <Logo variant="mark" className="h-11" />
+                <Logo variant="mark" className="h-14" />
                 <button
                   onClick={close}
                   className="flex size-10 items-center justify-center rounded-full border border-border/40 bg-muted/40 transition-colors hover:bg-muted"
