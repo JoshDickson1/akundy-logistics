@@ -287,9 +287,9 @@ export function AboutPage() {
             <div className="relative">
               <div className="overflow-hidden rounded-3xl bg-muted shadow-soft-xl">
                 <img
-                  src="/images/mission-worker.jpg"
+                  src="/images/founder.jpg"
                   alt={founder.name}
-                  className="h-[480px] w-full object-cover object-center"
+                  className="h-[480px] w-full object-cover object-top"
                 />
               </div>
               {/* Floating name card */}
