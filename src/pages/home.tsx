@@ -8,7 +8,19 @@ import { StoryScroll } from '../components/ui/story-scroll'
 import { CtaSection } from '../components/sections/cta-section'
 import { FaqSection } from '../components/sections/faq-section'
 import { MissionSection } from '../components/sections/mission-section'
-import { WHY_CHOOSE_US } from '../lib/data'
+import { WHY_CHOOSE_US, EQUIPMENT } from '../lib/data'
+
+const PRODUCT_IMAGES: Record<string, string> = {
+  '10ft-container':       '/images/crane-containers.jpg',
+  '20ft-container':       '/images/container-ship.jpg',
+  '10ft-reefer':          '/images/AmSNA.jpg',
+  '4m3-waste-skip':       '/images/NKgog.jpg',
+  '6m3-waste-skip':       '/images/why-delivery.jpg',
+  '8-drum-lube-rack':     '/images/SP5u1.jpg',
+  '8-cylinder-gas-rack':  '/images/why-safety.jpg',
+  '12-cylinder-gas-rack': '/images/marine-port.jpg',
+  '16-cylinder-gas-rack': '/images/mission-worker.jpg',
+}
 
 
 const easeOut = [0.25, 0.1, 0.25, 1] as const
@@ -113,7 +125,7 @@ function WhyChooseCarousel() {
           </p>
         </div>
 
-        {/* Desktop carousel — horizontal, 3 visible */}
+        {/* Desktop carousel horizontal, 3 visible */}
         <div className="hidden overflow-hidden lg:block">
           <motion.div
             className="flex"
@@ -149,7 +161,7 @@ function WhyChooseCarousel() {
           </motion.div>
         </div>
 
-        {/* Mobile carousel — vertical, 1 visible */}
+        {/* Mobile carousel vertical, 1 visible */}
         <div className="overflow-hidden lg:hidden" style={{ height: MOBILE_CARD_H }}>
           <motion.div
             className="flex flex-col"
@@ -279,7 +291,7 @@ export function HomePage() {
 
         <div className="relative z-10 mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10">
 
-          {/* Headline — row 1 */}
+          {/* Headline row 1 */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -297,7 +309,7 @@ export function HomePage() {
             </h1>
           </motion.div>
 
-          {/* Headline — row 2 */}
+          {/* Headline row 2 */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -363,7 +375,7 @@ export function HomePage() {
             </div>
           </motion.div>
 
-          {/* Stat badges — outside, below image, left-aligned */}
+          {/* Stat badges outside, below image, left-aligned */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -422,9 +434,9 @@ export function HomePage() {
             </div>
           </div>
 
-          {/* 3-card grid — glued, flat inner edges, outer corners only rounded */}
+          {/* 3-card grid glued, flat inner edges, outer corners only rounded */}
           <div className="mt-16 flex flex-col overflow-hidden rounded-3xl border border-border/50 shadow-soft lg:flex-row">
-            {/* Card 1 — Marine Logistics */}
+            {/* Card 1 Marine Logistics */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -459,7 +471,7 @@ export function HomePage() {
               </div>
             </motion.div>
 
-            {/* Card 2 — Offshore Support (featured, brand orange) */}
+            {/* Card 2 Offshore Support (featured, brand orange) */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -495,7 +507,7 @@ export function HomePage() {
               </div>
             </motion.div>
 
-            {/* Card 3 — Equipment Leasing */}
+            {/* Card 3 Equipment Leasing */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -533,14 +545,119 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Why Choose Akundy — carousel */}
+      {/* Our Products */}
+      <section className="bg-[#fdf6ee] py-24 lg:py-32">
+        <div className="mx-auto max-w-[1400px] px-4 lg:px-10">
+          {/* Header */}
+          <div className="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <div className="mb-4">
+                <span className="inline-flex items-center rounded-full bg-foreground px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-background">
+                  Our Products
+                </span>
+              </div>
+              <h2 className="text-[clamp(2.4rem,5vw,4rem)] font-black uppercase leading-[0.92] tracking-tighter">
+                Equipment<br />Available to Lease
+              </h2>
+            </div>
+            <div className="flex flex-col gap-4 lg:items-end">
+              <p className="max-w-sm text-base leading-relaxed text-muted-foreground lg:text-right">
+                Regularly inspected, well-maintained equipment for marine, offshore, construction
+                and industrial projects. Flexible terms, prompt delivery.
+              </p>
+              <Button asChild variant="outline" className="w-fit border-2">
+                <Link to="/equipment">Browse Full Catalogue <ArrowRight className="ml-2 size-4" /></Link>
+              </Button>
+            </div>
+          </div>
+
+          {/* Product grid */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+            {/* Featured first product — larger */}
+            {EQUIPMENT.slice(0, 1).map((item) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                className="group relative overflow-hidden rounded-3xl bg-foreground sm:col-span-2 lg:col-span-1 lg:row-span-2"
+              >
+                <div className="relative h-56 overflow-hidden lg:h-full lg:min-h-[520px]">
+                  <img
+                    src={PRODUCT_IMAGES[item.id] ?? '/images/crane-containers.jpg'}
+                    alt={item.title}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
+                  <div className="absolute inset-0 flex flex-col justify-end p-7">
+                    <span className="mb-3 inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white/80">
+                      {item.category}
+                    </span>
+                    <h3 className="text-2xl font-black leading-tight tracking-tight text-white lg:text-3xl">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-white/60">
+                      {item.shortDescription}
+                    </p>
+                    <Link
+                      to={`/equipment/${item.id}`}
+                      className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-bold text-white transition-all hover:bg-brand/90"
+                    >
+                      View Details <ArrowRight className="size-4" />
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+
+            {/* Remaining products */}
+            {EQUIPMENT.slice(1).map((item, i) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1], delay: (i % 3) * 0.08 }}
+                className="group relative overflow-hidden rounded-3xl bg-card border border-border/50 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg"
+              >
+                <div className="relative h-44 overflow-hidden">
+                  <img
+                    src={PRODUCT_IMAGES[item.id] ?? '/images/crane-containers.jpg'}
+                    alt={item.title}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <span className="absolute left-4 top-4 inline-flex items-center rounded-full border border-white/20 bg-black/40 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+                    {item.category}
+                  </span>
+                </div>
+                <div className="p-5">
+                  <h3 className="text-base font-black leading-tight tracking-tight">{item.title}</h3>
+                  <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground line-clamp-2">
+                    {item.shortDescription}
+                  </p>
+                  <Link
+                    to={`/equipment/${item.id}`}
+                    className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-brand transition-colors hover:text-brand/80"
+                  >
+                    View Details <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Akundy carousel */}
       <section className="px-4 pb-20 pt-6 lg:px-8">
         <WhyChooseCarousel />
       </section>
 
       {/* Why Akundy */}
       <section className="relative overflow-hidden py-28">
-        {/* Grid — same style as hero */}
+        {/* Grid same style as hero */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -572,7 +689,7 @@ export function HomePage() {
               </h2>
             </div>
             <p className="max-w-sm text-base leading-relaxed text-muted-foreground lg:text-right">
-              Technical know-how, safety discipline and responsive service — a reliable extension of your operations team.
+              Technical know-how, safety discipline and responsive service a reliable extension of your operations team.
             </p>
           </div>
 
