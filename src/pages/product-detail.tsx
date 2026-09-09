@@ -5,30 +5,23 @@ import { Link, useParams } from 'react-router-dom'
 import { NotFoundPage } from './not-found'
 import { EQUIPMENT, COMPANY } from '../lib/data'
 import { Badge } from '../components/ui/badge'
+import { SEO } from '../components/seo'
 
-const IMAGES: Record<string, string[]> = {
-  '10ft-container':       ['https://picsum.photos/seed/container-small/900/680', 'https://picsum.photos/seed/container-small-b/900/680', 'https://picsum.photos/seed/container-small-c/900/680', 'https://picsum.photos/seed/container-small-d/900/680'],
-  '20ft-container':       ['https://picsum.photos/seed/container-large/900/680', 'https://picsum.photos/seed/container-large-b/900/680', 'https://picsum.photos/seed/container-large-c/900/680', 'https://picsum.photos/seed/container-large-d/900/680'],
-  '10ft-reefer':          ['https://picsum.photos/seed/reefer-cold/900/680', 'https://picsum.photos/seed/reefer-cold-b/900/680', 'https://picsum.photos/seed/reefer-cold-c/900/680', 'https://picsum.photos/seed/reefer-cold-d/900/680'],
-  '4m3-waste-skip':       ['https://picsum.photos/seed/waste-skip-4/900/680', 'https://picsum.photos/seed/waste-skip-4b/900/680', 'https://picsum.photos/seed/waste-skip-4c/900/680', 'https://picsum.photos/seed/waste-skip-4d/900/680'],
-  '6m3-waste-skip':       ['https://picsum.photos/seed/waste-skip-6/900/680', 'https://picsum.photos/seed/waste-skip-6b/900/680', 'https://picsum.photos/seed/waste-skip-6c/900/680', 'https://picsum.photos/seed/waste-skip-6d/900/680'],
-  '8-drum-lube-rack':     ['https://picsum.photos/seed/drum-rack/900/680', 'https://picsum.photos/seed/drum-rack-b/900/680', 'https://picsum.photos/seed/drum-rack-c/900/680', 'https://picsum.photos/seed/drum-rack-d/900/680'],
-  '8-cylinder-gas-rack':  ['https://picsum.photos/seed/gas-rack-8/900/680', 'https://picsum.photos/seed/gas-rack-8b/900/680', 'https://picsum.photos/seed/gas-rack-8c/900/680', 'https://picsum.photos/seed/gas-rack-8d/900/680'],
-  '12-cylinder-gas-rack': ['https://picsum.photos/seed/gas-rack-12/900/680', 'https://picsum.photos/seed/gas-rack-12b/900/680', 'https://picsum.photos/seed/gas-rack-12c/900/680', 'https://picsum.photos/seed/gas-rack-12d/900/680'],
-  '16-cylinder-gas-rack': ['https://picsum.photos/seed/gas-rack-16/900/680', 'https://picsum.photos/seed/gas-rack-16b/900/680', 'https://picsum.photos/seed/gas-rack-16c/900/680', 'https://picsum.photos/seed/gas-rack-16d/900/680'],
+const PRODUCT_IMAGES: Record<string, string> = {
+  '10ft-container':       '/images/crane-containers.jpg',
+  '20ft-container':       '/images/container-ship.jpg',
+  '10ft-reefer':          '/images/AmSNA.jpg',
+  '4m3-waste-skip':       '/images/NKgog.jpg',
+  '6m3-waste-skip':       '/images/why-delivery.jpg',
+  '8-drum-lube-rack':     '/images/SP5u1.jpg',
+  '8-cylinder-gas-rack':  '/images/why-safety.jpg',
+  '12-cylinder-gas-rack': '/images/marine-port.jpg',
+  '16-cylinder-gas-rack': '/images/mission-worker.jpg',
 }
 
-const RELATED_IMAGES: Record<string, string> = {
-  '10ft-container':       'https://picsum.photos/seed/container-small/800/600',
-  '20ft-container':       'https://picsum.photos/seed/container-large/800/600',
-  '10ft-reefer':          'https://picsum.photos/seed/reefer-cold/800/600',
-  '4m3-waste-skip':       'https://picsum.photos/seed/waste-skip-4/800/600',
-  '6m3-waste-skip':       'https://picsum.photos/seed/waste-skip-6/800/600',
-  '8-drum-lube-rack':     'https://picsum.photos/seed/drum-rack/800/600',
-  '8-cylinder-gas-rack':  'https://picsum.photos/seed/gas-rack-8/800/600',
-  '12-cylinder-gas-rack': 'https://picsum.photos/seed/gas-rack-12/800/600',
-  '16-cylinder-gas-rack': 'https://picsum.photos/seed/gas-rack-16/800/600',
-}
+const IMAGES: Record<string, string[]> = Object.fromEntries(
+  Object.entries(PRODUCT_IMAGES).map(([id, img]) => [id, [img]])
+)
 
 const TABS = ['Overview', 'Specifications', 'Applications'] as const
 type Tab = (typeof TABS)[number]
@@ -46,7 +39,7 @@ export function ProductDetailPage() {
 
   if (!product) return <NotFoundPage />
 
-  const images = IMAGES[product.id] ?? [`https://picsum.photos/seed/${product.id}/900/680`]
+  const images = IMAGES[product.id] ?? ['/images/crane-containers.jpg']
   const specEntries = Object.entries(product.specs || {})
 
   const prev = () => setActiveImage((i) => (i - 1 + images.length) % images.length)
@@ -54,6 +47,13 @@ export function ProductDetailPage() {
 
   return (
     <>
+      <SEO
+        title={product.title}
+        description={`${product.title} available for leasing in Nigeria and West Africa. ${product.shortDescription ?? product.description.slice(0, 120)}`}
+        path={`/equipment/${product.id}`}
+        ogImage={PRODUCT_IMAGES[product.id] ?? '/images/crane-containers.jpg'}
+      />
+
       <div className="mx-auto max-w-6xl px-4 py-10 lg:px-8">
 
         {/* Back */}
@@ -65,7 +65,7 @@ export function ProductDetailPage() {
         </Link>
 
         {/* Main grid */}
-        <div className="grid gap-10 lg:grid-cols-[1fr_480px] xl:grid-cols-[1fr_520px]">
+        <div className="grid gap-10 lg:grid-cols-[1fr_380px] xl:grid-cols-[1fr_460px]">
 
           {/* ── Image gallery ── */}
           <div className="flex flex-col gap-4">
@@ -283,7 +283,7 @@ export function ProductDetailPage() {
                   {/* Image */}
                   <div className="relative aspect-[4/3] overflow-hidden rounded-t-[calc(1.5rem-3px)]">
                     <img
-                      src={RELATED_IMAGES[item.id] ?? `https://picsum.photos/seed/${item.id}/800/600`}
+                      src={PRODUCT_IMAGES[item.id] ?? '/images/crane-containers.jpg'}
                       alt={item.title}
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                       loading="lazy"

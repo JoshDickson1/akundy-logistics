@@ -18,6 +18,7 @@ export function Layout() {
         <div
           className="flex shrink-0 items-center"
           style={{ animation: 'marquee-horiz 28s linear infinite', willChange: 'transform' }}
+          aria-hidden="true"
         >
           {Array.from({ length: 6 }).map((_, i) => (
             <span

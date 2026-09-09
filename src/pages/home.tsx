@@ -8,6 +8,7 @@ import { StoryScroll } from '../components/ui/story-scroll'
 import { CtaSection } from '../components/sections/cta-section'
 import { FaqSection } from '../components/sections/faq-section'
 import { MissionSection } from '../components/sections/mission-section'
+import { SEO } from '../components/seo'
 import { WHY_CHOOSE_US, EQUIPMENT } from '../lib/data'
 
 const PRODUCT_IMAGES: Record<string, string> = {
@@ -234,41 +235,6 @@ function WhyChooseCarousel() {
 
 const ease = [0.25, 0.1, 0.25, 1] as const
 
-function ProductCard({ item, delay = 0 }: { item: typeof EQUIPMENT[number]; delay?: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, ease, delay }}
-      className="group relative overflow-hidden rounded-3xl border border-border/50 bg-card shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg"
-    >
-      <div className="relative h-44 overflow-hidden">
-        <img
-          src={PRODUCT_IMAGES[item.id] ?? '/images/crane-containers.jpg'}
-          alt={item.title}
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-        <span className="absolute left-4 top-4 inline-flex items-center rounded-full border border-white/20 bg-black/40 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-          {item.category}
-        </span>
-      </div>
-      <div className="p-5">
-        <h3 className="text-base font-black leading-tight tracking-tight">{item.title}</h3>
-        <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
-          {item.shortDescription}
-        </p>
-        <Link
-          to={`/equipment/${item.id}`}
-          className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-brand transition-colors hover:text-brand/80"
-        >
-          View Details <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-        </Link>
-      </div>
-    </motion.div>
-  )
-}
 
 function ProductOverlayCard({ item, delay = 0 }: { item: typeof EQUIPMENT[number]; delay?: number }) {
   return (
@@ -394,6 +360,13 @@ function ProductsSeeMore() {
 export function HomePage() {
   return (
     <>
+      <SEO
+        title="Equipment Leasing, Marine & Offshore Logistics in Nigeria"
+        description="Akundy Logistics delivers equipment leasing, marine logistics, offshore support, shipping agency, ship chandling, metal fabrication and procurement across Nigeria and West Africa. RC 6891533."
+        path="/"
+        ogImage="/images/crane-containers.jpg"
+      />
+
       {/* Hero */}
       <section className="relative overflow-hidden bg-background pb-16 pt-8 lg:pb-24 lg:pt-10">
         {/* Grid */}

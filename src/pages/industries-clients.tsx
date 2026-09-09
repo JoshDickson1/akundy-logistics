@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react'
 import { CLIENTS, INDUSTRIES } from '../lib/data'
 import { PageHeader } from '../components/page-header'
+import { SEO } from '../components/seo'
 import { SectionHeader } from '../components/section-header'
-import { ScrollReelTestimonials } from '../components/ui/scroll-reel-testimonials'
+// import { ScrollReelTestimonials } from '../components/ui/scroll-reel-testimonials'
 import { CtaSection } from '../components/sections/cta-section'
 
 const INDUSTRY_IMAGES: string[] = [
@@ -22,6 +23,7 @@ function ClientMarqueeRow({ items, reverse }: { items: string[]; reverse?: boole
   useEffect(() => {
     const el = ref.current
     if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     let raf: number
     const speed = reverse ? -0.4 : 0.4
 
@@ -60,6 +62,12 @@ function ClientMarqueeRow({ items, reverse }: { items: string[]; reverse?: boole
 export function IndustriesClientsPage() {
   return (
     <>
+      <SEO
+        title="Industries & Clients"
+        description="Akundy Logistics serves the oil and gas, marine, construction, power and industrial sectors across Nigeria and West Africa. Trusted by leading operators and contractors."
+        path="/clients"
+      />
+
       <PageHeader
         eyebrow="Industries & Clients"
         title="Who We Serve"
@@ -144,8 +152,8 @@ export function IndustriesClientsPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <ScrollReelTestimonials />
+      {/* Testimonials — commented out until real client quotes are available */}
+      {/* <ScrollReelTestimonials /> */}
 
       {/* Become a Partner CTA */}
       <CtaSection />

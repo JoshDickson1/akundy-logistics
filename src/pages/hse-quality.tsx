@@ -1,6 +1,7 @@
 import { Check, ShieldCheck } from 'lucide-react'
 import { CtaSection } from '../components/sections/cta-section'
 import { PageHeader } from '../components/page-header'
+import { SEO } from '../components/seo'
 import { SectionHeader } from '../components/section-header'
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 
@@ -65,6 +66,13 @@ const ETHICS_PILLARS = [
 export function HseQualityPage() {
   return (
     <>
+      <SEO
+        title="HSE & Quality"
+        description="Our health, safety, environment and quality management standards. Akundy Logistics operates with a zero-compromise safety culture across all marine, offshore and industrial operations."
+        path="/hse-quality"
+        ogImage="/images/why-safety.jpg"
+      />
+
       <PageHeader
         eyebrow="HSE & Quality"
         title="Safety. Quality. Ethics."

@@ -1,5 +1,6 @@
 import { SERVICES } from '../lib/data'
 import { PageHeader } from '../components/page-header'
+import { SEO } from '../components/seo'
 import { SectionHeader } from '../components/section-header'
 import { CtaSection } from '../components/sections/cta-section'
 import { VerticalTabs } from '../components/ui/vertical-tabs'
@@ -7,6 +8,13 @@ import { VerticalTabs } from '../components/ui/vertical-tabs'
 export function ServicesPage() {
   return (
     <>
+      <SEO
+        title="Our Services"
+        description="Equipment leasing, marine logistics, offshore support, shipping agency, ship chandling, metal fabrication, facility maintenance, procurement and general contracts across Nigeria and West Africa."
+        path="/services"
+        ogImage="/images/crane-containers.jpg"
+      />
+
       <PageHeader
         eyebrow="Our Services"
         title="One Company. Total Solutions."

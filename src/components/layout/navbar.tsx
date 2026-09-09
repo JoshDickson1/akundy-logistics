@@ -285,9 +285,9 @@ export function Navbar() {
       <div ref={navRef} className="relative px-4 py-2.5">
         <div className="relative mx-auto flex max-w-6xl items-center justify-between gap-3">
 
-          {/* Logo no background, just the mark */}
+          {/* Logo */}
           <NavLink to="/" onClick={close} className="flex items-center">
-            <Logo variant="mark" className="h-16" />
+            <Logo variant="mark" className="h-20" />
           </NavLink>
 
           {/* ── Center nav island (desktop) ── */}

@@ -97,7 +97,7 @@ export function Footer() {
           {/* Brand card */}
           <div className="rounded-[28px] border border-border bg-white p-8 shadow-[0_4px_24px_rgba(0,0,0,0.05)] backdrop-blur-sm dark:border-white/[0.06] dark:bg-[#141414]/60 dark:shadow-[0_4px_24px_rgba(0,0,0,0.35)] md:p-10 lg:col-span-7">
             <div className="mb-6">
-              <Logo className="h-16" />
+              <Logo className="h-20" />
             </div>
             <h3 className="mb-4 text-3xl font-black uppercase tracking-tighter text-zinc-900 dark:text-white md:text-4xl">
               Delivering <span className="text-zinc-600 dark:text-zinc-400">Solutions</span>.

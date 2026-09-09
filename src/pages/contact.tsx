@@ -2,6 +2,7 @@ import { Mail, MapPin, Phone } from 'lucide-react'
 import { useState } from 'react'
 import { COMPANY, TEAM } from '../lib/data'
 import { PageHeader } from '../components/page-header'
+import { SEO } from '../components/seo'
 import { SectionHeader } from '../components/section-header'
 import { Button } from '../components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
@@ -9,16 +10,43 @@ import { Input } from '../components/ui/input'
 import { Label } from '../components/ui/label'
 import { Textarea } from '../components/ui/textarea'
 
-export function ContactPage() {
-  const [submitted, setSubmitted] = useState(false)
+// Replace with your Formspree form ID once created at formspree.io
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+type Status = 'idle' | 'loading' | 'success' | 'error'
+
+export function ContactPage() {
+  const [status, setStatus] = useState<Status>('idle')
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setSubmitted(true)
+    setStatus('loading')
+    const formData = new FormData(e.currentTarget)
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      })
+      if (res.ok) {
+        setStatus('success')
+        e.currentTarget.reset()
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
     <>
+      <SEO
+        title="Contact Us"
+        description="Get in touch with Akundy Logistics. Request a quote, ask about equipment availability, or arrange a meeting with our team in Port Harcourt, Nigeria."
+        path="/contact"
+      />
+
       <PageHeader
         eyebrow="Contact"
         title="Let's Talk About Your Project"
@@ -127,7 +155,7 @@ export function ContactPage() {
                   <CardTitle className="text-2xl">Request a Quote</CardTitle>
                 </CardHeader>
                 <CardContent className="p-8 pt-0">
-                  {submitted ? (
+                  {status === 'success' ? (
                     <div className="rounded-3xl bg-brand/10 p-10 text-center">
                       <h3 className="text-xl font-bold text-brand">Message Received</h3>
                       <p className="mt-2 text-muted-foreground">
@@ -137,7 +165,7 @@ export function ContactPage() {
                       <Button
                         variant="outline"
                         className="mt-6"
-                        onClick={() => setSubmitted(false)}
+                        onClick={() => setStatus('idle')}
                       >
                         Send Another Message
                       </Button>
@@ -187,17 +215,21 @@ export function ContactPage() {
                           placeholder="Tell us about your project or requirements..."
                         />
                       </div>
+
+                      {status === 'error' && (
+                        <p className="rounded-2xl bg-destructive/10 px-4 py-3 text-sm text-destructive">
+                          Something went wrong. Please try again or email us directly at {COMPANY.email}.
+                        </p>
+                      )}
+
                       <Button
                         type="submit"
                         className="w-full bg-brand text-brand-foreground hover:bg-brand/90"
                         size="lg"
+                        disabled={status === 'loading'}
                       >
-                        Send Message
+                        {status === 'loading' ? 'Sending…' : 'Send Message'}
                       </Button>
-                      <p className="text-xs text-muted-foreground">
-                        This form is a demo. Connect it to your preferred form-to-email service
-                        before going live.
-                      </p>
                     </form>
                   )}
                 </CardContent>
@@ -207,7 +239,7 @@ export function ContactPage() {
         </div>
       </section>
 
-      {/* Map Placeholder */}
+      {/* Map */}
       <section className="bg-muted/30 py-24">
         <div className="mx-auto max-w-5xl px-4 lg:px-8">
           <div className="overflow-hidden rounded-[2.5rem] border border-border bg-card shadow-soft-lg">
@@ -233,7 +265,7 @@ export function ContactPage() {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Akundy Logistics location"
+                  title="Akundy Logistics location map"
                   className="absolute inset-0 h-full w-full"
                 />
               </div>

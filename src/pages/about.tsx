@@ -3,6 +3,7 @@ import { CtaSection } from '../components/sections/cta-section'
 import { MissionSection } from '../components/sections/mission-section'
 import { DiagonalAccent } from '../components/diagonal-divider'
 import { PageHeader } from '../components/page-header'
+import { SEO } from '../components/seo'
 import { SectionHeader } from '../components/section-header'
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { ImageExpansionSlider, type ExpansionImage } from '../components/ui/image-expansion'
@@ -178,6 +179,13 @@ export function AboutPage() {
 
   return (
     <>
+      <SEO
+        title="About Us"
+        description="Learn about Akundy Logistics and Development Company Limited: our story, mission, values and leadership team. Incorporated in Nigeria in 2023, serving oil and gas, marine and industrial clients."
+        path="/about"
+        ogImage="/images/marine-port.jpg"
+      />
+
       <PageHeader
         eyebrow="About Us"
         title="Delivering Solutions. Building Value."

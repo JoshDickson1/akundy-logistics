@@ -1,11 +1,18 @@
 import { Download, ExternalLink } from 'lucide-react'
 import { CERTIFICATIONS, COMPANY } from '../lib/data'
 import { PageHeader } from '../components/page-header'
+import { SEO } from '../components/seo'
 import { SectionHeader } from '../components/section-header'
 
 export function CertificationsPage() {
   return (
     <>
+      <SEO
+        title="Certifications & Licences"
+        description="Akundy Logistics holds active CAC registration (RC 6891533), NPA Ship Agent licence, NCS Ship Chandler licence and NUPRC Oil Industry Permit. View our full compliance credentials."
+        path="/certifications"
+      />
+
       <PageHeader
         eyebrow="Certifications"
         title="Registered. Licensed. Trusted."

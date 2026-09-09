@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { EQUIPMENT } from '../lib/data'
 import { PageHeader } from '../components/page-header'
+import { SEO } from '../components/seo'
 import { SectionHeader } from '../components/section-header'
 import { GalleryGrid, type GalleryItem } from '../components/ui/gallery-grid'
 
@@ -54,6 +55,13 @@ export function EquipmentCataloguePage() {
 
   return (
     <>
+      <SEO
+        title="Equipment Catalogue"
+        description="Browse our full equipment catalogue: ISO containers, reefer units, waste basket skips, gas cylinder racks, lube drum racks and more. Available for leasing in Nigeria and West Africa."
+        path="/equipment"
+        ogImage="/images/crane-containers.jpg"
+      />
+
       <PageHeader
         eyebrow="Equipment Leasing"
         title="Equipment Catalogue"
