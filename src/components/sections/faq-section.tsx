@@ -14,7 +14,7 @@ const FAQS = [
   },
   {
     q: 'Are you licensed to operate in Nigeria\'s oil and gas sector?',
-    a: 'Yes. We hold a NUPRC Oil Industry Permit (Major Category) — Permit No. NUPRC/OGISP/26/5131560/N451240, valid to March 2027 — covering Rehabilitation, Fabrication Works and Overhead Tanks. We are also registered with the NPA and licensed by Nigeria Customs Service as a ship chandler.',
+    a: 'Yes. We hold a NUPRC Oil Industry Permit (Major Category) Permit No. NUPRC/OGISP/26/5131560/N451240, valid to March 2027 covering Rehabilitation, Fabrication Works and Overhead Tanks. We are also registered with the NPA and licensed by Nigeria Customs Service as a ship chandler.',
   },
   {
     q: 'What areas do you cover?',
@@ -26,7 +26,7 @@ const FAQS = [
   },
   {
     q: 'Can you handle both short-term and long-term contracts?',
-    a: 'Absolutely. We offer flexible leasing periods and contract structures tailored to your project timeline — from single-mobilisation jobs to multi-year service agreements. We work closely with clients to align on cost, scope and delivery.',
+    a: 'Absolutely. We offer flexible leasing periods and contract structures tailored to your project timeline from single-mobilisation jobs to multi-year service agreements. We work closely with clients to align on cost, scope and delivery.',
   },
 ]
 
@@ -152,7 +152,7 @@ export function FaqSection() {
             </Link>
           </div>
 
-          {/* Right — accordion */}
+          {/* Right accordion */}
           <div className="flex flex-col gap-2.5">
             {FAQS.map((faq, i) => (
               <AccordionItem key={i} q={faq.q} a={faq.a} index={i} />

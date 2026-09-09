@@ -32,16 +32,24 @@ export function Timeline({ data }: { data: TimelineEntry[] }) {
     <div ref={containerRef} className="relative w-full font-sans">
       {/* Entries */}
       <div ref={lineRef} className="relative">
+        {/* Vertical track line rendered first so dots paint on top */}
+        <div className="absolute left-[17px] top-0 h-full w-[2px] bg-border/40">
+          <motion.div
+            style={{ height: beamHeight, opacity: beamOpacity }}
+            className="absolute inset-x-0 top-0 bg-brand"
+          />
+        </div>
+
         {data.map((item, i) => (
           <div key={i} className="flex gap-6 pt-12 first:pt-0 md:gap-14 md:pt-20">
 
-            {/* Left: date + dot (sticky) */}
-            <div className="sticky top-28 relative flex w-9 shrink-0 flex-col items-center self-start">
-              {/* Dot */}
+            {/* Left: dot + date (sticky) */}
+            <div className="relative flex w-9 shrink-0 flex-col items-center self-start sticky top-28">
+              {/* Dot z-10 sits above the line */}
               <div className="relative z-10 flex size-9 items-center justify-center rounded-full border border-border/60 bg-card shadow-soft">
                 <div className="size-3 rounded-full bg-brand" />
               </div>
-              {/* Year label — desktop, absolute so it doesn't widen the column */}
+              {/* Year label: absolute so it never widens the column */}
               <span className="absolute top-11 left-1/2 -translate-x-1/2 hidden whitespace-nowrap text-xs font-black uppercase tracking-[0.18em] text-muted-foreground/40 md:block">
                 {item.title}
               </span>
@@ -49,7 +57,6 @@ export function Timeline({ data }: { data: TimelineEntry[] }) {
 
             {/* Right: content */}
             <div className="flex-1 pb-16">
-              {/* Year label — mobile */}
               <p className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-brand md:hidden">
                 {item.title}
               </p>
@@ -57,14 +64,6 @@ export function Timeline({ data }: { data: TimelineEntry[] }) {
             </div>
           </div>
         ))}
-
-        {/* Vertical track line */}
-        <div className="absolute left-[17px] top-0 w-[2px] h-full bg-border/40">
-          <motion.div
-            style={{ height: beamHeight, opacity: beamOpacity }}
-            className="absolute inset-x-0 top-0 bg-brand"
-          />
-        </div>
       </div>
     </div>
   )

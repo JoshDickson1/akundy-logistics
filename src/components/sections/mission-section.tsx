@@ -69,7 +69,7 @@ export function MissionSection() {
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.15fr_0.85fr] lg:gap-8">
 
-          {/* Left — copy + MD */}
+          {/* Left copy + MD */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -88,7 +88,7 @@ export function MissionSection() {
             <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
               At {COMPANY.name}, we bring together{' '}
               <strong className="font-bold text-foreground">Marine expertise, Offshore capability, Engineering precision, Logistics reliability and Safety discipline</strong>{' '}
-              to deliver integrated solutions that keep your operations running — on time and within budget.
+              to deliver integrated solutions that keep your operations running on time and within budget.
             </p>
 
             {/* MD info */}
@@ -126,7 +126,7 @@ export function MissionSection() {
             </div>
           </motion.div>
 
-          {/* Center — image */}
+          {/* Center image */}
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -151,7 +151,7 @@ export function MissionSection() {
             </div>
           </motion.div>
 
-          {/* Right — rotating badge + mission + vision */}
+          {/* Right rotating badge + mission + vision */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -159,7 +159,7 @@ export function MissionSection() {
             transition={{ duration: 0.6, ease: easeOut, delay: 0.2 }}
             className="flex flex-col gap-8"
           >
-            {/* Rotating badge — top right */}
+            {/* Rotating badge top right */}
             <div className="flex justify-end">
               <RotatingRingBadge />
             </div>
