@@ -8,6 +8,7 @@ import { StoryScroll } from '../components/ui/story-scroll'
 import { CtaSection } from '../components/sections/cta-section'
 import { FaqSection } from '../components/sections/faq-section'
 import { MissionSection } from '../components/sections/mission-section'
+import { VideoGallery } from '../components/sections/video-gallery'
 import { SEO } from '../components/seo'
 import { WHY_CHOOSE_US, EQUIPMENT } from '../lib/data'
 
@@ -831,6 +832,9 @@ export function HomePage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Video gallery */}
+      <VideoGallery />
 
       {/* FAQ */}
       <FaqSection />
