@@ -329,22 +329,22 @@ export const EQUIPMENT = [
 ]
 
 export const WHY_CHOOSE_US = [
-  { icon: Users, title: 'Experienced Workforce', text: '40+ years combined management experience across marine, offshore and industrial sectors — seasoned professionals with deep operational knowledge.' },
+  { icon: Users, title: 'Experienced Workforce', text: '40+ years combined management experience across marine, offshore and industrial sectors: seasoned professionals with deep operational knowledge.' },
   { icon: Clock, title: 'Timely Delivery', text: 'We deliver projects and equipment on schedule, every time. Prompt mobilisation and reliable logistics keep your operations moving.' },
   { icon: BadgeCheck, title: 'Quality Service', text: 'Quality is non-negotiable. We meet agreed requirements on time and within budget, without compromising industry standards.' },
   { icon: Smile, title: 'Customer Focus', text: 'Long-term partnerships built on trust, responsiveness and practical, cost-effective solutions tailored to your needs.' },
   { icon: ShieldCheck, title: 'Safety Culture', text: 'HSE compliance is embedded in every operation. We continually improve our safety records across all sites and vessels.' },
-  { icon: Award, title: 'Competitive Pricing', text: 'Premium service at rates that protect your project economics — quality and value without compromise.' },
+  { icon: Award, title: 'Competitive Pricing', text: 'Premium service at rates that protect your project economics: quality and value without compromise.' },
 ]
 
 export const CORE_VALUES = [
   { icon: Heart, title: 'Honesty', text: 'Transparent, ethical dealings in every relationship and contract.' },
-  { icon: BadgeCheck, title: 'Integrity', text: 'We do what we say, always — with clients, partners and staff.' },
+  { icon: BadgeCheck, title: 'Integrity', text: 'We do what we say, always: with clients, partners and staff.' },
   { icon: Zap, title: 'Hard Work', text: 'Determined effort on every assignment, from the first call to final delivery.' },
   { icon: ArrowRight, title: 'Innovation', text: 'Practical solutions that improve efficiency and deliver real value.' },
   { icon: RefreshCw, title: 'Consistency', text: 'The same high standard delivered across every project, every time.' },
   { icon: Cog, title: 'Reliability', text: 'Equipment and people you can count on when it matters most.' },
-  { icon: Wrench, title: 'Thoroughness', text: 'Attention to detail at every stage — no shortcuts, no compromises.' },
+  { icon: Wrench, title: 'Thoroughness', text: 'Attention to detail at every stage: no shortcuts, no compromises.' },
   { icon: Trophy, title: 'Excellence', text: 'Committed to quality that meets and exceeds international standards.' },
   { icon: ShieldCheck, title: 'Safety Compliance', text: 'Safety-first operations on every site, vessel and facility.' },
   { icon: HardHat, title: 'Professionalism', text: 'Skilled people, disciplined processes and polished service delivery.' },
@@ -416,7 +416,7 @@ export const CERTIFICATIONS = [
     icon: Ship,
   },
   {
-    title: 'Oil Industry Permit — Major Category',
+    title: 'Oil Industry Permit: Major Category',
     issuer: 'Nigerian Upstream Petroleum Regulatory Commission',
     ref: 'Permit No. NUPRC/OGISP/26/5131560/N451240',
     validity: 'Valid till 27 Mar 2027',

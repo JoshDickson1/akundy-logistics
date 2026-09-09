@@ -222,16 +222,18 @@ export function ContactPage() {
                   <p>Port Harcourt, Rivers State, Nigeria</p>
                 </div>
               </div>
-              <div className="relative min-h-[320px] bg-akundy-orange lg:col-span-2">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <MapPin className="mx-auto size-10 text-white" />
-                    <p className="mt-4 font-bold">Map Integration Placeholder</p>
-                    <p className="text-sm text-white/70">
-                      Embed Google Maps or Mapbox here for exact location.
-                    </p>
-                  </div>
-                </div>
+              <div className="relative min-h-[320px] overflow-hidden lg:col-span-2">
+                <iframe
+                  src="https://maps.google.com/maps?q=KM+17+Port+Harcourt+Aba+Expressway+Rivers+State+Nigeria&output=embed&z=14"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, minHeight: '320px' }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Akundy Logistics location"
+                  className="absolute inset-0 h-full w-full"
+                />
               </div>
             </div>
           </div>

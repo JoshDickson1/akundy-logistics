@@ -69,10 +69,10 @@ const JOURNEY: TimelineEntry[] = [
         </p>
         <ul className="space-y-2 text-sm text-muted-foreground">
           {[
-            'Nigerian Ports Authority — Registered Ship Agent',
-            'Nigeria Customs Service — Ship Chandler Licence',
-            'NUPRC / DPR — Oil Industry Permit',
-            'Federal Inland Revenue Service — TIN Registered',
+            'Nigerian Ports Authority: Registered Ship Agent',
+            'Nigeria Customs Service: Ship Chandler Licence',
+            'NUPRC / DPR: Oil Industry Permit',
+            'Federal Inland Revenue Service: TIN Registered',
           ].map((item) => (
             <li key={item} className="flex items-start gap-2">
               <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-brand" />
