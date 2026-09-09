@@ -1,4 +1,4 @@
-import { BadgeCheck } from 'lucide-react'
+import { BadgeCheck, Download, ExternalLink } from 'lucide-react'
 import { CERTIFICATIONS, COMPANY } from '../lib/data'
 import { PageHeader } from '../components/page-header'
 import { SectionHeader } from '../components/section-header'
@@ -89,30 +89,69 @@ export function CertificationsPage() {
                     </div>
                   ))}
                 </dl>
+
+                {/* Download / View actions */}
+                <div className="mt-10 flex flex-wrap gap-3">
+                  <a
+                    href="/documents/cac-certificate.pdf"
+                    download="Akundy-CAC-Certificate.pdf"
+                    className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-bold text-background transition-opacity hover:opacity-80"
+                  >
+                    <Download className="size-4" /> Download PDF
+                  </a>
+                  <a
+                    href="/documents/cac-certificate.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-border px-5 py-2.5 text-sm font-bold text-foreground transition-colors hover:border-brand hover:text-brand"
+                  >
+                    <ExternalLink className="size-4" /> View in Browser
+                  </a>
+                </div>
               </div>
 
-              <div className="brand-section flex flex-col justify-between gap-8 p-8 lg:p-12">
-                <div>
+              <div className="flex flex-col gap-0">
+                {/* Certificate image preview */}
+                <div className="relative flex-1 overflow-hidden bg-muted/20">
+                  <a
+                    href="/documents/cac-certificate.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block h-full"
+                    title="View CAC Certificate"
+                  >
+                    <img
+                      src="/cac-certificate.png"
+                      alt="CAC Certificate of Incorporation"
+                      className="h-full max-h-[500px] w-full object-contain object-top p-4 transition-opacity group-hover:opacity-90 lg:max-h-none"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
+                      <span className="inline-flex items-center gap-2 rounded-full bg-black/70 px-5 py-2.5 text-sm font-bold text-white backdrop-blur-sm">
+                        <ExternalLink className="size-4" /> View Full Document
+                      </span>
+                    </div>
+                  </a>
+                </div>
+
+                {/* Regulatory coverage */}
+                <div className="brand-section p-8 lg:p-10">
                   <p className="text-xs font-bold uppercase tracking-widest text-foreground/60">Regulatory Coverage</p>
-                  <div className="mt-6 grid grid-cols-2 gap-3">
+                  <div className="mt-5 grid grid-cols-3 gap-2.5">
                     {[
                       ['CAC', 'Corporate Affairs Commission'],
-                      ['FIRS', 'Fed. Inland Revenue Service'],
-                      ['NCS', 'Nigeria Customs Service'],
+                      ['FIRS', 'Fed. Inland Revenue'],
+                      ['NCS', 'Nigeria Customs'],
                       ['NPA', 'Nigerian Ports Authority'],
-                      ['NUPRC', 'Upstream Petroleum Regulatory Commission'],
-                      ['CAMA 2020', 'Companies & Allied Matters Act'],
+                      ['NUPRC', 'Upstream Petroleum Reg.'],
+                      ['CAMA 2020', 'Companies Act'],
                     ].map(([abbr, full]) => (
-                      <div key={abbr} className="rounded-2xl bg-foreground/5 p-4 dark:bg-white/5">
-                        <p className="text-lg font-black text-brand">{abbr}</p>
-                        <p className="mt-0.5 text-[10px] font-semibold leading-tight text-foreground/60 dark:text-white/60">{full}</p>
+                      <div key={abbr} className="rounded-2xl bg-foreground/5 p-3 dark:bg-white/5">
+                        <p className="text-base font-black text-brand">{abbr}</p>
+                        <p className="mt-0.5 text-[9px] font-semibold leading-tight text-foreground/60 dark:text-white/60">{full}</p>
                       </div>
                     ))}
                   </div>
                 </div>
-                <p className="text-xs uppercase tracking-widest text-foreground/40 dark:text-white/40">
-                  Original documents available on request
-                </p>
               </div>
             </div>
           </div>
