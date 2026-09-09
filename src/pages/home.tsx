@@ -276,7 +276,7 @@ function ProductsVisibleGrid() {
   const featured = EQUIPMENT[0]
   const right = EQUIPMENT.slice(1, 4)
   return (
-    <div className="flex flex-col gap-4 lg:h-[460px] lg:flex-row">
+    <div className="flex flex-col gap-4 lg:h-[600px] lg:flex-row">
       {/* Left: featured big card */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
