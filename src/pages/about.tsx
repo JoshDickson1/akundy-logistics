@@ -174,7 +174,7 @@ const JOURNEY: TimelineEntry[] = [
 ]
 
 export function AboutPage() {
-  const founder = TEAM[0]
+  const founder = TEAM[1]
 
   return (
     <>
@@ -287,7 +287,7 @@ export function AboutPage() {
             <div className="relative">
               <div className="overflow-hidden rounded-3xl bg-muted shadow-soft-xl">
                 <img
-                  src="/images/founder.jpg"
+                  src="/images/executive-director.jpg"
                   alt={founder.name}
                   className="h-[480px] w-full object-cover object-top"
                 />
@@ -302,20 +302,20 @@ export function AboutPage() {
             {/* Text */}
             <div className="lg:pt-4">
               <span className="inline-flex items-center rounded-full bg-foreground px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-background">
-                About Our Founder
+                Meet Our Executive Director
               </span>
               <h2 className="mt-6 text-4xl font-black leading-tight tracking-tight lg:text-5xl">
-                Vision. Drive.<br />Execution.
+                Leadership.<br />Purpose.<br />Results.
               </h2>
               <div className="mt-2 h-1 w-12 rounded-full bg-brand" />
               <p className="mt-8 text-base leading-relaxed text-muted-foreground">
-                {founder.name} founded Akundy Logistics and Development Company Limited in 2023 with a clear mandate: to build a world-class indigenous marine and industrial services company rooted in Nigeria, capable of competing at the highest levels across West Africa and internationally.
+                {founder.name} serves as Executive Director of Akundy Logistics and Development Company Limited, providing strategic oversight across the company's operations, partnerships and growth initiatives in Nigeria, West Africa and international markets.
               </p>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                Drawing on decades of hands-on experience in offshore operations, port logistics and industrial services, he assembled a seasoned leadership team and secured all major regulatory licences within the company's first year. His leadership philosophy centres on integrity, operational discipline and a relentless focus on client outcomes.
+                Her leadership brings structure, discipline and a client-first approach to every aspect of the business, from business development and relationship management to ensuring operational standards are met across all service lines.
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
-                {['Managing Director', 'Chief Executive Officer', 'Port Harcourt, Nigeria'].map((tag) => (
+                {['Executive Director', 'Port Harcourt, Nigeria'].map((tag) => (
                   <span
                     key={tag}
                     className="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand/5 px-4 py-1.5 text-xs font-semibold text-brand"
@@ -327,7 +327,7 @@ export function AboutPage() {
               </div>
               <div className="mt-10 border-t border-border pt-8">
                 <p className="text-sm italic leading-relaxed text-muted-foreground">
-                  "We built Akundy to solve real problems — to give Nigerian industry a reliable, professional partner that delivers on its word, every single time."
+                  "Our commitment is simple: deliver on every promise, protect every relationship, and build something our clients can depend on for years to come."
                 </p>
                 <p className="mt-3 text-sm font-black">{founder.name}</p>
               </div>
