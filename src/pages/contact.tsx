@@ -1,5 +1,5 @@
+import { useForm, ValidationError } from '@formspree/react'
 import { Mail, MapPin, Phone } from 'lucide-react'
-import { useState } from 'react'
 import { COMPANY, TEAM } from '../lib/data'
 import { PageHeader } from '../components/page-header'
 import { SEO } from '../components/seo'
@@ -10,43 +10,69 @@ import { Input } from '../components/ui/input'
 import { Label } from '../components/ui/label'
 import { Textarea } from '../components/ui/textarea'
 
-// Replace with your Formspree form ID once created at formspree.io
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xppzkdej'
+function QuoteForm() {
+  const [state, handleSubmit] = useForm('xppzkdej')
 
-type Status = 'idle' | 'loading' | 'success' | 'error'
-
-export function ContactPage() {
-  const [status, setStatus] = useState<Status>('idle')
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setStatus('loading')
-    const form = e.currentTarget
-    const data = {
-      name:    (form.elements.namedItem('name')    as HTMLInputElement).value,
-      company: (form.elements.namedItem('company') as HTMLInputElement).value,
-      email:   (form.elements.namedItem('email')   as HTMLInputElement).value,
-      phone:   (form.elements.namedItem('phone')   as HTMLInputElement).value,
-      service: (form.elements.namedItem('service') as HTMLInputElement).value,
-      message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
-    }
-    try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      })
-      if (res.ok) {
-        setStatus('success')
-        e.currentTarget.reset()
-      } else {
-        setStatus('error')
-      }
-    } catch {
-      setStatus('error')
-    }
+  if (state.succeeded) {
+    return (
+      <div className="rounded-3xl bg-brand/10 p-10 text-center">
+        <h3 className="text-xl font-bold text-brand">Message Received</h3>
+        <p className="mt-2 text-muted-foreground">
+          Thank you for contacting Akundy Logistics. A member of our team will respond shortly.
+        </p>
+      </div>
+    )
   }
 
+  return (
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div className="space-y-2">
+          <Label htmlFor="name">Full Name</Label>
+          <Input id="name" name="name" required placeholder="Your name" />
+          <ValidationError field="name" errors={state.errors} className="text-xs text-destructive" />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="company">Company</Label>
+          <Input id="company" name="company" placeholder="Your organisation" />
+        </div>
+      </div>
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div className="space-y-2">
+          <Label htmlFor="email">Email</Label>
+          <Input id="email" name="email" type="email" required placeholder="you@company.com" />
+          <ValidationError field="email" errors={state.errors} className="text-xs text-destructive" />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="phone">Phone</Label>
+          <Input id="phone" name="phone" placeholder="+234 ..." />
+        </div>
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="service">Service of Interest</Label>
+        <Input id="service" name="service" placeholder="e.g. Equipment Leasing, Marine Logistics" />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="message">Message</Label>
+        <Textarea id="message" name="message" required placeholder="Tell us about your project or requirements..." />
+        <ValidationError field="message" errors={state.errors} className="text-xs text-destructive" />
+      </div>
+
+      <ValidationError errors={state.errors} className="rounded-2xl bg-destructive/10 px-4 py-3 text-sm text-destructive" />
+
+      <Button
+        type="submit"
+        className="w-full bg-brand text-brand-foreground hover:bg-brand/90"
+        size="lg"
+        disabled={state.submitting}
+      >
+        {state.submitting ? 'Sending…' : 'Send Message'}
+      </Button>
+    </form>
+  )
+}
+
+export function ContactPage() {
   return (
     <>
       <SEO
@@ -63,7 +89,6 @@ export function ContactPage() {
         imagePosition="center 30%"
       />
 
-      {/* Contact Content */}
       <section className="py-24">
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-2">
@@ -105,10 +130,7 @@ export function ContactPage() {
                       <ul className="mt-1 space-y-1 text-sm text-muted-foreground">
                         {COMPANY.phones.slice(0, 2).map((phone) => (
                           <li key={phone}>
-                            <a
-                              href={`tel:${phone.replace(/\s/g, '')}`}
-                              className="hover:text-brand"
-                            >
+                            <a href={`tel:${phone.replace(/\s/g, '')}`} className="hover:text-brand">
                               {phone}
                             </a>
                           </li>
@@ -126,10 +148,7 @@ export function ContactPage() {
                     <div>
                       <h3 className="font-bold">Email</h3>
                       <p className="mt-1 text-sm text-muted-foreground">
-                        <a
-                          href={`mailto:${COMPANY.email}`}
-                          className="hover:text-brand"
-                        >
+                        <a href={`mailto:${COMPANY.email}`} className="hover:text-brand">
                           {COMPANY.email}
                         </a>
                       </p>
@@ -163,83 +182,7 @@ export function ContactPage() {
                   <CardTitle className="text-2xl">Request a Quote</CardTitle>
                 </CardHeader>
                 <CardContent className="p-8 pt-0">
-                  {status === 'success' ? (
-                    <div className="rounded-3xl bg-brand/10 p-10 text-center">
-                      <h3 className="text-xl font-bold text-brand">Message Received</h3>
-                      <p className="mt-2 text-muted-foreground">
-                        Thank you for contacting Akundy Logistics. A member of our team will
-                        respond shortly.
-                      </p>
-                      <Button
-                        variant="outline"
-                        className="mt-6"
-                        onClick={() => setStatus('idle')}
-                      >
-                        Send Another Message
-                      </Button>
-                    </div>
-                  ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="grid gap-6 sm:grid-cols-2">
-                        <div className="space-y-2">
-                          <Label htmlFor="name">Full Name</Label>
-                          <Input id="name" name="name" required placeholder="Your name" />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="company">Company</Label>
-                          <Input id="company" name="company" placeholder="Your organisation" />
-                        </div>
-                      </div>
-                      <div className="grid gap-6 sm:grid-cols-2">
-                        <div className="space-y-2">
-                          <Label htmlFor="email">Email</Label>
-                          <Input
-                            id="email"
-                            name="email"
-                            type="email"
-                            required
-                            placeholder="you@company.com"
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="phone">Phone</Label>
-                          <Input id="phone" name="phone" placeholder="+234 ..." />
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="service">Service of Interest</Label>
-                        <Input
-                          id="service"
-                          name="service"
-                          placeholder="e.g. Equipment Leasing, Marine Logistics"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="message">Message</Label>
-                        <Textarea
-                          id="message"
-                          name="message"
-                          required
-                          placeholder="Tell us about your project or requirements..."
-                        />
-                      </div>
-
-                      {status === 'error' && (
-                        <p className="rounded-2xl bg-destructive/10 px-4 py-3 text-sm text-destructive">
-                          Something went wrong. Please try again or email us directly at {COMPANY.email}.
-                        </p>
-                      )}
-
-                      <Button
-                        type="submit"
-                        className="w-full bg-brand text-brand-foreground hover:bg-brand/90"
-                        size="lg"
-                        disabled={status === 'loading'}
-                      >
-                        {status === 'loading' ? 'Sending…' : 'Send Message'}
-                      </Button>
-                    </form>
-                  )}
+                  <QuoteForm />
                 </CardContent>
               </Card>
             </div>
