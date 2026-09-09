@@ -1,8 +1,7 @@
-import { BadgeCheck, Download, ExternalLink } from 'lucide-react'
+import { Download, ExternalLink } from 'lucide-react'
 import { CERTIFICATIONS, COMPANY } from '../lib/data'
 import { PageHeader } from '../components/page-header'
 import { SectionHeader } from '../components/section-header'
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 
 export function CertificationsPage() {
   return (
@@ -11,7 +10,8 @@ export function CertificationsPage() {
         eyebrow="Certifications"
         title="Registered. Licensed. Trusted."
         description="We maintain the registrations, licences and compliance records that give our clients confidence in every contract."
-        image="/images/SP5u1.jpg"
+        image="/images/why-quality.jpg"
+        imagePosition="center 30%"
         badges={[
           { value: 'RC 6891533', label: 'CAC Registered' },
           { value: 'NPA', label: 'Ship Agent' },
@@ -28,35 +28,65 @@ export function CertificationsPage() {
             description={`All active licences and registrations held by ${COMPANY.shortName}.`}
           />
 
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {CERTIFICATIONS.map((cert) => (
-              <Card
-                key={cert.title}
-                className="group relative overflow-hidden rounded-3xl border-border/50 transition-all hover:-translate-y-1 hover:shadow-soft-xl"
-              >
-                <div className="absolute right-0 top-0 h-28 w-28 translate-x-10 -translate-y-10 rounded-full bg-brand/10 transition-transform group-hover:scale-150" />
-                <CardHeader>
-                  <div className="mb-5 inline-flex size-14 items-center justify-center rounded-2xl bg-brand/10 text-brand">
-                    <cert.icon className="size-7" />
+          <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {CERTIFICATIONS.map((cert, idx) => {
+              const isLight = idx % 2 === 0
+              const isCurrent = cert.validity === 'Current' || cert.validity.includes('2023')
+              return (
+                <div
+                  key={cert.title}
+                  className={
+                    isLight
+                      ? 'group relative overflow-hidden rounded-3xl border border-border/50 bg-card p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-soft-xl'
+                      : 'group relative overflow-hidden rounded-3xl bg-[#0a0a0a] p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_32px_64px_-12px_rgba(249,115,22,0.18)]'
+                  }
+                >
+                  {/* Orange top bar */}
+                  <div className="absolute left-0 top-0 h-[3px] w-full bg-brand" />
+
+                  {/* Faded watermark */}
+                  <span
+                    className={`pointer-events-none absolute right-5 top-4 select-none font-black leading-none ${isLight ? 'text-foreground/[0.06]' : 'text-white/[0.04]'}`}
+                    style={{ fontSize: 'clamp(3rem,6vw,4rem)' }}
+                  >
+                    {cert.ref.replace(/[^A-Z0-9]/g, '').slice(0, 4)}
+                  </span>
+
+                  {/* Icon */}
+                  <div className="relative mb-6 inline-flex size-12 items-center justify-center rounded-2xl bg-brand/15">
+                    <cert.icon className="size-6 text-brand" />
                   </div>
-                  <CardTitle className="text-base leading-tight">{cert.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-xs font-bold uppercase tracking-widest text-brand">
+
+                  {/* Issuer */}
+                  <p className={`text-[10px] font-bold uppercase tracking-[0.2em] ${isLight ? 'text-muted-foreground/60' : 'text-white/35'}`}>
                     {cert.issuer}
                   </p>
-                  <div className="space-y-1.5 rounded-xl bg-muted/50 px-3 py-2.5">
-                    <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground/70">Reference</p>
-                    <p className="text-xs font-semibold text-foreground">{cert.ref}</p>
+
+                  {/* Title */}
+                  <h3 className={`mt-2 text-base font-black leading-snug tracking-tight ${isLight ? 'text-foreground' : 'text-white'}`}>
+                    {cert.title}
+                  </h3>
+
+                  {/* Divider */}
+                  <div className={`my-5 h-px ${isLight ? 'bg-border' : 'bg-white/10'}`} />
+
+                  {/* Reference */}
+                  <div className={`rounded-xl px-4 py-3 ${isLight ? 'bg-muted/60' : 'bg-white/[0.05]'}`}>
+                    <p className={`text-[9px] font-bold uppercase tracking-widest ${isLight ? 'text-muted-foreground/50' : 'text-white/25'}`}>Reference</p>
+                    <p className={`mt-1 font-mono text-xs font-bold ${isLight ? 'text-foreground/80' : 'text-white/70'}`}>{cert.ref}</p>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <BadgeCheck className="size-4 shrink-0 text-brand" />
-                    <p className="text-xs font-medium text-muted-foreground">{cert.validity}</p>
+
+                  {/* Validity */}
+                  <div className="mt-4 flex items-center gap-2">
+                    <span className={`size-2 shrink-0 rounded-full ${isCurrent ? 'bg-emerald-400' : 'bg-brand'}`} />
+                    <p className={`text-xs font-medium ${isLight ? 'text-muted-foreground' : 'text-white/40'}`}>{cert.validity}</p>
                   </div>
-                  <p className="text-sm text-muted-foreground">{cert.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+
+                  {/* Description */}
+                  <p className={`mt-5 text-sm leading-relaxed ${isLight ? 'text-muted-foreground' : 'text-white/35'}`}>{cert.description}</p>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -133,25 +163,6 @@ export function CertificationsPage() {
                   </a>
                 </div>
 
-                {/* Regulatory coverage */}
-                <div className="brand-section p-8 lg:p-10">
-                  <p className="text-xs font-bold uppercase tracking-widest text-foreground/60">Regulatory Coverage</p>
-                  <div className="mt-5 grid grid-cols-3 gap-2.5">
-                    {[
-                      ['CAC', 'Corporate Affairs Commission'],
-                      ['FIRS', 'Fed. Inland Revenue'],
-                      ['NCS', 'Nigeria Customs'],
-                      ['NPA', 'Nigerian Ports Authority'],
-                      ['NUPRC', 'Upstream Petroleum Reg.'],
-                      ['CAMA 2020', 'Companies Act'],
-                    ].map(([abbr, full]) => (
-                      <div key={abbr} className="rounded-2xl bg-foreground/5 p-3 dark:bg-white/5">
-                        <p className="text-base font-black text-brand">{abbr}</p>
-                        <p className="mt-0.5 text-[9px] font-semibold leading-tight text-foreground/60 dark:text-white/60">{full}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
           </div>

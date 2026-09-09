@@ -546,7 +546,7 @@ export function HomePage() {
       </section>
 
       {/* Our Products */}
-      <section className="bg-[#fdf6ee] py-24 lg:py-32">
+      <section className="bg-[#fdf6ee] py-24 dark:bg-[#111] lg:py-32">
         <div className="mx-auto max-w-[1400px] px-4 lg:px-10">
           {/* Header */}
           <div className="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">

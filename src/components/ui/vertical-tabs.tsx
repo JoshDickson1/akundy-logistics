@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'motion/react'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import type { SERVICES } from '../../lib/data'
 
 type Service = (typeof SERVICES)[number]
@@ -23,9 +24,22 @@ const SERVICE_IMAGES: Record<string, string> = {
 export function VerticalTabs({ services }: Props) {
   const [active, setActive] = useState(0)
   const current = services[active]
+  const location = useLocation()
+  const sectionRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const hash = location.hash.replace('#', '')
+    if (!hash) return
+    const idx = services.findIndex((s) => s.id === hash)
+    if (idx === -1) return
+    setActive(idx)
+    setTimeout(() => {
+      sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 80)
+  }, [location.hash, services])
 
   return (
-    <div className="grid gap-0 lg:grid-cols-[320px_1fr] xl:grid-cols-[360px_1fr]">
+    <div ref={sectionRef} className="grid gap-0 lg:grid-cols-[320px_1fr] xl:grid-cols-[360px_1fr]">
 
       {/* Tab list */}
       <div className="relative border-r border-border/60 lg:sticky lg:top-24 lg:self-start">

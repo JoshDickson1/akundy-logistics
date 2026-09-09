@@ -8,6 +8,7 @@ interface PageHeaderProps {
   children?: React.ReactNode
   className?: string
   image?: string
+  imagePosition?: string
   badges?: { label: string; value: string }[]
 }
 
@@ -24,6 +25,7 @@ export function PageHeader({
   children,
   className,
   image = '/images/marine-port.jpg',
+  imagePosition = 'center center',
   badges = DEFAULT_BADGES,
 }: PageHeaderProps) {
   return (
@@ -76,7 +78,7 @@ export function PageHeader({
         {children}
       </motion.div>
 
-      {/* Image panel — max-w-6xl, dark overlay always */}
+      {/* Image panel max-w-6xl, dark overlay always */}
       <motion.div
         initial={{ opacity: 0, y: 28 }}
         animate={{ opacity: 1, y: 0 }}
@@ -88,23 +90,24 @@ export function PageHeader({
             src={image}
             alt={title}
             className="h-full w-full object-cover"
+            style={{ objectPosition: imagePosition }}
           />
           {/* Always-dark overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
 
-          {/* Ghost watermark — page name */}
+          {/* Ghost watermark page name */}
           <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
             <span className="select-none whitespace-nowrap text-[14vw] font-black uppercase leading-none tracking-tighter text-white/[0.07]">
               {eyebrow ?? title.split(' ')[0]}
             </span>
           </div>
 
-          {/* Badges — always solid black border */}
+          {/* Badges */}
           <div className="absolute bottom-5 left-5 flex flex-wrap gap-2.5">
             {badges.map((b) => (
               <div
                 key={b.label}
-                className="rounded-full border-2 border-black bg-black px-4 py-2"
+                className="rounded-full bg-black/80 px-4 py-2 backdrop-blur-sm"
               >
                 <span className="text-sm font-black text-white">{b.value}</span>
                 <span className="ml-2 text-xs text-white/60">{b.label}</span>

@@ -23,6 +23,8 @@ export function ContactPage() {
         eyebrow="Contact"
         title="Let's Talk About Your Project"
         description="Request a quote, ask about equipment availability, or arrange a meeting with our team in Port Harcourt."
+        image="/images/why-customer.jpg"
+        imagePosition="center 30%"
       />
 
       {/* Contact Content */}

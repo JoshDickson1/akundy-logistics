@@ -281,40 +281,11 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full">
 
-      {/* ── Top info bar — hides on scroll ── */}
-      <motion.div
-        animate={{ height: scrolled ? 0 : 32, opacity: scrolled ? 0 : 1 }}
-        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-        className="overflow-hidden"
-      >
-        <div className="flex h-8 items-center overflow-hidden bg-foreground/[0.04] backdrop-blur-sm">
-          <div
-            className="flex shrink-0 items-center gap-0"
-            style={{ animation: 'marquee-horiz 28s linear infinite', willChange: 'transform' }}
-          >
-            {Array.from({ length: 6 }).map((_, i) => (
-              <span
-                key={i}
-                className="shrink-0 whitespace-nowrap px-10 text-[10px] font-bold uppercase tracking-[0.22em] text-foreground/35"
-              >
-                Delivering Solutions · Building Value · RC 6891533 · Nigeria, West Africa &amp; International
-              </span>
-            ))}
-          </div>
-          <style>{`
-            @keyframes marquee-horiz {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
-            }
-          `}</style>
-        </div>
-      </motion.div>
-
       {/* ── Main row ── */}
       <div ref={navRef} className="relative px-4 py-2.5">
         <div className="relative mx-auto flex max-w-6xl items-center justify-between gap-3">
 
-          {/* Logo — no background, just the mark */}
+          {/* Logo no background, just the mark */}
           <NavLink to="/" onClick={close} className="flex items-center">
             <Logo variant="mark" className="h-16" />
           </NavLink>
@@ -405,7 +376,7 @@ export function Navbar() {
             {/* Theme toggle */}
             <ThemeToggle />
 
-            {/* CTA — desktop */}
+            {/* CTA desktop */}
             <NavLink
               to="/contact"
               onClick={close}
@@ -419,7 +390,7 @@ export function Navbar() {
               <ArrowRight className="size-3.5" />
             </NavLink>
 
-            {/* Hamburger — mobile */}
+            {/* Hamburger mobile */}
             <button
               onClick={() => { setMobileOpen((o) => !o); setActiveMenu(null) }}
               className="flex size-10 items-center justify-center rounded-full border border-border/30 bg-background/40 backdrop-blur-2xl transition-colors hover:bg-background/60 lg:hidden"
@@ -467,7 +438,7 @@ export function Navbar() {
                 </button>
               </div>
 
-              {/* Sheet body — scrollable */}
+              {/* Sheet body scrollable */}
               <div className="flex-1 overflow-y-auto px-6 py-6">
                 <nav className="space-y-1">
                   {navItems.map((item, idx) => {
