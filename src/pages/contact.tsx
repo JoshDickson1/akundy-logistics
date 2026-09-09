@@ -21,12 +21,20 @@ export function ContactPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setStatus('loading')
-    const formData = new FormData(e.currentTarget)
+    const form = e.currentTarget
+    const data = {
+      name:    (form.elements.namedItem('name')    as HTMLInputElement).value,
+      company: (form.elements.namedItem('company') as HTMLInputElement).value,
+      email:   (form.elements.namedItem('email')   as HTMLInputElement).value,
+      phone:   (form.elements.namedItem('phone')   as HTMLInputElement).value,
+      service: (form.elements.namedItem('service') as HTMLInputElement).value,
+      message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
+    }
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
-        body: formData,
-        headers: { Accept: 'application/json' },
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       })
       if (res.ok) {
         setStatus('success')
