@@ -62,7 +62,7 @@ function RotatingRingBadge() {
 }
 
 export function MissionSection() {
-  const md = TEAM[0]
+  const md = TEAM[1]
 
   return (
     <section className="py-24 lg:py-32">
@@ -95,7 +95,7 @@ export function MissionSection() {
             <div className="mt-10 flex items-center gap-4 border-t border-border pt-7">
               <div className="size-12 overflow-hidden rounded-full bg-muted ring-2 ring-brand/20">
                 <img
-                  src="https://picsum.photos/seed/andy-nwoha-md/96/96"
+                  src="/images/executive-director.jpg"
                   alt={md.name}
                   className="h-full w-full object-cover"
                 />
