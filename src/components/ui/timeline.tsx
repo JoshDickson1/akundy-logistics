@@ -36,13 +36,13 @@ export function Timeline({ data }: { data: TimelineEntry[] }) {
           <div key={i} className="flex gap-6 pt-12 first:pt-0 md:gap-14 md:pt-20">
 
             {/* Left: date + dot (sticky) */}
-            <div className="sticky top-28 flex shrink-0 flex-col items-center self-start">
+            <div className="sticky top-28 relative flex w-9 shrink-0 flex-col items-center self-start">
               {/* Dot */}
               <div className="relative z-10 flex size-9 items-center justify-center rounded-full border border-border/60 bg-card shadow-soft">
                 <div className="size-3 rounded-full bg-brand" />
               </div>
-              {/* Year label — desktop */}
-              <span className="mt-4 hidden -rotate-0 whitespace-nowrap text-xs font-black uppercase tracking-[0.18em] text-muted-foreground/40 md:block">
+              {/* Year label — desktop, absolute so it doesn't widen the column */}
+              <span className="absolute top-11 left-1/2 -translate-x-1/2 hidden whitespace-nowrap text-xs font-black uppercase tracking-[0.18em] text-muted-foreground/40 md:block">
                 {item.title}
               </span>
             </div>
@@ -59,10 +59,10 @@ export function Timeline({ data }: { data: TimelineEntry[] }) {
         ))}
 
         {/* Vertical track line */}
-        <div className="absolute left-[17px] top-0 w-[2px] h-full bg-border/30">
+        <div className="absolute left-[17px] top-0 w-[2px] h-full bg-border/40">
           <motion.div
             style={{ height: beamHeight, opacity: beamOpacity }}
-            className="absolute inset-x-0 top-0 rounded-full bg-gradient-to-b from-brand via-brand/40 to-transparent"
+            className="absolute inset-x-0 top-0 bg-brand"
           />
         </div>
       </div>
