@@ -1,5 +1,5 @@
 import { ArrowRight, ChevronLeft, ChevronRight, ChevronUp, ChevronDown } from 'lucide-react'
-import { motion } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { StatsBento } from '../components/sections/stats-bento'
@@ -228,6 +228,126 @@ function WhyChooseCarousel() {
           </div>
         </div>
       </div>
+    </div>
+  )
+}
+
+const ease = [0.25, 0.1, 0.25, 1] as const
+
+function ProductCard({ item, delay = 0 }: { item: typeof EQUIPMENT[number]; delay?: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, ease, delay }}
+      className="group relative overflow-hidden rounded-3xl border border-border/50 bg-card shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg"
+    >
+      <div className="relative h-44 overflow-hidden">
+        <img
+          src={PRODUCT_IMAGES[item.id] ?? '/images/crane-containers.jpg'}
+          alt={item.title}
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+        <span className="absolute left-4 top-4 inline-flex items-center rounded-full border border-white/20 bg-black/40 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+          {item.category}
+        </span>
+      </div>
+      <div className="p-5">
+        <h3 className="text-base font-black leading-tight tracking-tight">{item.title}</h3>
+        <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
+          {item.shortDescription}
+        </p>
+        <Link
+          to={`/equipment/${item.id}`}
+          className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-brand transition-colors hover:text-brand/80"
+        >
+          View Details <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+        </Link>
+      </div>
+    </motion.div>
+  )
+}
+
+function ProductsVisibleGrid() {
+  const featured = EQUIPMENT[0]
+  const right = EQUIPMENT.slice(1, 3)
+  return (
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+      {/* Featured — spans 2 rows */}
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, ease }}
+        className="group relative overflow-hidden rounded-3xl bg-foreground lg:row-span-2"
+      >
+        <div className="relative h-72 overflow-hidden lg:h-full lg:min-h-[540px]">
+          <img
+            src={PRODUCT_IMAGES[featured.id] ?? '/images/crane-containers.jpg'}
+            alt={featured.title}
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
+          <div className="absolute inset-0 flex flex-col justify-end p-7">
+            <span className="mb-3 inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white/80">
+              {featured.category}
+            </span>
+            <h3 className="text-2xl font-black leading-tight tracking-tight text-white lg:text-3xl">
+              {featured.title}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-white/60">{featured.shortDescription}</p>
+            <Link
+              to={`/equipment/${featured.id}`}
+              className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-bold text-white transition-all hover:bg-brand/90"
+            >
+              View Details <ArrowRight className="size-4" />
+            </Link>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Right column — 2 stacked, one per row */}
+      {right.map((item, i) => (
+        <ProductCard key={item.id} item={item} delay={i * 0.1} />
+      ))}
+    </div>
+  )
+}
+
+function ProductsSeeMore() {
+  const [open, setOpen] = useState(false)
+  const items = EQUIPMENT.slice(3)
+
+  return (
+    <div className="mt-4">
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            key="more"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.45, ease }}
+            className="overflow-hidden"
+          >
+            <div className="grid grid-cols-1 gap-4 pb-4 sm:grid-cols-2">
+              {items.map((item, i) => (
+                <ProductCard key={item.id} item={item} delay={i * 0.06} />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="mx-auto mt-2 flex items-center gap-2 rounded-full border-2 border-border/60 bg-card px-6 py-3 text-sm font-bold text-foreground transition-all hover:border-brand/40 hover:text-brand"
+      >
+        {open ? 'See Less' : 'See More'}
+        {open ? <ChevronUp className="size-4" /> : <ChevronDown className="size-4" />}
+      </button>
     </div>
   )
 }
@@ -565,88 +685,20 @@ export function HomePage() {
                 Regularly inspected, well-maintained equipment for marine, offshore, construction
                 and industrial projects. Flexible terms, prompt delivery.
               </p>
-              <Button asChild variant="outline" className="w-fit border-2">
-                <Link to="/equipment">Browse Full Catalogue <ArrowRight className="ml-2 size-4" /></Link>
-              </Button>
+              <Link
+                to="/equipment"
+                className="inline-flex w-fit items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-bold text-white transition-all hover:bg-brand/90"
+              >
+                Browse Full Catalogue <ArrowRight className="size-4" />
+              </Link>
             </div>
           </div>
 
-          {/* Product grid */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
-            {/* Featured first product — larger */}
-            {EQUIPMENT.slice(0, 1).map((item) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                className="group relative overflow-hidden rounded-3xl bg-foreground sm:col-span-2 lg:col-span-1 lg:row-span-2"
-              >
-                <div className="relative h-56 overflow-hidden lg:h-full lg:min-h-[520px]">
-                  <img
-                    src={PRODUCT_IMAGES[item.id] ?? '/images/crane-containers.jpg'}
-                    alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
-                  <div className="absolute inset-0 flex flex-col justify-end p-7">
-                    <span className="mb-3 inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white/80">
-                      {item.category}
-                    </span>
-                    <h3 className="text-2xl font-black leading-tight tracking-tight text-white lg:text-3xl">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-white/60">
-                      {item.shortDescription}
-                    </p>
-                    <Link
-                      to={`/equipment/${item.id}`}
-                      className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-bold text-white transition-all hover:bg-brand/90"
-                    >
-                      View Details <ArrowRight className="size-4" />
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+          {/* Always-visible grid: featured left + 2 stacked right */}
+          <ProductsVisibleGrid />
 
-            {/* Remaining products */}
-            {EQUIPMENT.slice(1).map((item, i) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1], delay: (i % 3) * 0.08 }}
-                className="group relative overflow-hidden rounded-3xl bg-card border border-border/50 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg"
-              >
-                <div className="relative h-44 overflow-hidden">
-                  <img
-                    src={PRODUCT_IMAGES[item.id] ?? '/images/crane-containers.jpg'}
-                    alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <span className="absolute left-4 top-4 inline-flex items-center rounded-full border border-white/20 bg-black/40 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-                    {item.category}
-                  </span>
-                </div>
-                <div className="p-5">
-                  <h3 className="text-base font-black leading-tight tracking-tight">{item.title}</h3>
-                  <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground line-clamp-2">
-                    {item.shortDescription}
-                  </p>
-                  <Link
-                    to={`/equipment/${item.id}`}
-                    className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-brand transition-colors hover:text-brand/80"
-                  >
-                    View Details <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          {/* See More toggle */}
+          <ProductsSeeMore />
         </div>
       </section>
 
