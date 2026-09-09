@@ -62,7 +62,7 @@ function RotatingRingBadge() {
 }
 
 export function MissionSection() {
-  const md = TEAM[1]
+  const md = TEAM.find((m) => m.name === 'Lovelyn Nwoha') ?? TEAM[0]
 
   return (
     <section className="py-24 lg:py-32">
