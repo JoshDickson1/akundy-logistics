@@ -11,7 +11,7 @@ import { Label } from '../components/ui/label'
 import { Textarea } from '../components/ui/textarea'
 
 // Replace with your Formspree form ID once created at formspree.io
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xppzkdej'
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
 

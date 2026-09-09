@@ -29,9 +29,17 @@ export function Footer() {
     if (!email) return
     setStatus('loading')
     try {
-      window.location.href = `mailto:${COMPANY.email}?subject=Newsletter Signup&body=Please add this email to your newsletter list: ${encodeURIComponent(email)}`
-      setStatus('success')
-      setEmail('')
+      const res = await fetch('https://formspree.io/f/xvkodanv', {
+        method: 'POST',
+        body: JSON.stringify({ email }),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      })
+      if (res.ok) {
+        setStatus('success')
+        setEmail('')
+      } else {
+        setStatus('error')
+      }
     } catch {
       setStatus('error')
     }
