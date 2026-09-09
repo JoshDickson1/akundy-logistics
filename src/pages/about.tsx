@@ -360,7 +360,7 @@ export function AboutPage() {
                 className="group relative overflow-hidden rounded-3xl border border-border/50 bg-card shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:shadow-soft-xl"
               >
                 {/* Photo */}
-                <div className="relative h-64 overflow-hidden bg-muted">
+                <div className="relative h-80 overflow-hidden bg-muted">
                   {member.photo ? (
                     <img
                       src={member.photo}
