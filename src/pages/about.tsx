@@ -353,7 +353,7 @@ export function AboutPage() {
             description="The experienced professionals who lead Akundy Logistics across operations, engineering and strategy."
           />
 
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {TEAM.map((member) => (
               <div
                 key={member.name}
