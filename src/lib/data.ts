@@ -368,10 +368,10 @@ export const CLIENTS = [
 ]
 
 export const TEAM = [
-  { name: 'Andy Nwoha', role: 'Managing Director / CEO', phone: '08102401146' },
-  { name: 'Lovelyn Nwoha', role: 'Executive Director', phone: '08100253776' },
-  { name: 'Mr. Sunny Alugwu', role: 'Base Manager', phone: '08060549992' },
-  { name: 'Mr. Remy Echenwa', role: 'Technical Manager', phone: '08035503789' },
+  // { name: 'Andy Nwoha', role: 'Managing Director / CEO', phone: '08102401146', photo: '/images/founder.jpg' },
+  { name: 'Lovelyn Nwoha',           role: 'Executive Director',            phone: '08100253776', photo: '/images/executive-director.jpg' },
+  { name: 'Engr. Remigius Echenwa',  role: 'Technical Manager',             phone: '08035503789', photo: '/images/technical-manager.jpg' },
+  { name: 'Alugwu Sunny',            role: 'Base Manager / Head of Operations', phone: '08060549992', photo: '/images/base-manager.jpg' },
 ]
 
 export const CERTIFICATIONS = [

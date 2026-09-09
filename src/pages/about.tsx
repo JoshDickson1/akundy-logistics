@@ -175,7 +175,7 @@ const JOURNEY: TimelineEntry[] = [
 ]
 
 export function AboutPage() {
-  const founder = TEAM[1]
+  const founder = TEAM[0]
 
   return (
     <>
@@ -340,6 +340,59 @@ export function AboutPage() {
                 <p className="mt-3 text-sm font-black">{founder.name}</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Management Team */}
+      <section className="bg-muted/30 py-24">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
+          <SectionHeader
+            eyebrow="Leadership"
+            title="Our Management Team"
+            description="The experienced professionals who lead Akundy Logistics across operations, engineering and strategy."
+          />
+
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {TEAM.map((member) => (
+              <div
+                key={member.name}
+                className="group relative overflow-hidden rounded-3xl border border-border/50 bg-card shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:shadow-soft-xl"
+              >
+                {/* Photo */}
+                <div className="relative h-64 overflow-hidden bg-muted">
+                  {member.photo ? (
+                    <img
+                      src={member.photo}
+                      alt={member.name}
+                      className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="flex h-full items-center justify-center bg-brand/10">
+                      <span className="text-5xl font-black text-brand/30">
+                        {member.name.charAt(0)}
+                      </span>
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                </div>
+
+                {/* Info */}
+                <div className="p-6">
+                  <div className="mb-1 h-px w-8 rounded-full bg-brand" />
+                  <h3 className="mt-3 font-black leading-snug tracking-tight">{member.name}</h3>
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                    {member.role}
+                  </p>
+                  <a
+                    href={`tel:${member.phone}`}
+                    className="mt-3 inline-block text-sm font-medium text-brand transition-opacity hover:opacity-70"
+                  >
+                    {member.phone}
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
