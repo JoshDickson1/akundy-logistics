@@ -13,14 +13,14 @@ import { SEO } from '../components/seo'
 import { WHY_CHOOSE_US, EQUIPMENT } from '../lib/data'
 
 const PRODUCT_IMAGES: Record<string, string> = {
-  '10ft-container':       '/images/crane-containers.jpg',
+  '10ft-container':       '/images/container-10ft-1.jpg',
   '20ft-container':       '/images/container-20ft-1.jpg',
   '10ft-reefer':          '/images/reefer-10ft-1.jpg',
   '4m3-waste-skip':       '/images/NKgog.jpg',
   '6m3-waste-skip':       '/images/why-delivery.jpg',
   '8-drum-lube-rack':     '/images/lube-rack-8-1.jpg',
-  '8-cylinder-gas-rack':  '/images/why-safety.jpg',
-  '12-cylinder-gas-rack': '/images/marine-port.jpg',
+  '8-cylinder-gas-rack':  '/images/gas-rack-8-1.jpg',
+  '12-cylinder-gas-rack': '/images/gas-rack-12-1.jpg',
   '16-cylinder-gas-rack': '/images/mission-worker.jpg',
 }
 

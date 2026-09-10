@@ -8,19 +8,25 @@ import { Badge } from '../components/ui/badge'
 import { SEO } from '../components/seo'
 
 const PRODUCT_IMAGES: Record<string, string> = {
-  '10ft-container':       '/images/crane-containers.jpg',
+  '10ft-container':       '/images/container-10ft-1.jpg',
   '20ft-container':       '/images/container-20ft-1.jpg',
   '10ft-reefer':          '/images/reefer-10ft-1.jpg',
   '4m3-waste-skip':       '/images/NKgog.jpg',
   '6m3-waste-skip':       '/images/why-delivery.jpg',
   '8-drum-lube-rack':     '/images/lube-rack-8-1.jpg',
-  '8-cylinder-gas-rack':  '/images/why-safety.jpg',
-  '12-cylinder-gas-rack': '/images/marine-port.jpg',
+  '8-cylinder-gas-rack':  '/images/gas-rack-8-1.jpg',
+  '12-cylinder-gas-rack': '/images/gas-rack-12-1.jpg',
   '16-cylinder-gas-rack': '/images/mission-worker.jpg',
 }
 
 // Products with more than one gallery image — overrides the single-image default
 const PRODUCT_GALLERY: Record<string, string[]> = {
+  '10ft-container': [
+    '/images/container-10ft-1.jpg',
+    '/images/container-10ft-2.jpg',
+    '/images/container-10ft-3.jpg',
+    '/images/container-10ft-4.jpg',
+  ],
   '20ft-container': [
     '/images/container-20ft-1.jpg',
     '/images/container-20ft-2.jpg',
@@ -30,6 +36,15 @@ const PRODUCT_GALLERY: Record<string, string[]> = {
     '/images/reefer-10ft-1.jpg',
     '/images/reefer-10ft-2.jpg',
     '/images/reefer-10ft-3.jpg',
+  ],
+  '8-cylinder-gas-rack': [
+    '/images/gas-rack-8-1.jpg',
+    '/images/gas-rack-8-2.jpg',
+    '/images/gas-rack-8-3.jpg',
+  ],
+  '12-cylinder-gas-rack': [
+    '/images/gas-rack-12-1.jpg',
+    '/images/gas-rack-12-2.jpg',
   ],
 }
 

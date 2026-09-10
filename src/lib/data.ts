@@ -202,7 +202,7 @@ export const SERVICES = [
 export const EQUIPMENT = [
   {
     id: '10ft-container',
-    title: '10ft Shipping Container',
+    title: '10ft Dry Container',
     category: 'Containers',
     shortDescription:
       'A compact and secure solution for storage, transportation and offshore support operations.',
