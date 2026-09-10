@@ -243,6 +243,34 @@ export const EQUIPMENT = [
     related: ['10ft-container', '20ft-container'],
   },
   {
+    id: '10ft-cargo-basket',
+    title: '10ft Cargo Basket',
+    category: 'Cargo Baskets',
+    shortDescription:
+      'Robust open-top cargo basket for safe lifting and transport of equipment and materials on offshore and construction sites.',
+    description:
+      'Our 10ft cargo basket is designed for safe lifting and transport of equipment, tools and materials across offshore platforms, marine vessels and construction sites. Built to DNV standards with certified lifting points and a rugged steel frame.',
+    applications: ['Offshore platforms', 'Marine operations', 'Construction sites', 'Equipment transport', 'Industrial lifting'],
+    features: ['Certified lifting points', 'DNV compliant', 'Heavy-duty steel frame', 'Open-top access', 'Corrosion resistant'],
+    specs: { length: '10ft', material: 'Heavy-duty steel', lifting: 'Certified DNV lifting points', finish: 'Epoxy paint' },
+    images: ['cargo-basket-10ft-1'],
+    related: ['20ft-cargo-basket', '4m3-waste-skip'],
+  },
+  {
+    id: '20ft-cargo-basket',
+    title: '20ft Cargo Basket',
+    category: 'Cargo Baskets',
+    shortDescription:
+      'Large-capacity open-top cargo basket for high-volume offshore and industrial lifting operations.',
+    description:
+      'The 20ft cargo basket offers large-capacity, open-top storage and lifting for high-volume offshore and industrial operations. Its extended length accommodates long equipment, pipes and bulk materials, with certified lifting points and corrosion-resistant construction.',
+    applications: ['Offshore platforms', 'Marine operations', 'Heavy lifting projects', 'Pipe and equipment transport', 'Industrial sites'],
+    features: ['High capacity', 'Certified lifting points', 'DNV compliant', 'Heavy-duty steel frame', 'Corrosion resistant'],
+    specs: { length: '20ft', material: 'Heavy-duty steel', lifting: 'Certified DNV lifting points', finish: 'Epoxy paint' },
+    images: ['cargo-basket-20ft-1'],
+    related: ['10ft-cargo-basket', '4m3-waste-skip'],
+  },
+  {
     id: '4m3-waste-skip',
     title: '4m³ Basket Waste Skip',
     category: 'Waste Management',

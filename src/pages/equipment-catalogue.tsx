@@ -23,6 +23,8 @@ import { GalleryGrid, type GalleryItem } from '../components/ui/gallery-grid'
 const IMAGES: Record<string, string> = {
   '10ft-container':       '/images/container-10ft-1.jpg',
   '20ft-container':       '/images/container-20ft-1.jpg',
+  '10ft-cargo-basket':    '/images/cargo-basket-10ft-1.jpg',
+  '20ft-cargo-basket':    '/images/cargo-basket-20ft-1.jpg',
   '10ft-reefer':          '/images/reefer-10ft-1.jpg',
   '4m3-waste-skip':       '/images/NKgog.jpg',
   '6m3-waste-skip':       '/images/why-delivery.jpg',
