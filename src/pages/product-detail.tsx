@@ -14,7 +14,7 @@ const PRODUCT_IMAGES: Record<string, string> = {
   '20ft-cargo-basket':    '/images/cargo-basket-20ft-1.jpg',
   '10ft-reefer':          '/images/reefer-10ft-1.jpg',
   '4m3-waste-skip':       '/images/NKgog.jpg',
-  '6m3-waste-skip':       '/images/why-delivery.jpg',
+  '6m3-waste-skip':       '/images/waste-skip-6m3-1.jpg',
   '8-drum-lube-rack':     '/images/lube-rack-8-1.jpg',
   '8-cylinder-gas-rack':  '/images/gas-rack-8-1.jpg',
   '12-cylinder-gas-rack': '/images/gas-rack-12-1.jpg',
@@ -58,6 +58,10 @@ const PRODUCT_GALLERY: Record<string, string[]> = {
   '12-cylinder-gas-rack': [
     '/images/gas-rack-12-1.jpg',
     '/images/gas-rack-12-2.jpg',
+  ],
+  '6m3-waste-skip': [
+    '/images/waste-skip-6m3-1.jpg',
+    '/images/waste-skip-6m3-2.jpg',
   ],
 }
 
