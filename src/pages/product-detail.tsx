@@ -61,7 +61,6 @@ const PRODUCT_GALLERY: Record<string, string[]> = {
   ],
   '6m3-waste-skip': [
     '/images/waste-skip-6m3-1.jpg',
-    '/images/waste-skip-6m3-2.jpg',
   ],
   '16-cylinder-gas-rack': [
     '/images/gas-rack-16-1.jpg',
