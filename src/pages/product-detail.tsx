@@ -18,7 +18,7 @@ const PRODUCT_IMAGES: Record<string, string> = {
   '8-drum-lube-rack':     '/images/lube-rack-8-1.jpg',
   '8-cylinder-gas-rack':  '/images/gas-rack-8-1.jpg',
   '12-cylinder-gas-rack': '/images/gas-rack-12-1.jpg',
-  '16-cylinder-gas-rack': '/images/mission-worker.jpg',
+  '16-cylinder-gas-rack': '/images/gas-rack-16-1.jpg',
 }
 
 // Products with more than one gallery image — overrides the single-image default
@@ -62,6 +62,11 @@ const PRODUCT_GALLERY: Record<string, string[]> = {
   '6m3-waste-skip': [
     '/images/waste-skip-6m3-1.jpg',
     '/images/waste-skip-6m3-2.jpg',
+  ],
+  '16-cylinder-gas-rack': [
+    '/images/gas-rack-16-1.jpg',
+    '/images/gas-rack-16-2.jpg',
+    '/images/gas-rack-16-3.jpg',
   ],
 }
 

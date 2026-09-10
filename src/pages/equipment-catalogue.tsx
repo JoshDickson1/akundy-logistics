@@ -31,7 +31,7 @@ const IMAGES: Record<string, string> = {
   '8-drum-lube-rack':     '/images/lube-rack-8-1.jpg',
   '8-cylinder-gas-rack':  '/images/gas-rack-8-1.jpg',
   '12-cylinder-gas-rack': '/images/gas-rack-12-1.jpg',
-  '16-cylinder-gas-rack': '/images/mission-worker.jpg',
+  '16-cylinder-gas-rack': '/images/gas-rack-16-1.jpg',
 }
 
 export function EquipmentCataloguePage() {
