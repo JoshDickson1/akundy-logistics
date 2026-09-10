@@ -257,20 +257,6 @@ export const EQUIPMENT = [
     related: ['20ft-cargo-basket', '6m3-waste-skip'],
   },
   {
-    id: '40ft-cargo-basket',
-    title: '40ft Cargo Basket',
-    category: 'Cargo Baskets',
-    shortDescription:
-      'Heavy-duty open-top cargo basket for maximum-capacity offshore and industrial lifting operations.',
-    description:
-      'The 40ft cargo basket delivers maximum-capacity, open-top lifting for large-scale offshore and industrial operations. Designed for heavy equipment, long pipes and bulk materials, with certified lifting points and robust corrosion-resistant construction.',
-    applications: ['Offshore platforms', 'Marine operations', 'Heavy lifting projects', 'Large equipment transport', 'Industrial sites'],
-    features: ['Maximum capacity', 'Certified lifting points', 'DNV compliant', 'Heavy-duty steel frame', 'Corrosion resistant'],
-    specs: { length: '40ft', material: 'Heavy-duty steel', lifting: 'Certified DNV lifting points', finish: 'Epoxy paint' },
-    images: ['cargo-basket-40ft-1'],
-    related: ['20ft-cargo-basket', '10ft-cargo-basket'],
-  },
-  {
     id: '20ft-cargo-basket',
     title: '20ft Cargo Basket',
     category: 'Cargo Baskets',
@@ -283,6 +269,20 @@ export const EQUIPMENT = [
     specs: { length: '20ft', material: 'Heavy-duty steel', lifting: 'Certified DNV lifting points', finish: 'Epoxy paint' },
     images: ['cargo-basket-20ft-1'],
     related: ['10ft-cargo-basket', '6m3-waste-skip'],
+  },
+  {
+    id: '40ft-cargo-basket',
+    title: '40ft Cargo Basket',
+    category: 'Cargo Baskets',
+    shortDescription:
+      'Heavy-duty open-top cargo basket for maximum-capacity offshore and industrial lifting operations.',
+    description:
+      'The 40ft cargo basket delivers maximum-capacity, open-top lifting for large-scale offshore and industrial operations. Designed for heavy equipment, long pipes and bulk materials, with certified lifting points and robust corrosion-resistant construction.',
+    applications: ['Offshore platforms', 'Marine operations', 'Heavy lifting projects', 'Large equipment transport', 'Industrial sites'],
+    features: ['Maximum capacity', 'Certified lifting points', 'DNV compliant', 'Heavy-duty steel frame', 'Corrosion resistant'],
+    specs: { length: '40ft', material: 'Heavy-duty steel', lifting: 'Certified DNV lifting points', finish: 'Epoxy paint' },
+    images: ['cargo-basket-40ft-1'],
+    related: ['20ft-cargo-basket', '10ft-cargo-basket'],
   },
   // {
   //   id: '4m3-waste-skip',
