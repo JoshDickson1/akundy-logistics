@@ -27,6 +27,7 @@ const PRODUCT_GALLERY: Record<string, string[]> = {
     '/images/cargo-basket-10ft-1.jpg',
     '/images/cargo-basket-10ft-2.jpg',
     '/images/cargo-basket-10ft-3.jpg',
+    '/images/cargo-basket-10ft-4.jpg',
   ],
   '20ft-cargo-basket': [
     '/images/cargo-basket-20ft-1.jpg',
