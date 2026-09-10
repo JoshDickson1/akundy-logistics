@@ -9,7 +9,7 @@ import { SEO } from '../components/seo'
 
 const PRODUCT_IMAGES: Record<string, string> = {
   '10ft-container':       '/images/crane-containers.jpg',
-  '20ft-container':       '/images/container-ship.jpg',
+  '20ft-container':       '/images/container-20ft-1.jpg',
   '10ft-reefer':          '/images/AmSNA.jpg',
   '4m3-waste-skip':       '/images/NKgog.jpg',
   '6m3-waste-skip':       '/images/why-delivery.jpg',
@@ -19,8 +19,17 @@ const PRODUCT_IMAGES: Record<string, string> = {
   '16-cylinder-gas-rack': '/images/mission-worker.jpg',
 }
 
+// Products with more than one gallery image — overrides the single-image default
+const PRODUCT_GALLERY: Record<string, string[]> = {
+  '20ft-container': [
+    '/images/container-20ft-1.jpg',
+    '/images/container-20ft-2.jpg',
+    '/images/container-20ft-3.jpg',
+  ],
+}
+
 const IMAGES: Record<string, string[]> = Object.fromEntries(
-  Object.entries(PRODUCT_IMAGES).map(([id, img]) => [id, [img]])
+  Object.entries(PRODUCT_IMAGES).map(([id, img]) => [id, PRODUCT_GALLERY[id] ?? [img]])
 )
 
 const TABS = ['Overview', 'Specifications', 'Applications'] as const

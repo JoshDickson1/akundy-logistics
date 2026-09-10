@@ -14,7 +14,7 @@ import { WHY_CHOOSE_US, EQUIPMENT } from '../lib/data'
 
 const PRODUCT_IMAGES: Record<string, string> = {
   '10ft-container':       '/images/crane-containers.jpg',
-  '20ft-container':       '/images/container-ship.jpg',
+  '20ft-container':       '/images/container-20ft-1.jpg',
   '10ft-reefer':          '/images/AmSNA.jpg',
   '4m3-waste-skip':       '/images/NKgog.jpg',
   '6m3-waste-skip':       '/images/why-delivery.jpg',
