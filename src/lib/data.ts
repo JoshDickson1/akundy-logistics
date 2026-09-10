@@ -216,7 +216,7 @@ export const EQUIPMENT = [
   },
   {
     id: '20ft-container',
-    title: '20ft Shipping Container',
+    title: '20ft Dry Container',
     category: 'Containers',
     shortDescription:
       'Ideal for large-volume storage and transportation of materials, equipment and supplies.',
