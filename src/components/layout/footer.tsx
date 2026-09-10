@@ -64,7 +64,7 @@ export function Footer() {
       links: [
         { label: 'Containers', href: '/equipment/20ft-container' },
         { label: 'Reefer Units', href: '/equipment/10ft-reefer' },
-        { label: 'Waste Skips', href: '/equipment/4m3-waste-skip' },
+        { label: 'Waste Skips', href: '/equipment/6m3-waste-skip' },
         { label: 'Gas Racks', href: '/equipment/8-cylinder-gas-rack' },
       ],
     },

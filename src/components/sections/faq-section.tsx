@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const FAQS = [
   {
     q: 'What types of equipment do you lease?',
-    a: 'We lease 10ft and 20ft dry containers, 10ft reefer containers, 4m³ and 6m³ basket waste skips, 8/12/16-cylinder gas racks, 8-drum lube racks, generators, welding equipment and lifting gear for marine, offshore, construction and industrial projects.',
+    a: 'We lease 10ft and 20ft dry containers, 10ft reefer containers, 6m³ basket waste skips, 8/12/16-cylinder gas racks, 8-drum lube racks, generators, welding equipment and lifting gear for marine, offshore, construction and industrial projects.',
   },
   {
     q: 'How do I request a quote or engage your services?',

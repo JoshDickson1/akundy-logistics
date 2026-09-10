@@ -254,7 +254,21 @@ export const EQUIPMENT = [
     features: ['Certified lifting points', 'DNV compliant', 'Heavy-duty steel frame', 'Open-top access', 'Corrosion resistant'],
     specs: { length: '10ft', material: 'Heavy-duty steel', lifting: 'Certified DNV lifting points', finish: 'Epoxy paint' },
     images: ['cargo-basket-10ft-1'],
-    related: ['20ft-cargo-basket', '4m3-waste-skip'],
+    related: ['20ft-cargo-basket', '6m3-waste-skip'],
+  },
+  {
+    id: '40ft-cargo-basket',
+    title: '40ft Cargo Basket',
+    category: 'Cargo Baskets',
+    shortDescription:
+      'Heavy-duty open-top cargo basket for maximum-capacity offshore and industrial lifting operations.',
+    description:
+      'The 40ft cargo basket delivers maximum-capacity, open-top lifting for large-scale offshore and industrial operations. Designed for heavy equipment, long pipes and bulk materials, with certified lifting points and robust corrosion-resistant construction.',
+    applications: ['Offshore platforms', 'Marine operations', 'Heavy lifting projects', 'Large equipment transport', 'Industrial sites'],
+    features: ['Maximum capacity', 'Certified lifting points', 'DNV compliant', 'Heavy-duty steel frame', 'Corrosion resistant'],
+    specs: { length: '40ft', material: 'Heavy-duty steel', lifting: 'Certified DNV lifting points', finish: 'Epoxy paint' },
+    images: ['cargo-basket-40ft-1'],
+    related: ['20ft-cargo-basket', '10ft-cargo-basket'],
   },
   {
     id: '20ft-cargo-basket',
@@ -268,22 +282,20 @@ export const EQUIPMENT = [
     features: ['High capacity', 'Certified lifting points', 'DNV compliant', 'Heavy-duty steel frame', 'Corrosion resistant'],
     specs: { length: '20ft', material: 'Heavy-duty steel', lifting: 'Certified DNV lifting points', finish: 'Epoxy paint' },
     images: ['cargo-basket-20ft-1'],
-    related: ['10ft-cargo-basket', '4m3-waste-skip'],
+    related: ['10ft-cargo-basket', '6m3-waste-skip'],
   },
-  {
-    id: '4m3-waste-skip',
-    title: '4m³ Basket Waste Skip',
-    category: 'Waste Management',
-    shortDescription:
-      'Safe collection and transportation of industrial waste during offshore and construction activities.',
-    description:
-      'Designed for safe collection and transportation of industrial waste generated during offshore and construction activities. Certified lifting points and corrosion-resistant steel ensure safe handling in marine environments.',
-    applications: ['Offshore installations', 'Construction sites', 'Industrial facilities', 'Environmental waste management'],
-    features: ['Heavy-duty steel', 'Certified lifting points', 'Corrosion resistant', 'Safe waste handling'],
-    specs: { volume: '4 cubic metres', material: 'Heavy-duty steel', lifting: 'Certified points', finish: 'Corrosion resistant' },
-    images: ['waste-skip-4m3-1', 'waste-skip-4m3-2', 'waste-skip-4m3-3'],
-    related: ['6m3-waste-skip', '8-drum-lube-rack'],
-  },
+  // {
+  //   id: '4m3-waste-skip',
+  //   title: '4m³ Basket Waste Skip',
+  //   category: 'Waste Management',
+  //   shortDescription: 'Safe collection and transportation of industrial waste during offshore and construction activities.',
+  //   description: 'Designed for safe collection and transportation of industrial waste generated during offshore and construction activities. Certified lifting points and corrosion-resistant steel ensure safe handling in marine environments.',
+  //   applications: ['Offshore installations', 'Construction sites', 'Industrial facilities', 'Environmental waste management'],
+  //   features: ['Heavy-duty steel', 'Certified lifting points', 'Corrosion resistant', 'Safe waste handling'],
+  //   specs: { volume: '4 cubic metres', material: 'Heavy-duty steel', lifting: 'Certified points', finish: 'Corrosion resistant' },
+  //   images: ['waste-skip-4m3-1', 'waste-skip-4m3-2', 'waste-skip-4m3-3'],
+  //   related: ['6m3-waste-skip', '8-drum-lube-rack'],
+  // },
   {
     id: '6m3-waste-skip',
     title: '6m³ Basket Waste Skip',

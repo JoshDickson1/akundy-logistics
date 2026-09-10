@@ -65,7 +65,7 @@ const menuPanels: MenuPanel[] = [
     cards: [
       { title: 'Shipping Containers', description: '10ft & 20ft dry containers for offshore storage and transport.', href: '/equipment/20ft-container', featured: true },
       { title: 'Reefer Container',    description: 'Temperature-controlled cold-chain storage.',                     href: '/equipment/10ft-reefer' },
-      { title: 'Waste Skips',         description: '4m³ and 6m³ certified basket skips.',                            href: '/equipment/4m3-waste-skip' },
+      { title: 'Waste Skips',         description: '6m³ certified basket skips.',                                    href: '/equipment/6m3-waste-skip' },
       { title: 'Lube Rack',           description: '8-drum rack for safe lubricant storage.',                        href: '/equipment/8-drum-lube-rack' },
       { title: 'Gas Cylinder Racks',  description: '8, 12 and 16-cylinder racks for industrial gases.',              href: '/equipment/8-cylinder-gas-rack' },
       { title: 'Generators & Tools',  description: 'Power equipment, welding and lifting gear.',                     href: '/equipment' },
