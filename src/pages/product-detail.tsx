@@ -23,6 +23,11 @@ const PRODUCT_IMAGES: Record<string, string> = {
 
 // Products with more than one gallery image — overrides the single-image default
 const PRODUCT_GALLERY: Record<string, string[]> = {
+  '10ft-cargo-basket': [
+    '/images/cargo-basket-10ft-1.jpg',
+    '/images/cargo-basket-10ft-2.jpg',
+    '/images/cargo-basket-10ft-3.jpg',
+  ],
   '10ft-container': [
     '/images/container-10ft-1.jpg',
     '/images/container-10ft-2.jpg',
