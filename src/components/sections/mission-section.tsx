@@ -65,7 +65,7 @@ export function MissionSection() {
   const md = TEAM.find((m) => m.name === 'Lovelyn Nwoha') ?? TEAM[0]
 
   return (
-    <section className="py-24 lg:py-32">
+    <section className="overflow-hidden py-24 lg:py-32">
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.15fr_0.85fr] lg:gap-8">
 

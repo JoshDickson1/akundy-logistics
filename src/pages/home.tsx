@@ -493,7 +493,7 @@ export function HomePage() {
             initial={{ opacity: 0, y: 48 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: easeOut, delay: 0.3 }}
-            className="relative mt-10 h-[60vh] min-h-[380px] lg:h-[74vh]"
+            className="relative mt-10 h-[60svh] min-h-[380px] lg:h-[74svh]"
             style={{ clipPath: 'url(#hero-butterfly)' }}
           >
             <img
