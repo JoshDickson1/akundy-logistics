@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /hero-preview
+
+Sitemap: https://akundylogistics.com/sitemap.xml
